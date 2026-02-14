@@ -335,57 +335,36 @@ body {
     letter-spacing: 4px;
 }
 
-/* --- FOOTER --- */
-.site-footer {
-    background-color: #000;
-    border-top: 0.5px solid rgba(255, 255, 255, 0.1);
-    padding: 80px 10% 40px 10%;
-    margin-top: 100px;
-}
-
+/* --- FOOTER SIMPLIFIÉ ET CENTRÉ --- */
 .footer-content {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-bottom: 60px;
+    flex-direction: column; /* Aligne les éléments verticalement */
+    align-items: center;    /* Centre horizontalement */
+    justify-content: center;
+    gap: 30px;              /* Espace entre le logo et le reste si besoin */
+    margin-bottom: 40px;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .footer-logo img {
-    height: 30px;
-    opacity: 0.8;
-}
-
-.footer-nav a, .footer-socials a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 10px;
-    letter-spacing: 3px;
-    margin: 0 15px;
-    opacity: 0.5;
-    transition: 0.3s;
-}
-
-.footer-nav a:hover, .footer-socials a:hover {
-    opacity: 1;
+    height: 35px; /* Tu peux l'agrandir un peu puisqu'il est seul au centre */
+    opacity: 0.9;
 }
 
 .footer-bottom {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* Empile les textes sur mobile et desktop pour le style */
+    align-items: center;    /* Centre les textes */
+    text-align: center;
+    gap: 10px;
     border-top: 0.5px solid rgba(255, 255, 255, 0.05);
     padding-top: 30px;
 }
-
-.footer-bottom p {
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: #444;
-    text-transform: uppercase;
-}
-
 /* --- OPTIMISATION HEADER MOBILE --- */
 @media (max-width: 480px) {
     .navbar {

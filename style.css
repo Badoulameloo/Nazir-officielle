@@ -248,3 +248,62 @@ body {
         font-size: 1rem;
     }
 }
+
+/* --- PAGE CONTACT --- */
+.contact-container {
+    padding-top: 200px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    min-height: 80vh;
+}
+
+.contact-header h1 {
+    font-size: 2rem;
+    letter-spacing: 10px;
+    margin-bottom: 20px;
+}
+
+.contact-header p {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.contact-item {
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.contact-item:hover {
+    border-bottom: 0.5px solid #fff;
+}
+
+.contact-item span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #555;
+}
+
+.contact-item a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.contact-item a:hover {
+    letter-spacing: 4px;
+}

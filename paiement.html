@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAIEMENT | NAZIR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo" style="width: 100%; text-align: center;">
+            <a href="index.html"><img src="img/img.logo.jpeg.png" alt="NAZIR" style="height: 25px;"></a>
+        </div>
+    </nav>
+
+    <main class="checkout-container">
+        <div class="checkout-grid">
+            <section class="checkout-form">
+                <h2>INFORMATIONS DE LIVRAISON</h2>
+                <form id="payment-form">
+                    <input type="email" placeholder="E-MAIL" required>
+                    <div class="form-row">
+                        <input type="text" placeholder="PRÉNOM" required>
+                        <input type="text" placeholder="NOM" required>
+                    </div>
+                    <input type="text" placeholder="ADRESSE" required>
+                    <div class="form-row">
+                        <input type="text" placeholder="VILLE" required>
+                        <input type="text" placeholder="PAYS" value="SÉNÉGAL" required>
+                    </div>
+
+                    <h2 style="margin-top: 40px;">PAIEMENT</h2>
+                    <div class="card-element">
+                        <input type="text" placeholder="NUMÉRO DE CARTE" required>
+                        <div class="form-row">
+                            <input type="text" placeholder="MM / AA" required>
+                            <input type="text" placeholder="CVC" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="pay-btn">PAYER 15,000 CFA</button>
+                </form>
+            </section>
+
+            <aside class="checkout-summary">
+                <div class="summary-item">
+                    <img src="img/img.frontshirt.jpeg" alt="Produit">
+                    <div class="item-info">
+                        <p>TEE CORE - WHITE</p>
+                        <span>TAILLE L</span>
+                    </div>
+                    <p>15,000 CFA</p>
+                </div>
+                <div class="summary-total-line">
+                    <span>TOTAL</span>
+                    <span>15,000 CFA</span>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+</body>
+</html>

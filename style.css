@@ -65,9 +65,9 @@ body {
 
 .hero-image-overlay img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.5;
+    height: 100vh; /* Garde l'image sur toute la hauteur de l'écran */
+    object-fit: cover; /* Recadre proprement sans déformer */
+    opacity: 0.6;
 }
 
 .hero-content h1 {
@@ -108,6 +108,14 @@ body {
     position: relative;
     overflow: hidden;
     background: #111;
+    height: 450px; /* Force une hauteur raisonnable pour les photos de t-shirts */
+}
+
+.product-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* L'image remplit le cadre sans s'écraser */
+    transition: transform 0.8s ease;
 }
 
 .img-back {
@@ -131,4 +139,9 @@ body {
     font-size: 14px;
     letter-spacing: 2px;
     margin-bottom: 10px;
+}
+.product-grid-home {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Les images seront plus serrées donc plus petites */
+    gap: 30px;
 }

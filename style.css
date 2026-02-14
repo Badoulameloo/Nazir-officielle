@@ -244,7 +244,7 @@ body {
     }
     
     .text-block p {
-        text-align: left; /* Moins strict sur mobile */
+        text-align: center; /* Moins strict sur mobile */
         font-size: 1rem;
     }
 }

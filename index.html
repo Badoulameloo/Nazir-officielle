@@ -15,6 +15,7 @@
             <a href="heritage.html">HÉRITAGE</a>
             <a href="contact.html">CONTACT</a>
             <a href="panier.html">PANIER</a>
+            <a href="detail-produit.html">VOIR DETAILS</a>
         </div>
         <div class="nav-logo">
             <img src="img\img.logo.jpeg.png.png" alt="NAZIR">
@@ -35,37 +36,53 @@
 
     <section id="products" class="product-showcase">
         <h2 data-aos="fade-up">NOS PRODUITS</h2>
-        <div class="product-grid-home">
-            <div class="product-item-home" data-aos="fade-up">
-                <div class="product-image-wrapper">
-                    <img src="img\img.frontshirt.jpeg.jpeg" class="img-front" alt="Tee Front">
-                    <img src="img\img.backshirt.jpeg.jpeg.jpeg" class="img-back" alt="Tee Back">
-                </div>
-                <div class="product-info-home">
-                    <h3>TEE CORE - WHITE</h3>
-                    <p>15,000 CFA</p>
-                </div>
-                <div class="product-grid-home">
-    <div class="product-item-home">
-        <div class="product-image-wrapper">
-            <img src="img/img.frontshirt.jpeg" class="img-front">
-            <img src="img/img.backshirt.jpeg.jpeg" class="img-back">
-        </div>
-        <div class="product-info-home">
-            <h3>TEE CORE - WHITE</h3>
-            <p>15,000 CFA</p>
+       <div class="product-card" data-aos="fade-up">
+    <div class="product-image-container">
+        <img src="img/img.frontshirt.jpeg" alt="TEE CORE WHITE" class="product-img">
+        
+       <div class="product-card">
+    <div class="product-image-container">
+        <img src="img/tshirt-noir.jpg" alt="TEE NOIR" class="product-img">
+        <div class="product-overlay">
+            <button onclick="voirDetails('TEE CORE - NOIR', '15.000 CFA', 'img/tshirt-noir.jpg', 'Un coton lourd et une coupe parfaite.')" class="overlay-link">VOIR DÉTAILS</button>
+            <button onclick="acheterMaintenant('TEE CORE - NOIR', '15.000 CFA', 'img/tshirt-noir.jpg')" class="overlay-btn">ACHETER MAINTENANT</button>
         </div>
     </div>
+    <div class="product-info">
+        <h3>TEE CORE - NOIR</h3>
+        <p>15,000 CFA</p>
+    </div>
+</div>
+</div>
+     <div class="product-card">
+    <div class="product-image-container">
+        <img src="img/tshirt-noir.jpg" alt="TEE NOIR" class="product-img">
+        <div class="product-overlay">
+            <button onclick="voirDetails('TEE CORE - NOIR', '15.000 CFA', 'img/tshirt-noir.jpg', 'Un coton lourd et une coupe parfaite.')" class="overlay-link">VOIR DÉTAILS</button>
+            <button onclick="acheterMaintenant('TEE CORE - NOIR', '15.000 CFA', 'img/tshirt-noir.jpg')" class="overlay-btn">ACHETER MAINTENANT</button>
+        </div>
+    </div>
+    <div class="product-info">
+        <h3>TEE CORE - NOIR</h3>
+        <p>15,000 CFA</p>
+    </div>
+</div>
+</div>
 
-    <div class="product-item-home">
-        <div class="product-image-wrapper">
-            <img src="img/NOM_DE_TA_NOUVELLE_PHOTO.jpg" class="img-front">
-            <img src="img/NOM_DE_TA_PHOTO_DOS.jpg" class="img-back">
+ <div class="product-card">
+    <div class="product-image-container">
+        <img src="img/tshirt-noir.jpg" alt="TEE NOIR" class="product-img">
+        <div class="product-overlay">
+            <button onclick="voirDetails('TEE CORE - NOIR', '15.000 CFA', 'img/tshirt-noir.jpg', 'Un coton lourd et une coupe parfaite.')" class="overlay-link">VOIR DÉTAILS</button>
+            <button onclick="acheterMaintenant('TEE CORE - NOIR', '15.000 CFA', 'img/tshirt-noir.jpg')" class="overlay-btn">ACHETER MAINTENANT</button>
         </div>
-        <div class="product-info-home">
-            <h3>NOM DU NOUVEAU PRODUIT</h3>
-            <p>15,000 CFA</p>
-        </div>
+    </div>
+    <div class="product-info">
+        <h3>TEE CORE - NOIR</h3>
+        <p>15,000 CFA</p>
+    </div>
+</div>
+</div>
     </div>
 </div>
             </div>
@@ -87,5 +104,23 @@
         <p>OLD SOUL, NEW NORM.</p>
     </div>
 </footer>
+<script>
+function voirDetails(nom, prix, image, desc) {
+    localStorage.setItem('produitNom', nom);
+    localStorage.setItem('produitPrix', prix);
+    localStorage.setItem('produitImage', image);
+    localStorage.setItem('produitDesc', desc);
+    window.location.href = 'details-produit.html';
+}
+
+function acheterMaintenant(nom, prix, image) {
+    localStorage.setItem('produitNom', nom);
+    localStorage.setItem('produitPrix', prix);
+    localStorage.setItem('produitImage', image);
+    localStorage.setItem('produitTaille', 'L'); // Taille par défaut
+    window.location.href = 'paiement.html';
+}
+</script>
+</script>
 </body>
 </html>

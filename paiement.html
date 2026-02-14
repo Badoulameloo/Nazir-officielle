@@ -5,60 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PAIEMENT | NAZIR</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 </head>
 <body>
 
     <nav class="navbar">
         <div class="nav-logo" style="width: 100%; text-align: center;">
-            <a href="index.html"><img src="img/img.logo.jpeg.png" alt="NAZIR" style="height: 25px;"></a>
+            <a href="index.html">
+                <img src="img/img.logo.jpeg.png" alt="NAZIR" style="height: 25px;">
+            </a>
         </div>
     </nav>
 
-    <main class="checkout-container">
+    <main class="checkout-container" data-aos="fade-in">
         <div class="checkout-grid">
+            
             <section class="checkout-form">
                 <h2>INFORMATIONS DE LIVRAISON</h2>
-                <form id="payment-form">
-                    <input type="email" placeholder="E-MAIL" required>
+                <form id="order-form">
+                    <input type="email" id="email" placeholder="E-MAIL" required>
                     <div class="form-row">
-                        <input type="text" placeholder="PRÉNOM" required>
-                        <input type="text" placeholder="NOM" required>
+                        <input type="text" id="prenom" placeholder="PRÉNOM" required>
+                        <input type="text" id="nom" placeholder="NOM" required>
                     </div>
-                    <input type="text" placeholder="ADRESSE" required>
+                    <input type="text" id="adresse" placeholder="ADRESSE PRÉCISE" required>
                     <div class="form-row">
-                        <input type="text" placeholder="VILLE" required>
-                        <input type="text" placeholder="PAYS" value="SÉNÉGAL" required>
+                        <input type="text" id="ville" placeholder="VILLE" required>
+                        <input type="text" id="pays" value="SÉNÉGAL" readonly>
                     </div>
 
-                    <h2 style="margin-top: 40px;">PAIEMENT</h2>
-                    <div class="card-element">
-                        <input type="text" placeholder="NUMÉRO DE CARTE" required>
-                        <div class="form-row">
-                            <input type="text" placeholder="MM / AA" required>
-                            <input type="text" placeholder="CVC" required>
-                        </div>
+                    <h2 style="margin-top: 40px;">MODE DE PAIEMENT</h2>
+                    <div class="payment-options">
+                        <label class="payment-card">
+                            <input type="radio" name="method" value="Wave" checked>
+                            <div class="card-content">
+                                <span class="method-name">WAVE</span>
+                            </div>
+                        </label>
+
+                        <label class="payment-card">
+                            <input type="radio" name="method" value="Orange Money">
+                            <div class="card-content">
+                                <span class="method-name">ORANGE MONEY</span>
+                            </div>
+                        </label>
+
+                        <label class="payment-card">
+                            <input type="radio" name="method" value="Paiement à la livraison">
+                            <div class="card-content">
+                                <span class="method-name">À LA LIVRAISON</span>
+                            </div>
+                        </label>
                     </div>
-                    
-                    <button type="submit" class="pay-btn">PAYER 15,000 CFA</button>
+
+                    <button type="button" onclick="sendOrder()" class="pay-btn">CONFIRMER LA COMMANDE</button>
                 </form>
             </section>
 
             <aside class="checkout-summary">
                 <div class="summary-item">
-                    <img src="img/img.frontshirt.jpeg" alt="Produit">
+                    <img id="display-img" src="" alt="Produit">
                     <div class="item-info">
-                        <p>TEE CORE - WHITE</p>
-                        <span>TAILLE L</span>
+                        <p id="display-name">VOTRE ARTICLE</p>
+                        <span id="display-size">TAILLE SÉLECTIONNÉE</span>
                     </div>
-                    <p>15,000 CFA</p>
+                    <p id="display-price">0 CFA</p>
                 </div>
                 <div class="summary-total-line">
                     <span>TOTAL</span>
-                    <span>15,000 CFA</span>
+                    <span id="display-total">0 CFA</span>
                 </div>
             </aside>
+
         </div>
     </main>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000 });
+
+        // 1. CHARGEMENT DYNAMIQUE DES INFOS DU PRODUIT
+        window.onload = function() {
+            const nom = localStorage.getItem('produitNom') || "Produit NAZIR";
+            const prix = localStorage.getItem('produitPrix') || "Prix sur demande";
+            const image = localStorage.getItem('produitImage') || "img/img.logo.jpeg.png";
+            const taille = localStorage.getItem('produitTaille') || "Standard";
+
+            document.getElementById('display-name').innerText = nom;
+            document.getElementById('display-price').innerText = prix;
+            document.getElementById('display-total').innerText = prix;
+            document.getElementById('display-img').src = image;
+            document.getElementById('display-size').innerText = "TAILLE: " + taille;
+        };
+
+        // 2. ENVOI DE LA COMMANDE VERS WHATSAPP
+        function sendOrder() {
+            const phone = "221784854337"; // REMPLACE PAR TON NUMÉRO
+            
+            // Récupération des données du formulaire
+            const prenom = document.getElementById('prenom').value;
+            const nomClient = document.getElementById('nom').value;
+            const ville = document.getElementById('ville').value;
+            const adresse = document.getElementById('adresse').value;
+            
+            // Récupération des données du produit
+            const nomProduit = document.getElementById('display-name').innerText;
+            const prixProduit = document.getElementById('display-total').innerText;
+            const taille = document.getElementById('display-size').innerText;
+            
+            // Récupération du mode de paiement
+            const methode = document.querySelector('input[name="method"]:checked').value;
+
+            if(!prenom || !nomClient || !ville || !adresse) {
+                alert("Merci de remplir toutes les informations de livraison.");
+                return;
+            }
+
+            // Construction du message WhatsApp
+            const message = `Bonjour NAZIR, nouvelle commande :
+──────────────
+📦 *PRODUIT* : ${nomProduit}
+📏 *${taille}*
+💰 *PRIX* : ${prixProduit}
+──────────────
+👤 *CLIENT* : ${prenom} ${nomClient}
+📍 *ADRESSE* : ${adresse}, ${ville}
+💳 *PAIEMENT* : ${methode}
+──────────────
+Merci de confirmer la commande !`;
+
+            const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
 </body>
 </html>

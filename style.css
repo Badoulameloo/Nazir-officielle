@@ -415,7 +415,7 @@ body {
     }
 
     .nav-logo img {
-        height: 25px; /* On réduit un peu le logo pour libérer de l'espace */
+        height: 65px; /* On réduit un peu le logo pour libérer de l'espace */
     }
 
     /* Panier tout à droite */

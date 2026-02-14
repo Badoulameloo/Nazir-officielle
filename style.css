@@ -233,19 +233,46 @@ body {
     letter-spacing: 1px;
 }
 
-/* Responsive : ajustements pour téléphone */
-@media (max-width: 768px) {
-    .heritage-container {
-        padding-top: 120px;
+/* --- OPTIMISATION HEADER MOBILE --- */
+@media (max-width: 480px) {
+    .navbar {
+        display: grid; /* On passe en grille pour mieux contrôler les positions */
+        grid-template-columns: 1fr auto 1fr; /* Trois zones : Gauche (Liens), Centre (Logo), Droite (Panier) */
+        align-items: center;
+        padding: 15px 10px; /* On réduit l'espace interne */
     }
-    
-    .heritage-header h1 {
-        letter-spacing: 8px;
+
+    /* Regroupe Home, Heritage, Contact sur une ligne à gauche */
+    .nav-left {
+        display: flex;
+        flex-direction: row; /* Force la ligne au lieu de la colonne */
+        gap: 8px; /* Petit espace entre les mots */
     }
-    
-    .text-block p {
-        text-align: center; /* Moins strict sur mobile */
-        font-size: 1rem;
+
+    .nav-left a {
+        font-size: 8px; /* Écriture très fine pour que tout tienne */
+        letter-spacing: 1px;
+        margin-right: 0;
+    }
+
+    /* Logo parfaitement centré */
+    .nav-logo {
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-logo img {
+        height: 25px; /* On réduit un peu le logo pour libérer de l'espace */
+    }
+
+    /* Panier tout à droite */
+    .nav-right {
+        text-align: right;
+    }
+
+    .nav-right a {
+        font-size: 8px; /* Taille identique aux autres liens */
+        letter-spacing: 1px;
     }
 }
 
@@ -359,15 +386,45 @@ body {
     text-transform: uppercase;
 }
 
-/* Ajustement pour mobile */
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
+/* --- OPTIMISATION HEADER MOBILE --- */
+@media (max-width: 480px) {
+    .navbar {
+        display: grid; /* On passe en grille pour mieux contrôler les positions */
+        grid-template-columns: 1fr auto 1fr; /* Trois zones : Gauche (Liens), Centre (Logo), Droite (Panier) */
+        align-items: center;
+        padding: 15px 10px; /* On réduit l'espace interne */
     }
-    .footer-bottom {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
+
+    /* Regroupe Home, Heritage, Contact sur une ligne à gauche */
+    .nav-left {
+        display: flex;
+        flex-direction: row; /* Force la ligne au lieu de la colonne */
+        gap: 8px; /* Petit espace entre les mots */
+    }
+
+    .nav-left a {
+        font-size: 8px; /* Écriture très fine pour que tout tienne */
+        letter-spacing: 1px;
+        margin-right: 0;
+    }
+
+    /* Logo parfaitement centré */
+    .nav-logo {
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-logo img {
+        height: 25px; /* On réduit un peu le logo pour libérer de l'espace */
+    }
+
+    /* Panier tout à droite */
+    .nav-right {
+        text-align: right;
+    }
+
+    .nav-right a {
+        font-size: 8px; /* Taille identique aux autres liens */
+        letter-spacing: 1px;
     }
 }

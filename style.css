@@ -147,6 +147,20 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Les images seront plus serrées donc plus petites */
     gap: 30px;
 }
+/* Limite la taille des images dans les cartes produits */
+.product-image-container {
+    width: 100%;
+    aspect-ratio: 3 / 4; /* Force un format portrait élégant */
+    overflow: hidden;
+    background: #000;
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Remplit le cadre sans déformer l'image */
+}
+
 /* --- DESIGN PAGE HERITAGE (LOOK ÉDITORIAL) --- */
 
 /* Conteneur principal centré pour la lecture */

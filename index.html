@@ -131,15 +131,18 @@ function updateCartCount() {
 }
         AOS.init({ duration: 1200, once: true });
 
-       function voirDetails(nom, prix, imageFront, imageBack, desc) {
-    // On nettoie et on stocke
+    function voirDetails(nom, prix, imageFront, imageBack, desc) {
+    // 1. On vide d'abord les anciennes données pour être propre
+    localStorage.clear(); 
+
+    // 2. On enregistre les NOUVELLES données du produit cliqué
     localStorage.setItem('produitNom', nom);
     localStorage.setItem('produitPrix', prix);
     localStorage.setItem('produitImage', imageFront);
-    localStorage.setItem('produitImageDos', imageBack || ""); 
+    localStorage.setItem('produitImageDos', imageBack);
     localStorage.setItem('produitDesc', desc);
     
-    // On redirige vers le fichier exact
+    // 3. On part vers la page détail
     window.location.href = 'detail-produit.html';
 }
 

@@ -18,45 +18,83 @@
             <img src="img/img.logo.jpeg.png" alt="NAZIR">
         </div>
         <div class="nav-right">
-            <a href="panier.html" class="active">PANIER (1)</a>
+            <a href="panier.html" class="active" id="cart-count">PANIER (0)</a>
         </div>
     </nav>
 
     <main class="cart-container">
         <h1>VOTRE PANIER</h1>
 
-        <div class="cart-content">
-            <div class="cart-item">
-                <div class="cart-item-image">
-                    <img src="img/img.frontshirt.jpeg" alt="Tee-shirt">
-                </div>
-                <div class="cart-item-details">
-                    <h3>TEE CORE - WHITE</h3>
-                    <p>TAILLE: L</p>
-                    <p class="price">15,000 CFA</p>
-                </div>
-                <div class="cart-item-remove">
-                    <button onclick="supprimer">SUPPRIMER</button>
-                </div>
+        <div id="cart-wrapper">
             </div>
-
-            <div class="cart-summary">
-                <div class="summary-line">
-                    <span>SOUS-TOTAL</span>
-                    <span>15,000 CFA</span>
-                </div>
-                <div class="summary-line">
-                    <span>LIVRAISON</span>
-                    <span>CALCULÉE À LA CAISSE</span>
-                </div>
-                <div class="summary-total">
-                    <span>TOTAL</span>
-                    <span>15,000 CFA</span>
-                </div>
-                <a href="paiement.html" class="checkout-btn">PASSER AU PAIEMENT</a>
-            </div>
-        </div>
     </main>
+
+    <script>
+        function afficherPanier() {
+            const wrapper = document.getElementById('cart-wrapper');
+            const nom = localStorage.getItem('produitNom');
+            const prix = localStorage.getItem('produitPrix');
+            const image = localStorage.getItem('produitImage');
+            const taille = localStorage.getItem('produitTaille') || "L";
+
+            if (!nom) {
+                // Si le panier est vide
+                wrapper.innerHTML = `
+                    <div style="text-align:center; padding: 50px;">
+                        <p>Votre panier est actuellement vide.</p>
+                        <br>
+                        <a href="index.html" style="text-decoration: underline; color: #fff;">Retourner à la boutique</a>
+                    </div>`;
+                document.getElementById('cart-count').innerText = "PANIER (0)";
+                return;
+            }
+
+            // Si un produit existe, on l'affiche
+            document.getElementById('cart-count').innerText = "PANIER (1)";
+            wrapper.innerHTML = `
+                <div class="cart-content">
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <img src="${image}" alt="${nom}">
+                        </div>
+                        <div class="cart-item-details">
+                            <h3>${nom}</h3>
+                            <p>TAILLE: ${taille}</p>
+                            <p class="price">${prix}</p>
+                        </div>
+                        <div class="cart-item-remove">
+                            <button onclick="viderPanier()">SUPPRIMER</button>
+                        </div>
+                    </div>
+
+                    <div class="cart-summary">
+                        <div class="summary-line">
+                            <span>SOUS-TOTAL</span>
+                            <span>${prix}</span>
+                        </div>
+                        <div class="summary-line">
+                            <span>LIVRAISON</span>
+                            <span>CALCULÉE À LA CAISSE</span>
+                        </div>
+                        <div class="summary-total">
+                            <span>TOTAL</span>
+                            <span>${prix}</span>
+                        </div>
+                        <a href="paiement.html" class="checkout-btn">PASSER AU PAIEMENT</a>
+                    </div>
+                </div>`;
+        }
+
+        function viderPanier() {
+            // On vide la mémoire
+            localStorage.clear();
+            // On rafraîchit l'affichage
+            afficherPanier();
+        }
+
+        // Lancer l'affichage au chargement de la page
+        window.onload = afficherPanier;
+    </script>
 
 </body>
 </html>

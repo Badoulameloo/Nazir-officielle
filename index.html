@@ -131,13 +131,19 @@ function updateCartCount() {
 }
         AOS.init({ duration: 1200, once: true });
 
-        function voirDetails(nom, prix, image, desc) {
-            localStorage.setItem('produitNom', nom);
-            localStorage.setItem('produitPrix', prix);
-            localStorage.setItem('produitImage', image);
-            localStorage.setItem('produitDesc', desc);
-            window.location.href = 'details-produit.html';
-        }
+       function voirDetails(nom, prix, image, desc) {
+    console.log("Tentative d'ouverture de détail pour:", nom);
+    
+    // On enregistre les infos
+    localStorage.setItem('produitNom', nom);
+    localStorage.setItem('produitPrix', prix);
+    localStorage.setItem('produitImage', image);
+    localStorage.setItem('produitDesc', desc);
+    
+    // Redirection forcée vers le nom exact du fichier
+    // On utilise ./ pour dire "ici, dans ce dossier"
+    window.location.href = './detail-produit.html';
+}
 
         function acheterMaintenant(nom, prix, image) {
             localStorage.setItem('produitNom', nom);

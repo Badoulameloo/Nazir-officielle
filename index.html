@@ -38,11 +38,11 @@
             <div class="product-card" data-aos="fade-up">
                 <div class="product-image-container">
                     <img src="img/img.frontshirt.jpeg.jpeg" class="product-img">
-                    <div class="product-overlay">
-                        <button onclick="voirDetails('T-SHIRT WHITE&PINK', '8.000 CFA', 'img/img.frontshirt.jpeg.jpeg', 'Coton premium 240g, coupe oversize, broderie artisanale.')" class="overlay-link">VOIR DÉTAILS</button>
-                        <button onclick="acheterMaintenant('T-SHIRT WHITE&PINK', '8.000 CFA', 'img/img.frontshirt.jpeg.jpeg')" class="overlay-btn">ACHETER MAINTENANT</button>
-                        <button onclick="ajouterAuPanier('T-SHIRT WHITE&PINK', '8.000 CFA', 'img/img.frontshirt.jpeg.jpeg')" class="overlay-btn">AJOUTER AU PANIER</button>
-                    </div>
+                   <div class="product-overlay">
+    <button onclick="voirDetails('T-SHIRT WHITE&PINK', '8000', 'img/img.frontshirt.jpeg.jpeg')" class="overlay-link">VOIR DÉTAILS</button>
+    <button onclick="ajouterAuPanier('T-SHIRT WHITE&PINK', 8000, 'img/img.frontshirt.jpeg.jpeg')" class="add-to-cart-quick"> + PANIER </button>
+    <button onclick="acheterMaintenant('T-SHIRT WHITE&PINK', 8000, 'img/img.frontshirt.jpeg.jpeg')" class="overlay-btn"> ACHETER MAINTENANT</button>
+</div>
                 </div>
                 <div class="product-info">
                     <h3>T-SHIRT WHITE&PINK</h3>
@@ -54,10 +54,10 @@
                 <div class="product-image-container">
                     <img src="img/img.white&greyfrontshirt.jpeg.jpeg.jpeg" class="product-img">
                     <div class="product-overlay">
-                        <button onclick="voirDetails('T-SHIRT WHITE&GREY', '8.000 CFA', 'img/img.white&greyfrontshirt.jpeg.jpeg.jpeg', 'Coton premium 240g, coupe oversize, broderie artisanale.')" class="overlay-link">VOIR DÉTAILS</button>
-                        <button onclick="acheterMaintenant('T-SHIRT WHITE&GREY', '8.000 CFA', 'img/img.white&greyfrontshirt.jpeg.jpeg.jpeg')" class="overlay-btn">ACHETER MAINTENANT</button>
-                        <button onclick="ajouterAuPanier('T-SHIRT WHITE&GREY', '8.000 CFA', 'img/img.white&greyfrontshirt.jpeg.jpeg')" class="overlay-btn">AJOUTER AU PANIER</button>
-                    </div>
+    <button onclick="voirDetails('T-SHIRT WHITE&PINK', '8000', 'img/img.frontshirt.jpeg.jpeg')" class="overlay-link">VOIR DÉTAILS</button>
+    <button onclick="ajouterAuPanier('T-SHIRT WHITE&PINK', 8000, 'img/img.frontshirt.jpeg.jpeg')" class="add-to-cart-quick"> + PANIER</button>
+    <button onclick="acheterMaintenant('T-SHIRT WHITE&PINK', 8000, 'img/img.frontshirt.jpeg.jpeg')" class="overlay-btn"> ACHETER MAINTENANT</button>
+</div>
                 </div>
                 <div class="product-info">
                     <h3>T-SHIRT WHITE&GREY</h3>
@@ -69,10 +69,11 @@
                 <div class="product-image-container">
                     <img src="img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg" class="product-img">
                     <div class="product-overlay">
-                        <button onclick="voirDetails('T-SHIRT BLACK&GREY', '8.000 CFA', 'img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg', 'Coton premium 240g, coupe oversize, broderie artisanale.')" class="overlay-link">VOIR DÉTAILS</button>
-                        <button onclick="acheterMaintenant('T-SHIRT BLACK&GREY', '8.000 CFA', 'img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg')" class="overlay-btn">ACHETER MAINTENANT</button>
-                        <button onclick="ajouterAuPanier('T-SHIRT WHITE&PINK', '8.000 CFA', 'img/img.black&greyfrontshirt.jpeg.jpeg')" class="overlay-btn">AJOUTER AU PANIER</button>
-                    </div>
+    <button onclick="voirDetails('T-SHIRT WHITE&PINK', '8000', 'img/img.frontshirt.jpeg.jpeg')" class="overlay-link"> VOIR DÉTAILS</button>
+    <button onclick="ajouterAuPanier('T-SHIRT WHITE&PINK', 8000, 'img/img.frontshirt.jpeg.jpeg')" class="add-to-cart-quick"> + PANIER </button>
+    <button onclick="acheterMaintenant('T-SHIRT WHITE&PINK', 8000, 'img/img.frontshirt.jpeg.jpeg')" class="overlay-btn"> ACHETER MAINTENANT
+    </button>
+</div>
                 </div>
                 <div class="product-info">
                     <h3>T-SHIRT BLACK&GREY</h3>
@@ -116,8 +117,17 @@ function ajouterAuPanier(nom, prix, image) {
 
 function updateCartCount() {
     let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
-    const counts = document.querySelectorAll('#cart-count-nav'); // On cible tous les compteurs
-    counts.forEach(el => el.innerText = `PANIER (${panier.length})`);
+    const countElement = document.getElementById('cart-count-nav');
+    
+    if (countElement) {
+        countElement.innerText = `PANIER (${panier.length})`;
+        
+        // Petite animation de "bump"
+        countElement.classList.add('bump');
+        setTimeout(() => {
+            countElement.classList.remove('bump');
+        }, 300);
+    }
 }
         AOS.init({ duration: 1200, once: true });
 

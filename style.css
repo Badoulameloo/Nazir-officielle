@@ -683,3 +683,34 @@ body {
     background: #fff;
     color: #000;
 }
+/* Style du bouton + PANIER */
+.add-to-cart-quick {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 10px 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.add-to-cart-quick:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+/* Animation du compteur dans la Nav */
+#cart-count-nav {
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.bump {
+    transform: scale(1.3);
+    color: #ff4757; /* Petite couleur flash au moment de l'ajout */
+}

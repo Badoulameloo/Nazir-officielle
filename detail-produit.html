@@ -89,18 +89,36 @@
          * ÉTAPE C : AFFICHAGE DES IMAGES
          * On remplit les sources (src) des deux images.
          */
-        if(imgFront) {
+        if(imgFront) {           
+            document.getElementById('img/img.frontshirt.jpeg.jpeg').src = imgFront;
+
+            document.getElementById('img/img.white&greyfrontshirt.jpeg.jpeg.jpeg').src = imgFront;
+
             document.getElementById('img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg').src = imgFront;
         }
         
         // Vérification si une image de dos existe avant de l'afficher
+        const backImgElement = document.getElementById('img/img.backshirt.jpeg.jpeg.jpeg');
+        if(imgBack && imgBack !== "img/img.backshirt.jpeg.jpeg.jpeg" && imgBack !== "undefined") {
+            backImgElement.src = imgBack;
+        } else
+         {
+             const backImgElement = document.getElementById('img/img.white&greybackshirt.jpeg.jpeg.jpeg');
+        if(imgBack && imgBack !== "img/img.white&greybackshirt.jpeg.jpeg.jpeg" && imgBack !== "undefined") {
+            backImgElement.src = imgBack;
+        } else
+         {
+
         const backImgElement = document.getElementById('img/img.black&greybackshirt.jpeg.jpeg.jpeg');
         if(imgBack && imgBack !== "img/img.black&greybackshirt.jpeg.jpeg.jpeg" && imgBack !== "undefined") {
             backImgElement.src = imgBack;
-        } else {
+        } else 
+        {
             // S'il n'y a pas d'image de dos, on cache ce bloc pour ne pas avoir de cadre vide
             backImgElement.parentElement.style.display = 'none';
         }
+    }
+    }
     };
 
     /**

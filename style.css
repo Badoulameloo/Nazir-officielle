@@ -715,50 +715,80 @@ body {
     color: #ff4757; /* Petite couleur flash au moment de l'ajout */
 }
 
-/* 1. Le conteneur qui sépare l'image et le texte */
+/* --- PAGE DÉTAIL LUXE --- */
 .product-detail-container {
-    display: flex;
-    flex-wrap: wrap; /* Permet de passer l'un en dessous de l'autre sur mobile */
-    gap: 40px;
-    max-width: 1100px;
-    margin: 80px auto;
-    padding: 20px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr; /* Image légèrement plus large que le texte */
+    gap: 80px;
+    max-width: 1200px;
+    margin: 120px auto;
+    padding: 0 40px;
+    align-items: start;
 }
 
-/* 2. LA FIXATION DE L'IMAGE (Important) */
+/* Fixation radicale de la taille de l'image */
 .detail-image-side {
-    flex: 1;
-    min-width: 100px; /* Taille minimum */
-    max-width: 150px; /* TAILLE MAXIMUM DE L'IMAGE */
+    width: 100%;
+    background-color: #f9f9f9; /* Fond très léger pour l'élégance */
 }
 
 .detail-image-side img {
-    width: 50%;      /* L'image prend 100% de son conteneur (500px) */
-    height: auto;     /* Garde les proportions */
-    display: block;   /* Enlève les espaces inutiles */
-    object-fit: contain;
+    width: 100% !important; /* Force la largeur */
+    max-height: 80vh;       /* Ne dépasse jamais la hauteur de l'écran */
+    object-fit: cover;
+    display: block;
 }
 
-/* 3. Le côté texte */
+/* Côté texte - Moins robotique */
 .detail-info-side {
-    flex: 1;
-    min-width: 300px;
-    padding-top: 20px;
+    position: sticky;
+    top: 150px; /* Le texte reste fixe pendant qu'on scrolle l'image */
 }
 
-/* --- MODE TÉLÉPHONE (Responsive) --- */
+.detail-info-side h1 {
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.detail-info-side .price {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.description-text {
+    line-height: 1.8;
+    color: #444;
+    font-size: 14px;
+    margin-bottom: 40px;
+    max-width: 400px;
+}
+
+/* Bouton stylé */
+.add-btn {
+    width: 100%;
+    padding: 20px;
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    letter-spacing: 3px;
+    transition: 0.4s ease;
+}
+
+.add-btn:hover {
+    background: #333;
+}
+
+/* Mobile */
 @media (max-width: 768px) {
     .product-detail-container {
-        flex-direction: column; /* Empile l'image et le texte */
-        margin-top: 40px;
-    }
-
-    .detail-image-side {
-        max-width: 100%; /* L'image prend toute la largeur sur tel */
-    }
-
-    .detail-info-side {
-        text-align: center; /* Centre le texte sur mobile */
+        grid-template-columns: 1fr;
+        margin-top: 60px;
+        gap: 30px;
     }
 }

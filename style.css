@@ -150,12 +150,11 @@ body {
 /* --- GRILLE DE PRODUITS DYNAMIQUE --- */
 .products-grid {
     display: grid;
-    /* Crée 3 colonnes égales */
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 40px; /* Espace entre les produits */
-    padding: 100px 5%; /* Espace sur les côtés du site */
-    max-width: 1400px; /* Évite que la grille soit trop large sur très grand écran */
-    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
+    gap: 30px; /* Espace entre les produits */
+    width: 90%;
+    max-width: 1200px;
+    margin: 80px auto; /* Centre la grille et donne de l'espace en haut */
 }
 
 /* --- ADAPTATION MOBILE (Important) --- */

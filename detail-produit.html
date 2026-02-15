@@ -37,6 +37,17 @@
                     <img src="img\img.black&greybackshirt.jpeg.jpeg.jpeg" alt="Dos" id="dyn-img-back" class="detail-main-img">
                 </div>
             </div>
+            <div class="details-image">
+    <div class="image-wrapper">
+        <p class="image-label">FRONT VIEW</p>
+        <img src="" alt="Devant" id="dyn-img-front" class="detail-main-img">
+    </div>
+
+    <div class="image-wrapper">
+        <p class="image-label">BACK VIEW</p>
+        <img src="" alt="Dos" id="dyn-img-back" class="detail-main-img">
+    </div>
+</div>
 
             <div class="details-info">
                 <p class="brand-subtitle">NAZIR / HÉRITAGE EDITION</p>
@@ -64,76 +75,44 @@
         </div>
     </main>
 
-    <script>
-    window.onload = function() {
-        /**
-         * ÉTAPE A : RÉCUPÉRATION DES DONNÉES
-         * Le JS va chercher dans la mémoire du navigateur (localStorage)
-         * ce que l'utilisateur a cliqué sur la page Index.
-         */
-        const nom = localStorage.getItem('produitNom');
-        const prix = localStorage.getItem('produitPrix');
-        const desc = localStorage.getItem('produitDesc');
-        const imgFront = localStorage.getItem('img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg'); // Image 1
-        const imgBack = localStorage.getItem('img/img.black&greybackshirt.jpeg.jpeg.jpeg'); // Image 2 (LE DOS)
+   <script>
+window.onload = function() {
+    // 1. On récupère les clés GÉNÉRIQUES (celles définies dans index.html)
+    const nom = localStorage.getItem('produitNom');
+    const prix = localStorage.getItem('produitPrix');
+    const desc = localStorage.getItem('produitDesc');
+    const imgFront = localStorage.getItem('produitImage'); 
+    const imgBack = localStorage.getItem('produitImageDos');
 
-        /**
-         * ÉTAPE B : REMPLISSAGE DU TEXTE
-         * On injecte les textes récupérés dans les balises HTML correspondantes.
-         */
-        if(nom) document.getElementById('dyn-nom').innerText = nom;
-        if(prix) document.getElementById('dyn-prix').innerText = prix;
-        if(desc) document.getElementById('dyn-desc').innerText = desc;
+    // 2. On remplit les textes
+    if(nom) document.getElementById('dyn-nom').innerText = nom;
+    if(prix) document.getElementById('dyn-prix').innerText = prix;
+    if(desc) document.getElementById('dyn-desc').innerText = desc;
 
-        /**
-         * ÉTAPE C : AFFICHAGE DES IMAGES
-         * On remplit les sources (src) des deux images.
-         */
-        if(imgFront) {           
-            document.getElementById('img/img.frontshirt.jpeg.jpeg').src = imgFront;
-
-            document.getElementById('img/img.white&greyfrontshirt.jpeg.jpeg.jpeg').src = imgFront;
-
-            document.getElementById('img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg').src = imgFront;
-        }
-        
-        // Vérification si une image de dos existe avant de l'afficher
-        const backImgElement = document.getElementById('img/img.backshirt.jpeg.jpeg.jpeg');
-        if(imgBack && imgBack !== "img/img.backshirt.jpeg.jpeg.jpeg" && imgBack !== "undefined") {
-            backImgElement.src = imgBack;
-        } else
-         {
-             const backImgElement = document.getElementById('img/img.white&greybackshirt.jpeg.jpeg.jpeg');
-        if(imgBack && imgBack !== "img/img.white&greybackshirt.jpeg.jpeg.jpeg" && imgBack !== "undefined") {
-            backImgElement.src = imgBack;
-        } else
-         {
-
-        const backImgElement = document.getElementById('img/img.black&greybackshirt.jpeg.jpeg.jpeg');
-        if(imgBack && imgBack !== "img/img.black&greybackshirt.jpeg.jpeg.jpeg" && imgBack !== "undefined") {
-            backImgElement.src = imgBack;
-        } else 
-        {
-            // S'il n'y a pas d'image de dos, on cache ce bloc pour ne pas avoir de cadre vide
-            backImgElement.parentElement.style.display = 'none';
-        }
+    // 3. On remplit l'image de DEVANT (ID: dyn-img-front)
+    if(imgFront) {
+        document.getElementById('dyn-img-front').src = imgFront;
     }
-    }
-    };
 
-    /**
-     * ÉTAPE D : REDIRECTION VERS LE PAIEMENT
-     * On enregistre la taille choisie avant de partir.
-     */
-    function allerAuPaiement() {
-        const tailleCheck = document.querySelector('input[name="size"]:checked');
-        if(tailleCheck) {
-            localStorage.setItem('produitTaille', tailleCheck.value);
-            window.location.href = 'paiement.html';
-        } else {
-            alert("Veuillez sélectionner une taille.");
-        }
+    // 4. On remplit l'image de DOS (ID: dyn-img-back)
+    const backImgElement = document.getElementById('dyn-img-back');
+    if(imgBack && imgBack !== "" && imgBack !== "undefined") {
+        backImgElement.src = imgBack;
+    } else {
+        // Si pas d'image de dos, on cache le bloc pour éviter un cadre vide
+        backImgElement.parentElement.style.display = 'none';
     }
-    </script>
+};
+
+function allerAuPaiement() {
+    const tailleCheck = document.querySelector('input[name="size"]:checked');
+    if(tailleCheck) {
+        localStorage.setItem('produitTaille', tailleCheck.value);
+        window.location.href = 'paiement.html';
+    } else {
+        alert("Veuillez sélectionner une taille.");
+    }
+}
+</script>
 </body>
 </html>

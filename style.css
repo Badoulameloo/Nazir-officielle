@@ -147,20 +147,35 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Les images seront plus serrées donc plus petites */
     gap: 30px;
 }
-/* Limite la taille des images dans les cartes produits */
+/* La grille qui contient tes produits */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Aligne les produits proprement */
+    gap: 40px;
+    padding: 20px;
+}
+
+/* La carte produit */
+.product-card {
+    width: 100%;
+    max-width: 350px; /* Force la largeur max d'un produit */
+    margin: 0 auto;   /* Centre la carte si elle est seule */
+}
+
+/* Le conteneur de l'image */
 .product-image-container {
     width: 100%;
-    aspect-ratio: 3 / 4; /* Force un format portrait élégant */
+    height: 450px;    /* ON FORCE LA HAUTEUR ICI */
     overflow: hidden;
-    background: #000;
+    position: relative;
 }
 
+/* L'image elle-même */
 .product-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Remplit le cadre sans déformer l'image */
+    height: 100% !important; /* Force la hauteur à remplir le cadre de 450px */
+    object-fit: cover !important; /* Découpe l'image proprement pour qu'elle ne soit pas écrasée */
 }
-
 /* --- DESIGN PAGE HERITAGE (LOOK ÉDITORIAL) --- */
 
 /* Conteneur principal centré pour la lecture */

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DÉTAILS PRODUIT | NAZIR</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="img\favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" href="img/favicon-32x32.png">
 </head>
 <body>
 
@@ -19,73 +19,103 @@
             <img src="img\img.logo.jpeg.png.png" alt="NAZIR">
         </div>
         <div class="nav-right">
-        <a href="panier.html" id="cart-count-nav">PANIER (0)</a>
-            </div>
+            <a href="panier.html">PANIER</a>
+        </div>
     </nav>
 
     <main class="details-container">
-    <div class="details-grid">
-        <div class="details-image">
-            <img src="img\img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg" alt="Devant" id="dyn-img" class="detail-main-img">
-            <img src="img\img.black&greybackshirt.jpeg.jpeg.jpeg" alt="Dos" id="dyn-img" class="detail-main-img">
-        </div>
-
-        <div class="details-info">
-            <p class="brand-subtitle">NAZIR / ESSENTIALS</p>
-            <h1 id="dyn-nom">...</h1>
-            <p class="price" id="dyn-prix">...</p>
+        <div class="details-grid">
             
-            <div class="description">
-                <p id="dyn-desc">...</p>
-            </div>
+            <div class="details-image">
+                <div class="image-wrapper">
+                    <p class="image-label">FRONT VIEW</p>
+                    <img src="img\img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg" alt="Devant" id="dyn-img-front" class="detail-main-img">
+                </div>
 
-            <div class="size-selection">
-                <p class="size-label">SÉLECTIONNER LA TAILLE</p>
-                <div class="size-options">
-                    <input type="radio" name="size" value="S" id="s"><label for="s">S</label>
-                    <input type="radio" name="size" value="M" id="m"><label for="m">M</label>
-                    <input type="radio" name="size" value="L" id="l" checked><label for="l">L</label>
-                    <input type="radio" name="size" value="XL" id="xl"><label for="xl">XL</label>
+                <div class="image-wrapper">
+                    <p class="image-label">BACK VIEW</p>
+                    <img src="img\img.black&greybackshirt.jpeg.jpeg.jpeg" alt="Dos" id="dyn-img-back" class="detail-main-img">
                 </div>
             </div>
 
-            <button onclick="allerAuPaiement()" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+            <div class="details-info">
+                <p class="brand-subtitle">NAZIR / HÉRITAGE EDITION</p>
+                
+                <h1 id="dyn-nom">...</h1>
+                
+                <p class="price" id="dyn-prix">...</p>
+                
+                <div class="description">
+                    <p id="dyn-desc">...</p>
+                </div>
+
+                <div class="size-selection">
+                    <p class="size-label">SÉLECTIONNER LA TAILLE</p>
+                    <div class="size-options">
+                        <input type="radio" name="size" value="S" id="s"><label for="s">S</label>
+                        <input type="radio" name="size" value="M" id="m"><label for="m">M</label>
+                        <input type="radio" name="size" value="L" id="l" checked><label for="l">L</label>
+                        <input type="radio" name="size" value="XL" id="xl"><label for="xl">XL</label>
+                    </div>
+                </div>
+
+                <button onclick="allerAuPaiement()" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+            </div>
         </div>
-    </div>
-</main>
+    </main>
 
-<script>
-window.onload = function() {
-    // Vérification : On récupère les données
-    const nom = localStorage.getItem('produitNom');
-    const prix = localStorage.getItem('produitPrix');
-    const desc = localStorage.getItem('produitDesc');
-    const imgFront = localStorage.getItem('produitImage');
-    const imgBack = localStorage.getItem('produitImageDos');
+    <script>
+    window.onload = function() {
+        /**
+         * ÉTAPE A : RÉCUPÉRATION DES DONNÉES
+         * Le JS va chercher dans la mémoire du navigateur (localStorage)
+         * ce que l'utilisateur a cliqué sur la page Index.
+         */
+        const nom = localStorage.getItem('produitNom');
+        const prix = localStorage.getItem('produitPrix');
+        const desc = localStorage.getItem('produitDesc');
+        const imgFront = localStorage.getItem('img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg'); // Image 1
+        const imgBack = localStorage.getItem('img/img.black&greybackshirt.jpeg.jpeg.jpeg'); // Image 2 (LE DOS)
 
-    // On remplit les textes
-    if(nom) document.getElementById('dyn-nom').innerText = nom;
-    if(prix) document.getElementById('dyn-prix').innerText = prix;
-    if(desc) document.getElementById('dyn-desc').innerText = desc;
+        /**
+         * ÉTAPE B : REMPLISSAGE DU TEXTE
+         * On injecte les textes récupérés dans les balises HTML correspondantes.
+         */
+        if(nom) document.getElementById('dyn-nom').innerText = nom;
+        if(prix) document.getElementById('dyn-prix').innerText = prix;
+        if(desc) document.getElementById('dyn-desc').innerText = desc;
 
-    // On remplit les DEUX images
-    if(imgFront) document.getElementById('dyn-img-front').src = imgFront;
-    
-    // Si l'image de dos existe, on l'affiche, sinon on cache la balise
-    if(imgBack && imgBack !== "undefined") {
-        document.getElementById('dyn-img-back').src = imgBack;
-    } else {
-        document.getElementById('dyn-img-back').style.display = 'none';
+        /**
+         * ÉTAPE C : AFFICHAGE DES IMAGES
+         * On remplit les sources (src) des deux images.
+         */
+        if(imgFront) {
+            document.getElementById('img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg').src = imgFront;
+        }
+        
+        // Vérification si une image de dos existe avant de l'afficher
+        const backImgElement = document.getElementById('img/img.black&greybackshirt.jpeg.jpeg.jpeg');
+        if(imgBack && imgBack !== "img/img.black&greybackshirt.jpeg.jpeg.jpeg" && imgBack !== "undefined") {
+            backImgElement.src = imgBack;
+        } else {
+            // S'il n'y a pas d'image de dos, on cache ce bloc pour ne pas avoir de cadre vide
+            backImgElement.parentElement.style.display = 'none';
+        }
+    };
+
+    /**
+     * ÉTAPE D : REDIRECTION VERS LE PAIEMENT
+     * On enregistre la taille choisie avant de partir.
+     */
+    function allerAuPaiement() {
+        const tailleCheck = document.querySelector('input[name="size"]:checked');
+        if(tailleCheck) {
+            localStorage.setItem('produitTaille', tailleCheck.value);
+            window.location.href = 'paiement.html';
+        } else {
+            alert("Veuillez sélectionner une taille.");
+        }
     }
-};
-
-function allerAuPaiement() {
-    const tailleElement = document.querySelector('input[name="size"]:checked');
-    if(tailleElement) {
-        localStorage.setItem('produitTaille', tailleElement.value);
-        window.location.href = 'paiement.html';
-    } else {
-        alert("Veuillez sélectionner une taille");
-    }
-}
-</script>
+    </script>
+</body>
+</html>

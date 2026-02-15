@@ -948,3 +948,28 @@ body {
 .detail-main-img:hover {
     transform: scale(1.02);
 }
+
+.details-image {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.image-wrapper {
+    width: 100%;
+    text-align: center;
+}
+
+.image-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.detail-main-img {
+    width: 100%;
+    max-width: 480px; /* Taille contrôlée */
+    height: auto;
+    border: 0.5px solid rgba(255,255,255,0.1);
+}

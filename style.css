@@ -869,3 +869,64 @@ body {
         gap: 40px;
     }
 }
+
+/* --- STYLE SPÉCIFIQUE PAGE DÉTAIL --- */
+.details-container {
+    max-width: 1200px;
+    margin: 150px auto 100px; /* Espace pour la navbar */
+    padding: 0 40px;
+}
+
+.details-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-image {
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px; /* ICI ON BLOQUE LA TAILLE */
+}
+
+.details-image img {
+    width: 100%;
+    height: auto;
+    border: 0.5px solid rgba(255,255,255,0.1);
+}
+
+.details-info {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    text-align: left;
+}
+
+.brand-subtitle { font-size: 10px; letter-spacing: 3px; color: #888; margin-bottom: 10px; }
+.details-info h1 { font-size: 2.2rem; letter-spacing: 5px; font-weight: 300; margin-bottom: 15px; }
+.details-info .price { font-size: 1.2rem; margin-bottom: 30px; display: block; }
+.description { font-size: 14px; line-height: 1.8; color: #ccc; margin-bottom: 40px; }
+
+.size-label { font-size: 10px; margin-bottom: 15px; color: #888; }
+.size-options { display: flex; gap: 15px; margin-bottom: 40px; }
+.size-options input { display: none; }
+.size-options label {
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.size-options input:checked + label { background: #fff; color: #000; }
+
+.add-to-cart-btn {
+    width: 100%;
+    padding: 20px;
+    background: #fff;
+    color: #000;
+    border: none;
+    letter-spacing: 3px;
+    cursor: pointer;
+    font-weight: bold;
+}

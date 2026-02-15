@@ -1,4 +1,29 @@
-<main class="details-container">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DÉTAILS PRODUIT | NAZIR</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="img\favicon-32x32.png">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html">HOME</a>
+            <a href="heritage.html">HÉRITAGE</a>
+            <a href="contact.html">CONTACT</a>
+        </div>
+        <div class="nav-logo">
+            <img src="img\img.logo.jpeg.png.png" alt="NAZIR">
+        </div>
+        <div class="nav-right">
+        <a href="panier.html" id="cart-count-nav">PANIER (0)</a>
+            </div>
+    </nav>
+
+    <main class="details-container">
     <div class="details-grid">
         <div class="details-image">
             <img src="" alt="" id="dyn-img">
@@ -27,3 +52,19 @@
         </div>
     </div>
 </main>
+
+<script>
+window.onload = function() {
+    // On récupère ce qu'on a stocké au clic sur la Home
+    document.getElementById('dyn-nom').innerText = localStorage.getItem('produitNom');
+    document.getElementById('dyn-prix').innerText = localStorage.getItem('produitPrix');
+    document.getElementById('dyn-desc').innerText = localStorage.getItem('produitDesc');
+    document.getElementById('dyn-img').src = localStorage.getItem('produitImage');
+};
+
+function allerAuPaiement() {
+    const taille = document.querySelector('input[name="size"]:checked').value;
+    localStorage.setItem('produitTaille', taille);
+    window.location.href = 'paiement.html';
+}
+</script>

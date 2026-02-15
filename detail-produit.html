@@ -26,7 +26,8 @@
     <main class="details-container">
     <div class="details-grid">
         <div class="details-image">
-            <img src="" alt="" id="dyn-img">
+            <img src="" alt="Devant" id="dyn-img" class="detail-main-img">
+            <img src="" alt="Dos" id="dyn-img" class="detail-main-img">
         </div>
 
         <div class="details-info">
@@ -60,7 +61,11 @@ window.onload = function() {
     document.getElementById('dyn-prix').innerText = localStorage.getItem('produitPrix');
     document.getElementById('dyn-desc').innerText = localStorage.getItem('produitDesc');
     document.getElementById('dyn-img').src = localStorage.getItem('produitImage');
+
+    document.getElementById('dyn-img-front').src = localStorage.getItem('produitImage');
+    document.getElementById('dyn-img-back').src = localStorage.getItem('produitImageDos');
 };
+
 
 function allerAuPaiement() {
     const taille = document.querySelector('input[name="size"]:checked').value;

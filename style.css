@@ -930,3 +930,21 @@ body {
     cursor: pointer;
     font-weight: bold;
 }
+.details-image {
+    display: flex;
+    flex-direction: column; /* Les images l'une sous l'autre */
+    gap: 20px;
+}
+
+.detail-main-img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border: 0.5px solid rgba(255,255,255,0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Petit effet : zoom au survol sur la page détail */
+.detail-main-img:hover {
+    transform: scale(1.02);
+}

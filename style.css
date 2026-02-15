@@ -729,12 +729,12 @@ body {
 /* 2. LA FIXATION DE L'IMAGE (Important) */
 .detail-image-side {
     flex: 1;
-    min-width: 300px; /* Taille minimum */
-    max-width: 500px; /* TAILLE MAXIMUM DE L'IMAGE */
+    min-width: 100px; /* Taille minimum */
+    max-width: 150px; /* TAILLE MAXIMUM DE L'IMAGE */
 }
 
 .detail-image-side img {
-    width: 100%;      /* L'image prend 100% de son conteneur (500px) */
+    width: 50%;      /* L'image prend 100% de son conteneur (500px) */
     height: auto;     /* Garde les proportions */
     display: block;   /* Enlève les espaces inutiles */
     object-fit: contain;

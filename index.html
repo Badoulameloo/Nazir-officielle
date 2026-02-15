@@ -135,11 +135,11 @@ function updateCartCount() {
     console.log("Tentative d'ouverture de détail pour:", nom);
     
     // On enregistre les infos
-    localStorage.setItem('produitNom', nom);
-    localStorage.setItem('produitPrix', prix);
-    localStorage.setItem('produitImage', imageDevant);
-    localStorage.setItem('produitImageDos', imageDos);
-    localStorage.setItem('produitDesc', desc);
+    const nom = localStorage.getItem('produitNom');
+    const prix = localStorage.getItem('produitPrix');
+    const desc = localStorage.getItem('produitDesc');
+    const imgFront = localStorage.getItem('produitImage');
+    const imgBack = localStorage.getItem('produitImageDos');
     
     // Redirection forcée vers le nom exact du fichier
     // On utilise ./ pour dire "ici, dans ce dossier"

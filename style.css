@@ -715,80 +715,76 @@ body {
     color: #ff4757; /* Petite couleur flash au moment de l'ajout */
 }
 
-/* --- PAGE DÉTAIL LUXE --- */
+/* --- Ajustement Page Détail --- */
+
+/* On aligne le contenu proprement */
 .product-detail-container {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr; /* Image légèrement plus large que le texte */
-    gap: 80px;
-    max-width: 1200px;
-    margin: 120px auto;
-    padding: 0 40px;
-    align-items: start;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    padding: 120px 5% 50px 5%; /* Plus d'espace en haut pour la navbar */
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-/* Fixation radicale de la taille de l'image */
+/* LA FIXATION DE L'IMAGE : C'est ici que ça se joue */
 .detail-image-side {
-    width: 100%;
-    background-color: #f9f9f9; /* Fond très léger pour l'élégance */
+    flex: 1;
+    min-width: 300px;
+    max-width: 550px; /* Largeur max de l'image sur ordi */
 }
 
 .detail-image-side img {
-    width: 100% !important; /* Force la largeur */
-    max-height: 80vh;       /* Ne dépasse jamais la hauteur de l'écran */
-    object-fit: cover;
+    width: 100%;
+    max-height: 75vh; /* L'image ne dépassera jamais 75% de la hauteur de l'écran */
+    object-fit: contain; /* Garde les proportions sans déformer */
     display: block;
 }
 
-/* Côté texte - Moins robotique */
+/* Côté texte : On enlève le côté "robot" */
 .detail-info-side {
-    position: sticky;
-    top: 150px; /* Le texte reste fixe pendant qu'on scrolle l'image */
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    text-align: left;
 }
 
 .detail-info-side h1 {
-    font-size: 32px;
-    font-weight: 400;
-    letter-spacing: 4px;
-    margin-bottom: 10px;
-    text-transform: uppercase;
+    font-size: 2.2rem;
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+    font-weight: 300; /* Plus élégant, moins gras */
 }
 
 .detail-info-side .price {
-    font-size: 20px;
+    font-size: 1.2rem;
     color: #666;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    display: block;
 }
 
-.description-text {
+.detail-info-side p {
     line-height: 1.8;
-    color: #444;
-    font-size: 14px;
+    color: #333;
     margin-bottom: 40px;
-    max-width: 400px;
 }
 
-/* Bouton stylé */
-.add-btn {
-    width: 100%;
-    padding: 20px;
-    background: #000;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 12px;
-    letter-spacing: 3px;
-    transition: 0.4s ease;
-}
-
-.add-btn:hover {
-    background: #333;
-}
-
-/* Mobile */
+/* --- RESPONSIVE (Téléphone) --- */
 @media (max-width: 768px) {
     .product-detail-container {
-        grid-template-columns: 1fr;
-        margin-top: 60px;
-        gap: 30px;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 80px;
+    }
+
+    .detail-image-side {
+        max-width: 90%; /* L'image prend presque tout l'écran sur tel */
+    }
+
+    .detail-info-side {
+        text-align: center;
+        padding: 0 20px;
     }
 }

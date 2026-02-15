@@ -714,42 +714,51 @@ body {
     transform: scale(1.3);
     color: #ff4757; /* Petite couleur flash au moment de l'ajout */
 }
-/* Conteneur principal des détails */
+
+/* 1. Le conteneur qui sépare l'image et le texte */
 .product-detail-container {
     display: flex;
-    gap: 50px;
-    max-width: 1000px; /* Limite la largeur totale */
-    margin: 100px auto; /* Centre la page et donne de l'espace en haut */
+    flex-wrap: wrap; /* Permet de passer l'un en dessous de l'autre sur mobile */
+    gap: 40px;
+    max-width: 1100px;
+    margin: 80px auto;
     padding: 20px;
-    align-items: center; /* Aligne l'image et le texte verticalement */
+    justify-content: center;
 }
 
-/* On réduit l'image */
+/* 2. LA FIXATION DE L'IMAGE (Important) */
 .detail-image-side {
     flex: 1;
-    max-width: 450px; /* Force l'image à ne pas dépasser cette taille */
+    min-width: 300px; /* Taille minimum */
+    max-width: 500px; /* TAILLE MAXIMUM DE L'IMAGE */
 }
 
 .detail-image-side img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px; /* Optionnel : un petit arrondi */
+    width: 100%;      /* L'image prend 100% de son conteneur (500px) */
+    height: auto;     /* Garde les proportions */
+    display: block;   /* Enlève les espaces inutiles */
+    object-fit: contain;
 }
 
-/* Côté texte */
+/* 3. Le côté texte */
 .detail-info-side {
     flex: 1;
-    text-align: left;
+    min-width: 300px;
+    padding-top: 20px;
 }
 
-.detail-info-side h1 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    letter-spacing: 3px;
-}
+/* --- MODE TÉLÉPHONE (Responsive) --- */
+@media (max-width: 768px) {
+    .product-detail-container {
+        flex-direction: column; /* Empile l'image et le texte */
+        margin-top: 40px;
+    }
 
-.detail-info-side .price {
-    font-size: 1.5rem;
-    color: #888;
-    margin-bottom: 25px;
+    .detail-image-side {
+        max-width: 100%; /* L'image prend toute la largeur sur tel */
+    }
+
+    .detail-info-side {
+        text-align: center; /* Centre le texte sur mobile */
+    }
 }

@@ -23,11 +23,11 @@
             </div>
     </nav>
 
-    <main class="details-container">
+   <main class="details-container">
     <div class="details-grid">
         <div class="details-image">
-            <img src="" alt="Devant" id="dyn-img" class="detail-main-img">
-            <img src="" alt="Dos" id="dyn-img" class="detail-main-img">
+            <img src="" alt="Devant" id="dyn-img-front" class="detail-main-img">
+            <img src="" alt="Dos" id="dyn-img-back" class="detail-main-img">
         </div>
 
         <div class="details-info">
@@ -56,20 +56,36 @@
 
 <script>
 window.onload = function() {
-    // On récupère ce qu'on a stocké au clic sur la Home
-    document.getElementById('dyn-nom').innerText = localStorage.getItem('produitNom');
-    document.getElementById('dyn-prix').innerText = localStorage.getItem('produitPrix');
-    document.getElementById('dyn-desc').innerText = localStorage.getItem('produitDesc');
-    document.getElementById('dyn-img').src = localStorage.getItem('produitImage');
+    // Vérification : On récupère les données
+    const nom = localStorage.getItem('produitNom');
+    const prix = localStorage.getItem('produitPrix');
+    const desc = localStorage.getItem('produitDesc');
+    const imgFront = localStorage.getItem('produitImage');
+    const imgBack = localStorage.getItem('produitImageDos');
 
-    document.getElementById('dyn-img-front').src = localStorage.getItem('produitImage');
-    document.getElementById('dyn-img-back').src = localStorage.getItem('produitImageDos');
+    // On remplit les textes
+    if(nom) document.getElementById('dyn-nom').innerText = nom;
+    if(prix) document.getElementById('dyn-prix').innerText = prix;
+    if(desc) document.getElementById('dyn-desc').innerText = desc;
+
+    // On remplit les DEUX images
+    if(imgFront) document.getElementById('dyn-img-front').src = imgFront;
+    
+    // Si l'image de dos existe, on l'affiche, sinon on cache la balise
+    if(imgBack && imgBack !== "undefined") {
+        document.getElementById('dyn-img-back').src = imgBack;
+    } else {
+        document.getElementById('dyn-img-back').style.display = 'none';
+    }
 };
 
-
 function allerAuPaiement() {
-    const taille = document.querySelector('input[name="size"]:checked').value;
-    localStorage.setItem('produitTaille', taille);
-    window.location.href = 'paiement.html';
+    const tailleElement = document.querySelector('input[name="size"]:checked');
+    if(tailleElement) {
+        localStorage.setItem('produitTaille', tailleElement.value);
+        window.location.href = 'paiement.html';
+    } else {
+        alert("Veuillez sélectionner une taille");
+    }
 }
 </script>

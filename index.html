@@ -70,7 +70,7 @@
                 <div class="product-image-container">
                     <img src="img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg" class="product-img">
                     <div class="product-overlay">
-    <button onclick="voirDetails('T-SHIRT BLACK&GREY', '15.000 CFA', 'img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg', 'img:img.black&greybackshirt.jpeg.jpeg.jpeg', 'Coton lourd 240g, coupe boxy.')" class="overlay-link"> VOIR DÉTAILS</button>
+    <button onclick="voirDetails('T-SHIRT BLACK&GREY', 8.000 , 'img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg', 'img:img.black&greybackshirt.jpeg.jpeg.jpeg', 'Coton lourd 240g, coupe boxy.')" class="overlay-link"> VOIR DÉTAILS</button>
     <button onclick="ajouterAuPanier('T-SHIRT WHITE&PINK', 8000, 'img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg')" class="add-to-cart-quick"> + PANIER </button>
     <button onclick="acheterMaintenant('T-SHIRT WHITE&PINK', 8000, 'img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg')" class="overlay-btn"> ACHETER MAINTENANT </button>
 </div>
@@ -131,18 +131,15 @@ function updateCartCount() {
 }
         AOS.init({ duration: 1200, once: true });
 
-    function voirDetails(nom, prix, imageFront, imageBack, desc) {
-    // 1. On vide d'abord les anciennes données pour être propre
-    localStorage.clear(); 
-
-    // 2. On enregistre les NOUVELLES données du produit cliqué
+  function voirDetails(nom, prix, imageFront, imageBack, desc) {
+    // On n'utilise PAS clear() pour ne pas vider le panier
+    // On remplace juste les valeurs spécifiques au produit
     localStorage.setItem('produitNom', nom);
     localStorage.setItem('produitPrix', prix);
     localStorage.setItem('produitImage', imageFront);
     localStorage.setItem('produitImageDos', imageBack);
     localStorage.setItem('produitDesc', desc);
     
-    // 3. On part vers la page détail
     window.location.href = 'detail-produit.html';
 }
 

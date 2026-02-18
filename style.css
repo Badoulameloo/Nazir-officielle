@@ -976,7 +976,7 @@ body {
 }
 /* Cette règle s'appliquera à TOUS les futurs produits dans la grille */
 .product-img {
-    width: 100%;           /* L'image prend toute la largeur de sa case */
+    width: 0%;           /* L'image prend toute la largeur de sa case */
     height: 350px;         /* On fixe une hauteur identique pour tous */
     object-fit: cover;     /* L'image est recadrée proprement pour remplir les 350px sans se déformer */
     display: block;

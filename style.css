@@ -968,10 +968,11 @@ body {
 }
 
 .detail-main-img {
-    width: 100%;
-    max-width: 480px; /* Taille contrôlée */
-    height: auto;
-    border: 0.5px solid rgba(255,255,255,0.1);
+    width: 100% !important;
+    max-width: 400px !important; /* Change cette valeur pour tester (ex: 200px pour voir si ça rétrécit) */
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto 20px auto !important;
 }
 /* Cette règle s'appliquera à TOUS les futurs produits dans la grille */
 .product-img {

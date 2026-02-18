@@ -969,7 +969,7 @@ body {
 
 .detail-main-img {
     width: 100% !important;
-    max-width: 400px !important; /* Change cette valeur pour tester (ex: 200px pour voir si ça rétrécit) */
+    max-width: 200px !important; /* Change cette valeur pour tester (ex: 200px pour voir si ça rétrécit) */
     height: auto !important;
     display: block !important;
     margin: 0 auto 20px auto !important;

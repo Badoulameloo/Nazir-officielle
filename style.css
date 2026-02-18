@@ -986,3 +986,20 @@ body {
     max-width: 300px;      /* Largeur maximale d'un produit sur l'index */
     margin: 0 auto;
 }
+/* Conteneur des images sur la page détail */
+.details-image {
+    display: flex;
+    flex-direction: column; /* Images l'une sous l'autre */
+    gap: 30px;
+    width: 100%;
+    max-width: 500px; /* LIMITE LA LARGEUR DU BLOC IMAGE */
+    margin: 0 auto;   /* Centre le bloc si besoin */
+}
+
+/* Style appliqué aux images elles-mêmes */
+.detail-main-img {
+    width: 100%;      /* Prend toute la largeur de son parent (500px max) */
+    height: auto;     /* Garde les proportions pour ne pas déformer le t-shirt */
+    object-fit: contain;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Petit bord discret style luxe */
+}

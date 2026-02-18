@@ -983,6 +983,6 @@ body {
 
 /* Optionnel : Si tu veux que la carte du produit ne dépasse pas une certaine taille */
 .product-card {
-    max-width: 50px;      /* Largeur maximale d'un produit sur l'index */
+    max-width: 300px;      /* Largeur maximale d'un produit sur l'index */
     margin: 0 auto;
 }

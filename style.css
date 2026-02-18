@@ -973,3 +973,16 @@ body {
     height: auto;
     border: 0.5px solid rgba(255,255,255,0.1);
 }
+/* Cette règle s'appliquera à TOUS les futurs produits dans la grille */
+.product-img {
+    width: 100%;           /* L'image prend toute la largeur de sa case */
+    height: 350px;         /* On fixe une hauteur identique pour tous */
+    object-fit: cover;     /* L'image est recadrée proprement pour remplir les 350px sans se déformer */
+    display: block;
+}
+
+/* Optionnel : Si tu veux que la carte du produit ne dépasse pas une certaine taille */
+.product-card {
+    max-width: 300px;      /* Largeur maximale d'un produit sur l'index */
+    margin: 0 auto;
+}

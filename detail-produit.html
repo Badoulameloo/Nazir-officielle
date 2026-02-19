@@ -100,7 +100,7 @@ if (taillesDispoString) {
     const disponibles = taillesDispoString.split(','); // Devient un tableau ['S', 'L']
     
     // 2. On liste toutes les tailles possibles sur ton site
-    const toutesLesTailles = ['S', 'M', 'L', 'XL'];
+    const toutesLesTailles = ['', 'M', 'L', 'XL'];
 
     toutesLesTailles.forEach(taille => {
         const input = document.getElementById(taille.toLowerCase()); // cherche id="s", id="m", etc.

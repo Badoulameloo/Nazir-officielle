@@ -169,6 +169,27 @@ body {
     }
 }
 
+@media (max-width: 768px) {
+    /* On force l'overlay à être visible tout le temps sur mobile */
+    .product-overlay {
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: rgba(0, 0, 0, 0.6); /* Un fond semi-sombre pour lire le texte */
+        position: absolute;
+        bottom: 0;
+        height: auto; /* L'overlay ne cache plus toute l'image, juste le bas */
+        padding: 10px 0;
+    }
+
+    /* On ajuste la taille des boutons pour qu'ils ne prennent pas toute la place */
+    .overlay-link, .add-to-cart-quick, .overlay-btn {
+        transform: translateY(0) !important; /* Pas d'animation de montée */
+        margin: 5px auto !important;
+        width: 90% !important;
+        font-size: 10px !important; /* Un peu plus petit pour mobile */
+    }
+}
+
 @media (max-width: 600px) {
     .products-grid {
         grid-template-columns: repeat(1, 1fr); /* 1 seule colonne sur téléphone */

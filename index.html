@@ -133,14 +133,16 @@ function updateCartCount() {
 }
         AOS.init({ duration: 1200, once: true });
 
-  function voirDetails(nom, prix, imageFront, imageBack, desc) {
-    // On n'utilise PAS clear() pour ne pas vider le panier
-    // On remplace juste les valeurs spécifiques au produit
+// Exemple : taillesDispo = ['M', 'L']
+function voirDetails(nom, prix, imageFront, imageBack, desc, taillesDispo) {
     localStorage.setItem('produitNom', nom);
     localStorage.setItem('produitPrix', prix);
     localStorage.setItem('produitImage', imageFront);
     localStorage.setItem('produitImageDos', imageBack);
     localStorage.setItem('produitDesc', desc);
+    
+    // On enregistre les tailles disponibles sous forme de texte séparé par des virgules
+    localStorage.setItem('produitTaillesDispo', taillesDispo.join('M,L,XL')); 
     
     window.location.href = 'detail-produit.html';
 }

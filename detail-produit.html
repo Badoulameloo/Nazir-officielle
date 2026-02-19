@@ -93,6 +93,26 @@ window.onload = function() {
         // Si pas d'image de dos, on cache le bloc pour éviter un cadre vide
         backImgElement.parentElement.style.display = 'none';
     }
+    // 1. Récupérer les tailles disponibles (ex: "S,L")
+const taillesDispoString = localStorage.getItem('produitTaillesDispo');
+
+if (taillesDispoString) {
+    const disponibles = taillesDispoString.split(','); // Devient un tableau ['S', 'L']
+    
+    // 2. On liste toutes les tailles possibles sur ton site
+    const toutesLesTailles = ['S', 'M', 'L', 'XL'];
+
+    toutesLesTailles.forEach(taille => {
+        const input = document.getElementById(taille.toLowerCase()); // cherche id="s", id="m", etc.
+        const label = document.querySelector(`label[for="${taille.toLowerCase()}"]`);
+
+        if (!disponibles.includes(taille)) {
+            // Si la taille n'est pas dans la liste des dispos :
+            input.disabled = true;       // On ne peut plus cliquer
+            label.classList.add('out-of-stock'); // On ajoute un style visuel
+        }
+    });
+}
 };
 
 function allerAuPaiement() {

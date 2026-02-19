@@ -1010,11 +1010,10 @@ body {
 }
 /* Rend la taille grise et barrée */
 .out-of-stock {
-    opacity: 0.2 !important;
-    text-decoration: line-through;
+    text-decoration: line-through !important;
+    opacity: 0.3 !important;
     cursor: not-allowed !important;
-    pointer-events: none; /* Empêche physiquement le clic sur le label */
-    border: 1px dashed #555 !important;
+    pointer-events: none; /* Bloque le clic sur le texte */
 }
 
 /* Empêche le changement de couleur si on essaie de forcer le survol */

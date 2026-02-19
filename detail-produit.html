@@ -68,43 +68,68 @@
 
    <script>
 window.onload = function() {
-    // 1. On récupère les clés GÉNÉRIQUES (celles définies dans index.html)
+    // 1. Récupération des données classiques
     const nom = localStorage.getItem('produitNom');
     const prix = localStorage.getItem('produitPrix');
     const desc = localStorage.getItem('produitDesc');
     const imgFront = localStorage.getItem('produitImage'); 
     const imgBack = localStorage.getItem('produitImageDos');
+    
+    // --- NOUVEAU : Récupération des tailles disponibles ---
+    const taillesDispoString = localStorage.getItem('produitTaillesDispo');
 
-    // 2. On remplit les textes
+    // 2. Remplissage des textes
     if(nom) document.getElementById('dyn-nom').innerText = nom;
     if(prix) document.getElementById('dyn-prix').innerText = prix;
     if(desc) document.getElementById('dyn-desc').innerText = desc;
 
-    // 3. On remplit l'image de DEVANT (ID: dyn-img-front)
-    if(imgFront) {
-        document.getElementById('dyn-img-front').src = imgFront;
-    }
+    // 3. Remplissage des images
+    if(imgFront) document.getElementById('dyn-img-front').src = imgFront;
 
-    // 4. On remplit l'image de DOS (ID: dyn-img-back)
     const backImgElement = document.getElementById('dyn-img-back');
     if(imgBack && imgBack !== "" && imgBack !== "undefined") {
         backImgElement.src = imgBack;
     } else {
-        // Si pas d'image de dos, on cache le bloc pour éviter un cadre vide
-        backImgElement.parentElement.style.display = 'none';
+        if(backImgElement) backImgElement.parentElement.style.display = 'none';
     }
-    
+
+    // --- 4. LOGIQUE DES TAILLES (Le moteur qui barre le "S") ---
+    if (taillesDispoString) {
+        const disponibles = taillesDispoString.split(','); // Ex: ["M", "L", "XL"]
+        const toutesLesTailles = ['S', 'M', 'L', 'XL'];
+
+        toutesLesTailles.forEach(taille => {
+            const input = document.getElementById(taille.toLowerCase()); // s, m, l, xl
+            const label = document.querySelector(`label[for="${taille.toLowerCase()}"]`);
+
+            if (input && label) {
+                if (!disponibles.includes(taille)) {
+                    // Si la taille n'est pas dans la liste des dispos
+                    input.disabled = true; // Empêche de cliquer sur le bouton radio
+                    label.classList.add('out-of-stock'); // Applique le style barré du CSS
+                    
+                    // Si par hasard cette taille était cochée, on la décoche
+                    if(input.checked) input.checked = false;
+                }
+            }
+        });
+
+        // Sécurité : Si la taille "L" est barrée mais cochée par défaut, 
+        // on coche la première taille disponible à la place.
+        const radioCoche = document.querySelector('input[name="size"]:checked');
+        if (radioCoche && radioCoche.disabled) {
+            const premierDispo = toutesLesTailles.find(t => disponibles.includes(t));
+            if(premierDispo) document.getElementById(premierDispo.toLowerCase()).checked = true;
+        }
+    }
 };
 
 function allerAuPaiement() {
     const tailleCheck = document.querySelector('input[name="size"]:checked');
-    if(tailleCheck) {
+    if(tailleCheck && !tailleCheck.disabled) {
         localStorage.setItem('produitTaille', tailleCheck.value);
         window.location.href = 'paiement.html';
     } else {
-        alert("Veuillez sélectionner une taille.");
+        alert("Veuillez sélectionner une taille disponible.");
     }
 }
-</script>
-</body>
-</html>

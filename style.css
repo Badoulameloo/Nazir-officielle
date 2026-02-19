@@ -1008,3 +1008,17 @@ body {
     max-width: 300px;      /* Largeur maximale d'un produit sur l'index */
     margin: 0 auto;
 }
+/* Rend la taille grise et barrée */
+.out-of-stock {
+    opacity: 0.2 !important;
+    text-decoration: line-through;
+    cursor: not-allowed !important;
+    pointer-events: none; /* Empêche physiquement le clic sur le label */
+    border: 1px dashed #555 !important;
+}
+
+/* Empêche le changement de couleur si on essaie de forcer le survol */
+input:disabled + label {
+    background: transparent !important;
+    color: #555 !important;
+}

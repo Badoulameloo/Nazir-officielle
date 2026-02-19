@@ -141,8 +141,8 @@ function voirDetails(nom, prix, imageFront, imageBack, desc, taillesDispo) {
     localStorage.setItem('produitImageDos', imageBack);
     localStorage.setItem('produitDesc', desc);
     
-    // On enregistre les tailles disponibles sous forme de texte séparé par des virgules
-    localStorage.setItem('produitTaillesDispo', taillesDispo.join('M,L,')); 
+    // On transforme le tableau ['S','M'] en texte "S,M" pour le stocker
+    localStorage.setItem('produitTaillesDispo', taillesDispo.join('M','L','XL'));
     
     window.location.href = 'detail-produit.html';
 }

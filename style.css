@@ -796,19 +796,7 @@ body {
     color: #333;
     margin-bottom: 40px;
 }
-/* Style pour le label d'une taille épuisée */
-.out-of-stock {
-    text-decoration: line-through; /* Barre le texte */
-    opacity: 0.3;                 /* Rend très clair/transparent */
-    cursor: not-allowed;          /* Change le curseur de la souris */
-    border-color: #333 !important; /* Change la bordure pour montrer l'inactivité */
-}
 
-/* On empêche le changement de couleur au survol pour les tailles épuisées */
-input[disabled] + label:hover {
-    background: transparent !important;
-    color: inherit !important;
-}
 
 /* --- RESPONSIVE (Téléphone) --- */
 @media (max-width: 768px) {

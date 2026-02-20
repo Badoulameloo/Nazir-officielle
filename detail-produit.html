@@ -68,7 +68,7 @@
 
    <script>
 window.onload = function() {
-    // 1. Récupération des données depuis le localStorage
+    // 1. Récupération des données
     const nom = localStorage.getItem('produitNom');
     const prix = localStorage.getItem('produitPrix');
     const desc = localStorage.getItem('produitDesc');
@@ -76,37 +76,40 @@ window.onload = function() {
     const imgBack = localStorage.getItem('produitImageDos');
     const taillesDispoString = localStorage.getItem('produitTaillesDispo');
 
-    // 2. Injection des textes (avec vérification pour éviter les erreurs)
+    // DEBUG : On vérifie dans la console si l'image est bien là
+    console.log("Image reçue du LocalStorage : ", imgFront);
+
+    // 2. Remplissage des textes
     if(nom) document.getElementById('dyn-nom').innerText = nom;
     if(prix) document.getElementById('dyn-prix').innerText = prix;
     if(desc) document.getElementById('dyn-desc').innerText = desc;
 
-    // 3. Injection de l'image de DEVANT
-    const frontImgElement = document.getElementById('dyn-img-front');
-    if(imgFront && frontImgElement) {
-        frontImgElement.src = imgFront; // On force le lien ici
+    // 3. Remplissage de l'image Front (Forçage)
+    const frontImg = document.getElementById('dyn-img-front');
+    if(imgFront && frontImg) {
+        frontImg.src = imgFront;
     }
 
-    // 4. Injection de l'image de DOS
-    const backImgElement = document.getElementById('dyn-img-back');
-    if(imgBack && imgBack !== "" && imgBack !== "undefined" && backImgElement) {
-        backImgElement.src = imgBack;
-    } else if (backImgElement) {
-        // Si pas d'image de dos, on cache le cadre
-        backImgElement.parentElement.style.display = 'none';
+    // 4. Remplissage de l'image Back
+    const backImg = document.getElementById('dyn-img-back');
+    if(imgBack && imgBack !== "" && imgBack !== "undefined" && backImg) {
+        backImg.src = imgBack;
+    } else if(backImg) {
+        // Cache le conteneur si pas d'image de dos
+        backImg.closest('.image-wrapper').style.display = 'none';
     }
 
-    // 5. Gestion des tailles (bloquer le "S" si besoin)
+    // 5. Gestion des tailles (Désactivation du S par exemple)
     if (taillesDispoString) {
-        const disponibles = taillesDispoString.split(',');
-        const toutesTailles = ['s', 'm', 'l', 'xl']; // IDs en minuscules
+        const disponibles = taillesDispoString.split(','); 
+        const toutesLesTailles = ['s', 'm', 'l', 'xl'];
 
-        touteTailles.forEach(t => {
+        toutesLesTailles.forEach(t => {
             const input = document.getElementById(t);
             const label = document.querySelector(`label[for="${t}"]`);
-            
+
             if (input && label) {
-                // On vérifie si la taille (en majuscule) est dans la liste
+                // Si la taille n'est pas dans la liste des dispos, on bloque
                 if (!disponibles.includes(t.toUpperCase())) {
                     input.disabled = true;
                     label.classList.add('out-of-stock');
@@ -115,3 +118,13 @@ window.onload = function() {
         });
     }
 };
+
+function allerAuPaiement() {
+    const tailleCheck = document.querySelector('input[name="size"]:checked');
+    if(tailleCheck && !tailleCheck.disabled) {
+        localStorage.setItem('produitTaille', tailleCheck.value);
+        window.location.href = 'paiement.html';
+    } else {
+        alert("Veuillez sélectionner une taille disponible.");
+    }
+}

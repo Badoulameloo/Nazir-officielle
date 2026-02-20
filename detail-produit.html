@@ -67,57 +67,50 @@
     </main>
 
    <script>
-window.onload = function() {
+// On utilise une méthode plus robuste pour attendre que le HTML soit prêt
+document.addEventListener('DOMContentLoaded', function() {
+    
     // 1. Récupération des données
     const nom = localStorage.getItem('produitNom');
     const prix = localStorage.getItem('produitPrix');
     const desc = localStorage.getItem('produitDesc');
     const imgFront = localStorage.getItem('produitImage'); 
     const imgBack = localStorage.getItem('produitImageDos');
-    const taillesDispoString = localStorage.getItem('produitTaillesDispo');
+    const taillesDispo = localStorage.getItem('produitTaillesDispo');
 
-    // DEBUG : On vérifie dans la console si l'image est bien là
-    console.log("Image reçue du LocalStorage : ", imgFront);
+    // 2. Injection des textes
+    if(nom) document.getElementById('dyn-nom').textContent = nom;
+    if(prix) document.getElementById('dyn-prix').textContent = prix;
+    if(desc) document.getElementById('dyn-desc').textContent = desc;
 
-    // 2. Remplissage des textes
-    if(nom) document.getElementById('dyn-nom').innerText = nom;
-    if(prix) document.getElementById('dyn-prix').innerText = prix;
-    if(desc) document.getElementById('dyn-desc').innerText = desc;
-
-    // 3. Remplissage de l'image Front (Forçage)
-    const frontImg = document.getElementById('dyn-img-front');
-    if(imgFront && frontImg) {
-        frontImg.src = imgFront;
+    // 3. Injection de l'image de DEVANT
+    const elFront = document.getElementById('dyn-img-front');
+    if(imgFront && elFront) {
+        elFront.src = imgFront;
     }
 
-    // 4. Remplissage de l'image Back
-    const backImg = document.getElementById('dyn-img-back');
-    if(imgBack && imgBack !== "" && imgBack !== "undefined" && backImg) {
-        backImg.src = imgBack;
-    } else if(backImg) {
-        // Cache le conteneur si pas d'image de dos
-        backImg.closest('.image-wrapper').style.display = 'none';
+    // 4. Injection de l'image de DOS
+    const elBack = document.getElementById('dyn-img-back');
+    if(imgBack && imgBack !== "" && imgBack !== "undefined" && elBack) {
+        elBack.src = imgBack;
+    } else if(elBack) {
+        // Cache le cadre vide si pas d'image de dos
+        elBack.parentElement.style.display = 'none';
     }
 
-    // 5. Gestion des tailles (Désactivation du S par exemple)
-    if (taillesDispoString) {
-        const disponibles = taillesDispoString.split(','); 
-        const toutesLesTailles = ['s', 'm', 'l', 'xl'];
-
-        toutesLesTailles.forEach(t => {
+    // 5. Gestion des tailles (Désactivation du S)
+    if (taillesDispo) {
+        const disponibles = taillesDispo.split(',');
+        ['s', 'm', 'l', 'xl'].forEach(t => {
             const input = document.getElementById(t);
             const label = document.querySelector(`label[for="${t}"]`);
-
-            if (input && label) {
-                // Si la taille n'est pas dans la liste des dispos, on bloque
-                if (!disponibles.includes(t.toUpperCase())) {
-                    input.disabled = true;
-                    label.classList.add('out-of-stock');
-                }
+            if (input && label && !disponibles.includes(t.toUpperCase())) {
+                input.disabled = true;
+                label.classList.add('out-of-stock');
             }
         });
     }
-};
+});
 
 function allerAuPaiement() {
     const tailleCheck = document.querySelector('input[name="size"]:checked');

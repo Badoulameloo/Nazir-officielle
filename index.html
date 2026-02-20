@@ -137,12 +137,15 @@ function voirDetails(idDuBloc) {
 }
 
         function acheterMaintenant(nom, prix, image) {
-            localStorage.setItem('produitNom', nom);
-            localStorage.setItem('produitPrix', prix);
-            localStorage.setItem('produitImage', image);
-            localStorage.setItem('produitTaille', 'L'); 
-            window.location.href = 'paiement.html';
-        }
+    localStorage.setItem('produitNom', nom);
+    localStorage.setItem('produitPrix', prix);
+    localStorage.setItem('produitImage', image);
+    
+    // TRÈS IMPORTANT : On met la taille à vide pour forcer le choix au paiement
+    localStorage.setItem('produitTaille', ""); 
+    
+    window.location.href = 'paiement.html';
+}
     </script>
 </body>
 </html>

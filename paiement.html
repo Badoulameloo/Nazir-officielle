@@ -57,6 +57,15 @@
                             <div class="card-content">
                                 <span class="method-name">À LA LIVRAISON</span>
                             </div>
+                            <div id="zone-taille-paiement" style="display: none;">
+    <p style="margin-bottom: 10px; color: #888;">VEUILLEZ SÉLECTIONNER VOTRE TAILLE :</p>
+    <div class="size-options">
+        <input type="radio" name="sizePaiement" value="S" id="ps"><label for="ps">S</label>
+        <input type="radio" name="sizePaiement" value="M" id="pm"><label for="pm">M</label>
+        <input type="radio" name="sizePaiement" value="L" id="pl"><label for="pl">L</label>
+        <input type="radio" name="sizePaiement" value="XL" id="pxl"><label for="pxl">XL</label>
+    </div>
+</div>
                         </label>
                     </div>
 
@@ -87,19 +96,50 @@
         AOS.init({ duration: 1000 });
 
         // 1. CHARGEMENT DYNAMIQUE DES INFOS DU PRODUIT
-        window.onload = function() {
-            const nom = localStorage.getItem('produitNom') || "Produit NAZIR";
-            const prix = localStorage.getItem('produitPrix') || "Prix sur demande";
-            const image = localStorage.getItem('produitImage') || "img/img.logo.jpeg.png";
-            const taille = localStorage.getItem('produitTaille') || "Standard";
+       window.onload = function() {
+    // 1. On récupère les infos
+    const nom = localStorage.getItem('produitNom');
+    const prix = localStorage.getItem('produitPrix');
+    const tailleDejaChoisie = localStorage.getItem('produitTaille');
 
-            document.getElementById('display-name').innerText = nom;
-            document.getElementById('display-price').innerText = prix;
-            document.getElementById('display-total').innerText = prix;
-            document.getElementById('display-img').src = image;
-            document.getElementById('display-size').innerText = "TAILLE: " + taille;
-        };
+    // 2. Affichage du récap (Nom/Prix)
+    if(nom) {
+        document.getElementById('recap-nom').innerText = nom;
+        document.getElementById('recap-prix').innerText = prix;
+    }
 
+    // 3. LA LOGIQUE MAGIQUE
+    const zoneTaille = document.getElementById('zone-taille-paiement');
+    
+    if (tailleDejaChoisie && tailleDejaChoisie !== "undefined" && tailleDejaChoisie !== "") {
+        // L'utilisateur vient de "Voir Détails", il a déjà choisi
+        console.log("Taille déjà connue : " + tailleDejaChoisie);
+        zoneTaille.style.display = 'none'; // On cache le choix
+    } else {
+        // L'utilisateur vient de "Acheter maintenant", on affiche le choix
+        console.log("Achat rapide : Taille manquante");
+        zoneTaille.style.display = 'block'; // On montre le choix
+    }
+};
+
+// Fonction de validation finale
+function validerLaCommande() {
+    let tailleFinale = localStorage.getItem('produitTaille');
+
+    // Si la zone de choix était affichée, on récupère la nouvelle sélection
+    const zoneTaille = document.getElementById('zone-taille-paiement');
+    if (zoneTaille.style.display === 'block') {
+        const selection = document.querySelector('input[name="sizePaiement"]:checked');
+        if (!selection) {
+            alert("Veuillez choisir une taille avant de valider.");
+            return;
+        }
+        tailleFinale = selection.value;
+    }
+
+    // Envoi final (WhatsApp ou autre)
+    envoyerWhatsApp(tailleFinale);
+}
         // 2. ENVOI DE LA COMMANDE VERS WHATSAPP
         function sendOrder() {
             const phone = "221784854337"; // REMPLACE PAR TON NUMÉRO

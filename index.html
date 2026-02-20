@@ -97,7 +97,39 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+// Initialiser le compteur au chargement
+updateCartCount();
 
+function ajouterAuPanier(nom, prix, image) {
+    // 1. Récupérer le panier existant ou en créer un vide
+    let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+    
+    // 2. Ajouter le nouveau produit
+    panier.push({ nom: nom, prix: prix, image: image, taille: 'L' });
+    
+    // 3. Sauvegarder dans le localStorage
+    localStorage.setItem('monPanier', JSON.stringify(panier));
+    
+    // 4. Mettre à jour le compteur visuel
+    updateCartCount();
+    alert(nom + " ajouté au panier !");
+}
+
+function updateCartCount() {
+    let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+    const countElement = document.getElementById('cart-count-nav');
+    
+    if (countElement) {
+        countElement.innerText = `PANIER (${panier.length})`;
+        
+        // Petite animation de "bump"
+        countElement.classList.add('bump');
+        setTimeout(() => {
+            countElement.classList.remove('bump');
+        }, 300);
+    }
+}
+        AOS.init({ duration: 1200, once: true });
 
 function voirDetails(idDuBloc) {
     localStorage.setItem('produitID', idDuBloc);

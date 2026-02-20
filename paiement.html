@@ -6,22 +6,33 @@
     <title>PAIEMENT | NAZIR</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Styles spécifiques pour le récapitulatif de paiement */
-        .paiement-container { max-width: 600px; margin: 100px auto; padding: 20px; color: white; }
-        .recap-produit { display: flex; gap: 20px; background: #111; padding: 20px; border-radius: 8px; margin-bottom: 30px; align-items: center; }
-        .recap-produit img { width: 100px; height: 130px; object-fit: cover; border-radius: 4px; }
-        .recap-infos h2 { font-size: 1.2rem; margin-bottom: 10px; }
-        .price-tag { color: #888; font-weight: bold; }
+        .paiement-container { max-width: 600px; margin: 80px auto; padding: 20px; color: white; }
         
-        /* Style des boutons radio de taille (identique à la page détails) */
-        .size-selection-paiement { margin: 20px 0; padding: 15px; border-top: 1px solid #333; }
+        /* Récapitulatif Produit */
+        .recap-produit { display: flex; gap: 20px; background: #111; padding: 20px; border-radius: 8px; margin-bottom: 30px; align-items: center; border: 1px solid #222; }
+        .recap-produit img { width: 90px; height: 110px; object-fit: cover; border-radius: 4px; }
+        .recap-infos h2 { font-size: 1.1rem; margin-bottom: 5px; text-transform: uppercase; }
+        .price-tag { color: #888; font-size: 0.9rem; }
+
+        /* Formulaire de livraison */
+        .delivery-form { background: #0a0a0a; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .delivery-form h3 { font-size: 0.9rem; margin-bottom: 15px; letter-spacing: 1px; color: #ccc; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 0.7rem; color: #666; margin-bottom: 5px; text-transform: uppercase; }
+        .input-group input, .input-group textarea { 
+            width: 100%; background: transparent; border: 1px solid #333; padding: 12px; color: white; outline: none; transition: 0.3s;
+        }
+        .input-group input:focus, .input-group textarea:focus { border-color: white; }
+
+        /* Sélection Taille (si vide) */
+        .size-selection-paiement { margin-bottom: 20px; padding: 15px; border: 1px dashed #333; }
         .size-options { display: flex; gap: 10px; margin-top: 10px; }
         .size-options input { display: none; }
-        .size-options label { border: 1px solid white; padding: 10px 20px; cursor: pointer; transition: 0.3s; }
+        .size-options label { border: 1px solid white; padding: 8px 18px; cursor: pointer; font-size: 0.9rem; }
         .size-options input:checked + label { background: white; color: black; }
-        
-        .total-box { display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: bold; margin: 30px 0; border-top: 2px solid white; padding-top: 20px; }
-        .btn-valider { width: 100%; background: white; color: black; border: none; padding: 18px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+
+        .total-box { display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: bold; margin: 20px 0; border-top: 1px solid white; padding-top: 20px; }
+        .btn-valider { width: 100%; background: white; color: black; border: none; padding: 18px; font-weight: bold; cursor: pointer; letter-spacing: 2px; }
     </style>
 </head>
 <body class="dark-theme">
@@ -33,19 +44,35 @@
     </nav>
 
     <main class="paiement-container">
-        <h1>FINALISER MA COMMANDE</h1>
+        <h1>CHECKOUT</h1>
 
         <div class="recap-produit">
             <img src="" id="recap-img" alt="Produit">
             <div class="recap-infos">
                 <h2 id="recap-nom">Chargement...</h2>
                 <p class="price-tag" id="recap-prix">0 CFA</p>
-                <p id="recap-taille-fixe" style="margin-top: 10px; font-weight: bold; display: none;"></p>
+                <p id="recap-taille-fixe" style="margin-top: 8px; font-size: 0.8rem; border-left: 2px solid white; padding-left: 10px; display: none;"></p>
+            </div>
+        </div>
+
+        <div class="delivery-form">
+            <h3>INFORMATIONS DE LIVRAISON</h3>
+            <div class="input-group">
+                <label>Nom Complet</label>
+                <input type="text" id="client-nom" placeholder="Ex: Jean Paul">
+            </div>
+            <div class="input-group">
+                <label>Téléphone (WhatsApp)</label>
+                <input type="tel" id="client-tel" placeholder="Ex: 77 000 00 00">
+            </div>
+            <div class="input-group">
+                <label>Adresse / Quartier</label>
+                <textarea id="client-adresse" rows="2" placeholder="Ex: Dakar, Plateau, Rue 10"></textarea>
             </div>
         </div>
 
         <div id="zone-choix-taille" class="size-selection-paiement" style="display: none;">
-            <p>SÉLECTIONNEZ VOTRE TAILLE POUR CE PRODUIT :</p>
+            <p style="font-size: 0.8rem; color: #888;">CHOISISSEZ VOTRE TAILLE :</p>
             <div class="size-options">
                 <input type="radio" name="sizePaiement" value="S" id="ps"><label for="ps">S</label>
                 <input type="radio" name="sizePaiement" value="M" id="pm"><label for="pm">M</label>
@@ -59,18 +86,16 @@
             <span id="recap-total">0 CFA</span>
         </div>
 
-        <button onclick="envoyerCommande()" class="btn-valider">CONFIRMER ET PAYER</button>
+        <button onclick="envoyerCommande()" class="btn-valider">COMMANDER VIA WHATSAPP</button>
     </main>
 
     <script>
         window.onload = function() {
-            // 1. Récupération des données du LocalStorage
             const nom = localStorage.getItem('produitNom');
             const prix = localStorage.getItem('produitPrix');
             const image = localStorage.getItem('produitImage');
             const tailleDejaChoisie = localStorage.getItem('produitTaille');
 
-            // 2. Injection des données de base
             if (nom) {
                 document.getElementById('recap-nom').innerText = nom;
                 document.getElementById('recap-prix').innerText = prix;
@@ -78,46 +103,59 @@
                 document.getElementById('recap-img').src = image;
             }
 
-            // 3. LOGIQUE DE LA TAILLE
             const zoneChoix = document.getElementById('zone-choix-taille');
             const texteFixe = document.getElementById('recap-taille-fixe');
 
-            // Si la taille est vide ou undefined (provenance "Acheter maintenant")
             if (!tailleDejaChoisie || tailleDejaChoisie === "" || tailleDejaChoisie === "undefined") {
-                zoneChoix.style.display = "block"; // On montre le choix
-                texteFixe.style.display = "none";
+                zoneChoix.style.display = "block";
             } else {
-                // Provenance "Détails" (Taille déjà choisie)
                 zoneChoix.style.display = "none";
-                texteFixe.innerText = "TAILLE SÉLECTIONNÉE : " + tailleDejaChoisie;
+                texteFixe.innerText = "TAILLE : " + tailleDejaChoisie;
                 texteFixe.style.display = "block";
             }
         };
 
         function envoyerCommande() {
+            // 1. Vérification des infos client
+            const clientNom = document.getElementById('client-nom').value;
+            const clientTel = document.getElementById('client-tel').value;
+            const clientAdresse = document.getElementById('client-adresse').value;
+
+            if (!clientNom || !clientTel || !clientAdresse) {
+                alert("Veuillez remplir toutes les informations de livraison.");
+                return;
+            }
+
+            // 2. Gestion de la taille
             let tailleFinale = localStorage.getItem('produitTaille');
             const zoneChoix = document.getElementById('zone-choix-taille');
 
-            // Si l'utilisateur devait choisir la taille sur cette page
             if (zoneChoix.style.display === "block") {
                 const selection = document.querySelector('input[name="sizePaiement"]:checked');
                 if (!selection) {
-                    alert("Oups ! N'oubliez pas de sélectionner votre taille.");
+                    alert("Veuillez sélectionner une taille.");
                     return;
                 }
                 tailleFinale = selection.value;
             }
 
-            const nom = localStorage.getItem('produitNom');
-            const prix = localStorage.getItem('produitPrix');
+            const nomProd = localStorage.getItem('produitNom');
+            const prixProd = localStorage.getItem('produitPrix');
 
-            // Construction du message WhatsApp
-            const message = `Bonjour NAZIR, je souhaite commander :
-- Produit : ${nom}
-- Taille : ${tailleFinale}
-- Prix : ${prix}`;
+            // 3. Préparation du message
+            const message = `*NOUVELLE COMMANDE NAZIR* 📦
+---------------------------
+*PRODUIT* : ${nomProd}
+*TAILLE* : ${tailleFinale}
+*PRIX* : ${prixProd}
 
-            const phone = "221XXXXXXXXX"; // REMPLACE PAR TON NUMÉRO
+*INFOS CLIENT* :
+- *Nom* : ${clientNom}
+- *Tel* : ${clientTel}
+- *Adresse* : ${clientAdresse}
+---------------------------`;
+
+            const phone = "+221 78 485 43 37"; // Ton numéro WhatsApp (sans espaces ni +)
             window.location.href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
         }
     </script>

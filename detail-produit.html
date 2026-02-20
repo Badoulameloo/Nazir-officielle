@@ -68,68 +68,50 @@
 
    <script>
 window.onload = function() {
-    // 1. Récupération des données classiques
+    // 1. Récupération des données depuis le localStorage
     const nom = localStorage.getItem('produitNom');
     const prix = localStorage.getItem('produitPrix');
     const desc = localStorage.getItem('produitDesc');
     const imgFront = localStorage.getItem('produitImage'); 
     const imgBack = localStorage.getItem('produitImageDos');
-    
-    // --- NOUVEAU : Récupération des tailles disponibles ---
     const taillesDispoString = localStorage.getItem('produitTaillesDispo');
 
-    // 2. Remplissage des textes
+    // 2. Injection des textes (avec vérification pour éviter les erreurs)
     if(nom) document.getElementById('dyn-nom').innerText = nom;
     if(prix) document.getElementById('dyn-prix').innerText = prix;
     if(desc) document.getElementById('dyn-desc').innerText = desc;
 
-    // 3. Remplissage des images
-    if(imgFront) document.getElementById('dyn-img-front').src = imgFront;
-
-    const backImgElement = document.getElementById('dyn-img-back');
-    if(imgBack && imgBack !== "" && imgBack !== "undefined") {
-        backImgElement.src = imgBack;
-    } else {
-        if(backImgElement) backImgElement.parentElement.style.display = 'none';
+    // 3. Injection de l'image de DEVANT
+    const frontImgElement = document.getElementById('dyn-img-front');
+    if(imgFront && frontImgElement) {
+        frontImgElement.src = imgFront; // On force le lien ici
     }
 
-    // --- 4. LOGIQUE DES TAILLES (Le moteur qui barre le "S") ---
+    // 4. Injection de l'image de DOS
+    const backImgElement = document.getElementById('dyn-img-back');
+    if(imgBack && imgBack !== "" && imgBack !== "undefined" && backImgElement) {
+        backImgElement.src = imgBack;
+    } else if (backImgElement) {
+        // Si pas d'image de dos, on cache le cadre
+        backImgElement.parentElement.style.display = 'none';
+    }
+
+    // 5. Gestion des tailles (bloquer le "S" si besoin)
     if (taillesDispoString) {
-        const disponibles = taillesDispoString.split(','); // Ex: ["M", "L", "XL"]
-        const toutesLesTailles = ['S', 'M', 'L', 'XL'];
+        const disponibles = taillesDispoString.split(',');
+        const toutesTailles = ['s', 'm', 'l', 'xl']; // IDs en minuscules
 
-        toutesLesTailles.forEach(taille => {
-            const input = document.getElementById(taille.toLowerCase()); // s, m, l, xl
-            const label = document.querySelector(`label[for="${taille.toLowerCase()}"]`);
-
+        touteTailles.forEach(t => {
+            const input = document.getElementById(t);
+            const label = document.querySelector(`label[for="${t}"]`);
+            
             if (input && label) {
-                if (!disponibles.includes(taille)) {
-                    // Si la taille n'est pas dans la liste des dispos
-                    input.disabled = true; // Empêche de cliquer sur le bouton radio
-                    label.classList.add('out-of-stock'); // Applique le style barré du CSS
-                    
-                    // Si par hasard cette taille était cochée, on la décoche
-                    if(input.checked) input.checked = false;
+                // On vérifie si la taille (en majuscule) est dans la liste
+                if (!disponibles.includes(t.toUpperCase())) {
+                    input.disabled = true;
+                    label.classList.add('out-of-stock');
                 }
             }
         });
-
-        // Sécurité : Si la taille "L" est barrée mais cochée par défaut, 
-        // on coche la première taille disponible à la place.
-        const radioCoche = document.querySelector('input[name="size"]:checked');
-        if (radioCoche && radioCoche.disabled) {
-            const premierDispo = toutesLesTailles.find(t => disponibles.includes(t));
-            if(premierDispo) document.getElementById(premierDispo.toLowerCase()).checked = true;
-        }
     }
 };
-
-function allerAuPaiement() {
-    const tailleCheck = document.querySelector('input[name="size"]:checked');
-    if(tailleCheck && !tailleCheck.disabled) {
-        localStorage.setItem('produitTaille', tailleCheck.value);
-        window.location.href = 'paiement.html';
-    } else {
-        alert("Veuillez sélectionner une taille disponible.");
-    }
-}

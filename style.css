@@ -478,84 +478,69 @@ body {
     }
 }
 
-/* --- PAGE PANIER --- */
 .cart-container {
-    padding: 150px 10% 100px;
-    min-height: 80vh;
-}
-
-.cart-container h1 {
-    letter-spacing: 10px;
-    text-align: center;
-    margin-bottom: 60px;
-    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 20px;
 }
 
 .cart-item {
     display: flex;
     align-items: center;
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid #333;
     padding: 20px 0;
-    gap: 30px;
+    gap: 20px;
 }
 
-.cart-item-image img {
-    width: 80px;
-    height: 100px;
+.cart-item img {
+    width: 100px;
+    height: 120px;
     object-fit: cover;
 }
 
-.cart-item-details h3 {
-    font-size: 12px;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
+.item-info { flex-grow: 1; }
 
-.cart-item-details p {
-    font-size: 10px;
-    color: #888;
+.remove-btn {
+    background: none;
+    border: none;
+    color: #ff4444;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .cart-summary {
-    margin-top: 50px;
-    max-width: 400px;
-    margin-left: auto;
+    margin-top: 40px;
+    padding: 20px;
+    background: #111;
+    border-radius: 8px;
 }
 
 .summary-line {
     display: flex;
     justify-content: space-between;
-    font-size: 10px;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-}
-
-.summary-total {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    letter-spacing: 3px;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .checkout-btn {
-    display: block;
-    background: #fff;
-    color: #000;
-    text-align: center;
-    padding: 20px;
-    margin-top: 30px;
-    text-decoration: none;
-    font-size: 12px;
-    letter-spacing: 3px;
+    width: 100%;
+    background: white;
+    color: black;
+    padding: 15px;
+    border: none;
     font-weight: bold;
-    transition: 0.3s;
+    cursor: pointer;
+    margin-bottom: 10px;
 }
 
-.checkout-btn:hover {
-    background: #ccc;
+.clear-cart-btn {
+    width: 100%;
+    background: transparent;
+    color: #888;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
 }
 
 /* --- PAGE PAIEMENT --- */

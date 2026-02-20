@@ -57,14 +57,15 @@
                             <div class="card-content">
                                 <span class="method-name">À LA LIVRAISON</span>
                             </div>
-                            <div id="zone-taille-paiement" style="display: none;">
-    <p style="margin-bottom: 10px; color: #888;">VEUILLEZ SÉLECTIONNER VOTRE TAILLE :</p>
+       <div id="selection-taille-paiement" style="display: none; margin-bottom: 20px;">
+    <p style="font-size: 0.8rem; color: #888; margin-bottom: 10px;">SÉLECTIONNEZ VOTRE TAILLE :</p>
     <div class="size-options">
         <input type="radio" name="sizePaiement" value="S" id="ps"><label for="ps">S</label>
         <input type="radio" name="sizePaiement" value="M" id="pm"><label for="pm">M</label>
         <input type="radio" name="sizePaiement" value="L" id="pl"><label for="pl">L</label>
         <input type="radio" name="sizePaiement" value="XL" id="pxl"><label for="pxl">XL</label>
     </div>
+</div>
 </div>
                         </label>
                     </div>
@@ -95,47 +96,51 @@
     <script>
         AOS.init({ duration: 1000 });
 
-        // 1. CHARGEMENT DYNAMIQUE DES INFOS DU PRODUIT
        window.onload = function() {
-    // 1. On récupère les infos
     const nom = localStorage.getItem('produitNom');
     const prix = localStorage.getItem('produitPrix');
-    const tailleDejaChoisie = localStorage.getItem('produitTaille');
+    const image = localStorage.getItem('produitImage');
+    const tailleChoisie = localStorage.getItem('produitTaille');
 
-    // 2. Affichage du récap (Nom/Prix)
-    if(nom) {
-        document.getElementById('recap-nom').innerText = nom;
-        document.getElementById('recap-prix').innerText = prix;
-    }
+    // Mise à jour de l'affichage du récap (ta capture d'écran)
+    if(nom) document.getElementById('nom-produit-recap').innerText = nom;
+    if(prix) document.getElementById('prix-produit-recap').innerText = prix;
+    if(image) document.getElementById('img-produit-recap').src = image;
 
-    // 3. LA LOGIQUE MAGIQUE
-    const zoneTaille = document.getElementById('zone-taille-paiement');
-    
-    if (tailleDejaChoisie && tailleDejaChoisie !== "undefined" && tailleDejaChoisie !== "") {
-        // L'utilisateur vient de "Voir Détails", il a déjà choisi
-        console.log("Taille déjà connue : " + tailleDejaChoisie);
-        zoneTaille.style.display = 'none'; // On cache le choix
+    // LOGIQUE DE LA TAILLE
+    const blocTaille = document.getElementById('selection-taille-paiement');
+    const texteTailleFixe = document.getElementById('taille-affichee-recap');
+
+    if (!tailleChoisie || tailleChoisie === "" || tailleChoisie === "undefined") {
+        // PROVENANCE : "Acheter maintenant" (Pas de taille)
+        blocTaille.style.display = "block"; // On montre les boutons
+        if(texteTailleFixe) texteTailleFixe.style.display = "none";
     } else {
-        // L'utilisateur vient de "Acheter maintenant", on affiche le choix
-        console.log("Achat rapide : Taille manquante");
-        zoneTaille.style.display = 'block'; // On montre le choix
+        // PROVENANCE : "Voir Détails" (Taille déjà choisie)
+        blocTaille.style.display = "none"; // On cache les boutons
+        if(texteTailleFixe) {
+            texteTailleFixe.innerText = "TAILLE : " + tailleChoisie;
+            texteTailleFixe.style.display = "block";
+        }
     }
 };
 
-// Fonction de validation finale
-function validerLaCommande() {
+function validerPaiementFinal() {
     let tailleFinale = localStorage.getItem('produitTaille');
-
-    // Si la zone de choix était affichée, on récupère la nouvelle sélection
-    const zoneTaille = document.getElementById('zone-taille-paiement');
-    if (zoneTaille.style.display === 'block') {
-        const selection = document.querySelector('input[name="sizePaiement"]:checked');
-        if (!selection) {
-            alert("Veuillez choisir une taille avant de valider.");
+    
+    // Si les boutons étaient affichés, on prend la nouvelle valeur
+    if (!tailleFinale || tailleFinale === "") {
+        const check = document.querySelector('input[name="sizePaiement"]:checked');
+        if (!check) {
+            alert("Veuillez sélectionner une taille.");
             return;
         }
-        tailleFinale = selection.value;
+        tailleFinale = check.value;
     }
+
+    // Ici tu lances ton lien WhatsApp ou ton paiement avec la variable 'tailleFinale'
+    console.log("Commande prête : Taille " + tailleFinale);
+
 
     // Envoi final (WhatsApp ou autre)
     envoyerWhatsApp(tailleFinale);

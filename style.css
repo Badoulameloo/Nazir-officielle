@@ -1021,3 +1021,31 @@ input:disabled + label {
     background: transparent !important;
     color: #555 !important;
 }
+.action-buttons {
+    display: flex;
+    gap: 15px; /* Espace entre les deux boutons */
+    margin-top: 20px;
+}
+
+.secondary-cart-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 15px 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.secondary-cart-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Sur mobile, on les met l'un sur l'autre */
+@media (max-width: 768px) {
+    .action-buttons {
+        flex-direction: column;
+    }
+}

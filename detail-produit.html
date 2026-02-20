@@ -52,6 +52,7 @@
                         </div>
                     </div>
                     <button onclick="allerAuPaiement('size-1')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                    <button onclick="ajouterAuPanierManuel('T-SHIRT WHITE & PINK', '8.000 CFA', 'img/img.frontshirt.jpeg.jpeg', 'size1')" class="secondary-cart-btn">+ AJOUTER AU PANIER</button>
                 </div>
             </div>
         </div>
@@ -83,6 +84,7 @@
                         </div>
                     </div>
                     <button onclick="allerAuPaiement('size-2')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                    <button onclick="ajouterAuPanierManuel('T-SHIRT WHITE & PINK', '8.000 CFA', 'img/img.frontshirt.jpeg.jpeg', 'size1')" class="secondary-cart-btn">+ AJOUTER AU PANIER</button>
                 </div>
             </div>
         </div>
@@ -114,6 +116,7 @@
                         </div>
                     </div>
                     <button onclick="allerAuPaiement('size-2')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                    <button onclick="ajouterAuPanierManuel('T-SHIRT WHITE & PINK', '8.000 CFA', 'img/img.frontshirt.jpeg.jpeg', 'size1')" class="secondary-cart-btn">+ AJOUTER AU PANIER</button>
                 </div>
             </div>
         </div>
@@ -134,6 +137,35 @@
         localStorage.setItem('produitTaille', taille);
         window.location.href = 'paiement.html';
     }
+    function ajouterAuPanierManuel(nom, prix, image, nameTaille) {
+    // 1. Récupérer la taille cochée pour ce produit précis
+    const tailleCheck = document.querySelector(`input[name="${nameTaille}"]:checked`);
+    
+    if(!tailleCheck) {
+        alert("Veuillez sélectionner une taille.");
+        return;
+    }
+
+    // 2. Créer l'objet produit
+    let produit = {
+        nom: nom,
+        prix: prix,
+        image: image,
+        taille: tailleCheck.value
+    };
+
+    // 3. Récupérer le panier actuel dans le LocalStorage
+    let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+    
+    // 4. Ajouter le produit et sauvegarder
+    panier.push(produit);
+    localStorage.setItem('monPanier', JSON.stringify(panier));
+
+    alert(nom + " (Taille " + tailleCheck.value + ") ajouté au panier !");
+    
+    // Optionnel : redirection vers le panier ou mise à jour d'un compteur
+    // window.location.href = 'panier.html'; 
+}
     </script>
 </body>
 </html>

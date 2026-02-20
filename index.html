@@ -40,8 +40,8 @@
                 <div class="product-image-container">
                     <img src="img/img.frontshirt.jpeg.jpeg" class="product-img">
                    <div class="product-overlay">
-    <button onclick="voirDetails('T-SHIRT WHITE&PINK', '8.000 CFA', 'img/img.frontshirt.jpeg.jpeg', 'img/img.backshirt.jpeg.jpeg.jpeg', 'Coton lourd', [ 'M', 'L', 'XL'])" class="overlay-link">VOIR DÉTAILS</button>    
-    <button onclick="ajouterAuPanier('T-SHIRT WHITE&PINK', '8000CFA', 'img/img.frontshirt.jpeg.jpeg')" class="add-to-cart-quick"> + PANIER </button>
+<button onclick="voirDetails('T-SHIRT WHITE&PINK', '8.000 CFA', 'img/img.frontshirt.jpeg.jpeg', 'img/img.backshirt.jpeg.jpeg.jpeg', 'Description du White & Pink...', ['M', 'L', 'XL'])" class="overlay-link">VOIR DÉTAILS</button>    
+<button onclick="ajouterAuPanier('T-SHIRT WHITE&PINK', '8000CFA', 'img/img.frontshirt.jpeg.jpeg')" class="add-to-cart-quick"> + PANIER </button>
     <button onclick="acheterMaintenant('T-SHIRT WHITE&PINK', '8000CFA', 'img/img.frontshirt.jpeg.jpeg')" class="overlay-btn"> ACHETER MAINTENANT</button>
 </div>
                 </div>
@@ -55,7 +55,7 @@
                 <div class="product-image-container">
                     <img src="img/img.white&greyfrontshirt.jpeg.jpeg.jpeg" class="product-img">
                     <div class="product-overlay">
-    <button onclick="voirDetails('T-SHIRT WHITE&GREY', '8.000 CFA', 'img/img.white&greyfrontshirt.jpeg.jpeg.jpeg', 'img/img.white&greybackshirt.jpeg.jpeg.jpeg', 'Description...', [ 'M', 'L', 'XL'])" class="overlay-link">VOIR DÉTAILS</button>    
+    <button onclick="voirDetails('T-SHIRT WHITE&GREY', '8.000 CFA', 'img/img.white&greyfrontshirt.jpeg.jpeg.jpeg', 'img/img.white&greybackshirt.jpeg.jpeg.jpeg', 'Description du White & Grey...', ['S', 'M', 'L'])" class="overlay-link">VOIR DÉTAILS</button>    
     <button onclick="ajouterAuPanier('T-SHIRT WHITE&GREY', '8000CFA', 'img/img.white&greyfrontshirt.jpeg.jpeg.jpeg')" class="add-to-cart-quick"> + PANIER</button>
     <button onclick="acheterMaintenant('T-SHIRT WHITE&GREY', '8000CFA', 'img/img.white&greyfrontshirt.jpeg.jpeg.jpeg')" class="overlay-btn"> ACHETER MAINTENANT</button>
 </div>
@@ -70,7 +70,7 @@
                 <div class="product-image-container">
                     <img src="img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg" class="product-img">
                     <div class="product-overlay">
-    <button onclick="voirDetails('T-SHIRT BLACK&GREY', '8.000 CFA', 'img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg', 'img/img.black&greybackshirt.jpeg.jpeg.jpeg', 'Description...', [ 'M', 'L', 'XL'])" class="overlay-link">VOIR DÉTAILS</button>    
+    <button onclick="voirDetails('T-SHIRT BLACK&GREY', '8.000 CFA', 'img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg', 'img/img.black&greybackshirt.jpeg.jpeg.jpeg', 'Description du Black & Grey...', ['L', 'XL'])" class="overlay-link">VOIR DÉTAILS</button>    
     <button onclick="ajouterAuPanier('T-SHIRT BLACK&GREY', '8000CFA', 'img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg')" class="add-to-cart-quick"> + PANIER </button>
     <button onclick="acheterMaintenant('T-SHIRT BLACK&GREY', '8000CFA', 'img/img.black&greyfrontshirtshirt.jpeg.jpeg.jpeg')" class="overlay-btn"> ACHETER MAINTENANT </button>
 </div>
@@ -134,13 +134,16 @@ function updateCartCount() {
         AOS.init({ duration: 1200, once: true });
 
 function voirDetails(nom, prix, imageFront, imageBack, desc, taillesDispo) {
+    // On vide les anciennes infos pour être sûr
+    localStorage.removeItem('produitNom');
+    localStorage.removeItem('produitPrix');
     localStorage.setItem('produitNom', nom);
     localStorage.setItem('produitPrix', prix);
     localStorage.setItem('produitImage', imageFront);
     localStorage.setItem('produitImageDos', imageBack);
     localStorage.setItem('produitDesc', desc);
     
-    // CORRECT : On transforme le tableau envoyé en une simple liste de texte séparée par des virgules
+    // Correction du .join dont on a parlé
     localStorage.setItem('produitTaillesDispo', taillesDispo.join(','));
     
     window.location.href = 'detail-produit.html';

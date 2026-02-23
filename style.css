@@ -1040,3 +1040,24 @@ input:disabled + label {
     object-fit: cover; /* Recadre l'image proprement sans l'écraser */
     display: block;
 }
+.sold-out {
+    position: relative;
+    pointer-events: none; /* Empêche de cliquer sur le produit */
+}
+
+.sold-out img {
+    filter: grayscale(100%); /* Met l'image en noir et blanc */
+}
+
+.sold-out-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    z-index: 10;
+    white-space: nowrap;
+}

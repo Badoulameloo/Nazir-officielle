@@ -137,9 +137,9 @@
                         <p class="size-label">SÉLECTIONNER LA TAILLE</p>
                         <div class="size-options">
                             <input type="radio" name="sizeBlackWhite" value="S" id="s3" disabled><label for="s3" class="out-of-stock">S</label>
-                            <input type="radio" name="sizeBlackWhite" value="M" id="m3"><label for="m3">M</label>
+                            <input type="radio" name="sizeBlackWhite" value="M" id="m3" disabled><label for="m3">M</label>
                             <input type="radio" name="sizeBlackWhite" value="L" id="l3" checked><label for="l3">L</label>
-                            <input type="radio" name="sizeBlackWhite" value="XL" id="xl3"><label for="xl3">XL</label>
+                            <input type="radio" name="sizeBlackWhite" value="XL" id="xl3" disabled><label for="xl3">XL</label>
                         </div>
                     </div>
                     <div class="action-buttons">
@@ -171,9 +171,43 @@
                         <p class="size-label">SÉLECTIONNER LA TAILLE</p>
                         <div class="size-options">
                             <input type="radio" name="sizeWhiteBlack" value="S" id="s4" disabled><label for="s4" class="out-of-stock">S</label>
-                            <input type="radio" name="sizeWhiteBlack" value="M" id="m4" disabled><label for="m4" class="out-of-stock">M</label>
+                            <input type="radio" name="sizeWhiteBlack" value="M" id="m4"><label for="m4" class="out-of-stock">M</label>
                             <input type="radio" name="sizeWhiteBlack" value="L" id="l4" checked><label for="l4" class="out-of-stock">L</label>
-                            <input type="radio" name="sizeWhiteBlack" value="XL" id="xl4" disabled><label for="xl4" class="out-of-stock">XL</label>
+                            <input type="radio" name="sizeWhiteBlack" value="XL" id="xl4"><label for="xl4" class="out-of-stock">XL</label>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button onclick="allerAuPaiement('sizeWhiteBlack')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                        <button onclick="ajouterAuPanierManuel('T-SHIRT WHITE & BLACK', '8.000 CFA', 'img/img.white&blackfrontshirt.jpeg.jpeg', 'sizeWhiteBlack')" class="btn-panier">+ AJOUTER AU PANIER</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <div id="produit-blue-sky" class="product-detail-content" style="display:none;">
+            <div class="details-grid">
+                <div class="details-image">
+                    <div class="image-wrapper">
+                        <p class="image-label">FRONT VIEW</p>
+                        <img src="img/img.skybluefrontshirt.jpeg.jpeg.jpeg" class="detail-main-img">
+                    </div>
+                    <div class="image-wrapper">
+                        <p class="image-label">BACK VIEW</p>
+                        <img src="img/img.skybluebackshirt.jpeg.jpeg.jpeg" class="detail-main-img">
+                    </div>
+                </div>
+                <div class="details-info">
+                    <h1>T-SHIRT BLUE SKY</h1>
+                    <p class="price">8.000 CFA</p>
+                    <div class="description"><p>Coton lourd 240g, coupe boxy.</p></div>
+                    
+                    <div class="size-selection">
+                        <p class="size-label">SÉLECTIONNER LA TAILLE</p>
+                        <div class="size-options">
+                            <input type="radio" name="sizeBlueSky" value="S" id="s5" disabled><label for="s4" class="out-of-stock">S</label>
+                            <input type="radio" name="sizeBlueSky" value="M" id="m5"><label for="m4">M</label>
+                            <input type="radio" name="sizeBlueSky" value="L" id="l5" checked><label for="l4">L</label>
+                            <input type="radio" name="sizeBlueSky" value="XL" id="xl5"><label for="xl4">XL</label>
                         </div>
                     </div>
                     <div class="action-buttons">

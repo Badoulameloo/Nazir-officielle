@@ -1034,3 +1034,9 @@ input:disabled + label {
         flex-direction: column;
     }
 }
+.product-card img {
+    width: 100%;
+    height: 450px; /* Force une hauteur identique pour tous */
+    object-fit: cover; /* Recadre l'image proprement sans l'écraser */
+    display: block;
+}

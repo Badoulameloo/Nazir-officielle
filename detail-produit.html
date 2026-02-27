@@ -346,15 +346,34 @@ function changeColor(imgSrc) {
 }
 
 function allerAuPaiement(name) {
-    const selection = document.querySelector(`input[name="${name}"]:checked`);
+    // 1. On cherche d'abord quel produit est affiché à l'écran
+    const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
+    
+    if (!produitVisible) {
+        alert("Erreur : Aucun produit détecté.");
+        return;
+    }
+
+    // 2. On cherche la taille cochée UNIQUEMENT à l'intérieur de ce produit
+    const selection = produitVisible.querySelector(`input[name="${name}"]:checked`);
+    
     if(selection) {
+        // On récupère aussi le nom et le prix du produit visible pour être sûr
+        const nomProduit = produitVisible.querySelector('h1').innerText;
+        const prixProduit = produitVisible.querySelector('.price').innerText;
+        const imageProduit = produitVisible.querySelector('.detail-main-img').src;
+
+        // On sauvegarde tout proprement
         localStorage.setItem('produitTaille', selection.value);
+        localStorage.setItem('produitNom', nomProduit);
+        localStorage.setItem('produitPrix', prixProduit);
+        localStorage.setItem('produitImage', imageProduit);
+
         window.location.href = 'paiement.html';
     } else {
         alert("Veuillez sélectionner une taille.");
     }
 }
-
 function ajouterAuPanierManuel(nom, prix, image, nameTaille) {
     const tailleCheck = document.querySelector(`input[name="${nameTaille}"]:checked`);
     

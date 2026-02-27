@@ -325,59 +325,69 @@
     </main>
 
     <script>
-    window.onload = function() {
-        const produitID = localStorage.getItem('produitID');
-        if(produitID) {
-            document.getElementById(produitID).style.display = 'block';
-        }
-        updateCartCount();
+window.onload = function() {
+    const produitID = localStorage.getItem('produitID');
+    if(produitID) {
+        const element = document.getElementById(produitID);
+        if(element) element.style.display = 'block';
+    }
+    updateCartCount();
+};
+
+// CETTE FONCTION DOIT ÊTRE BIEN DEHORS
+function changeColor(imgSrc) {
+    // On cherche l'image principale du top
+    const mainImg = document.getElementById('main-img-top');
+    if(mainImg) {
+        mainImg.src = imgSrc;
+        // On sauvegarde l'image choisie pour la page de paiement
+        localStorage.setItem('produitImage', imgSrc);
+    }
+}
+
+function allerAuPaiement(name) {
+    const selection = document.querySelector(`input[name="${name}"]:checked`);
+    if(selection) {
+        localStorage.setItem('produitTaille', selection.value);
+        window.location.href = 'paiement.html';
+    } else {
+        alert("Veuillez sélectionner une taille.");
+    }
+}
+
+function ajouterAuPanierManuel(nom, prix, image, nameTaille) {
+    const tailleCheck = document.querySelector(`input[name="${nameTaille}"]:checked`);
+    
+    if(!tailleCheck) {
+        alert("Veuillez sélectionner une taille.");
+        return;
+    }
+
+    // Si l'utilisateur a changé la couleur, on prend l'image actuelle affichée
+    const imageActuelle = document.getElementById('main-img-top') ? document.getElementById('main-img-top').src : image;
+
+    let produit = {
+        nom: nom,
+        prix: prix,
+        image: imageActuelle,
+        taille: tailleCheck.value
     };
 
-    function allerAuPaiement(name) {
-        const selection = document.querySelector(`input[name="${name}"]:checked`);
-        if(selection) {
-            localStorage.setItem('produitTaille', selection.value);
-            window.location.href = 'paiement.html';
-        } else {
-            alert("Veuillez sélectionner une taille.");
-        }
-    }
+    let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+    panier.push(produit);
+    localStorage.setItem('monPanier', JSON.stringify(panier));
 
-    function ajouterAuPanierManuel(nom, prix, image, nameTaille) {
-        const tailleCheck = document.querySelector(`input[name="${nameTaille}"]:checked`);
-        
-        if(!tailleCheck) {
-            alert("Veuillez sélectionner une taille.");
-            return;
-        }
-
-        let produit = {
-            nom: nom,
-            prix: prix,
-            image: image,
-            taille: tailleCheck.value
-        };
-
-        let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
-        panier.push(produit);
-        localStorage.setItem('monPanier', JSON.stringify(panier));
-
-        updateCartCount();
-        alert(nom + " ajouté au panier !");
-    }
-
-    function updateCartCount() {
-        let panier = JSON.parse(localStorage.getItem('monMonier')) || JSON.parse(localStorage.getItem('monPanier')) || [];
-        const countElement = document.getElementById('cart-count-nav');
-        if (countElement) {
-            countElement.innerText = `PANIER (${panier.length})`;
-        }
-        function changeColor(imgSrc) {
-    document.getElementById('main-img-top').src = imgSrc;
-    // On met aussi à jour l'image pour la page paiement
-    localStorage.setItem('produitImage', imgSrc);
+    updateCartCount();
+    alert(nom + " ajouté au panier !");
 }
+
+function updateCartCount() {
+    let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+    const countElement = document.getElementById('cart-count-nav');
+    if (countElement) {
+        countElement.innerText = `PANIER (${panier.length})`;
     }
-    </script>
+}
+</script>
 </body>
 </html>

@@ -1072,3 +1072,6 @@ input:disabled + label {
 .black { background: black; border: 1px solid #444; }
 .white { background: white; }
 .pink { background: #ffc0cb; }
+.green { background: #064b25;}
+.blue { background: #1396d3;}
+.brown { background: #492305;}

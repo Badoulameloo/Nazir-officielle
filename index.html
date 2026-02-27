@@ -209,13 +209,13 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        function filterProducts(category) {
+     function filterProducts(category, btn) {
     const cards = document.querySelectorAll('.product-card');
     const buttons = document.querySelectorAll('.filter-btn');
 
     // Gérer l'apparence des boutons
-    buttons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+    buttons.forEach(b => b.classList.remove('active'));
+    if(btn) btn.classList.add('active');
 
     // Filtrer les cartes
     cards.forEach(card => {
@@ -229,6 +229,7 @@
             }
         }
     });
+
 }
 // Initialiser le compteur au chargement
 updateCartCount();

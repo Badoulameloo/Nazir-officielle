@@ -39,19 +39,17 @@
         </div>
     </header>
 
-    <section class="shop-section">
+   <section class="shop-section">
     <h2 class="section-title">NOS PRODUITS</h2>
     
     <div class="filter-menu">
-        <button class="filter-btn active" onclick="filterProducts('all')">TOUT</button>
-        <button class="filter-btn" onclick="filterProducts('tshirt')">T-SHIRTS</button>
-        <button class="filter-btn" onclick="filterProducts('top')">TOPS BASIC</button>
+        <button class="filter-btn active" onclick="filterProducts('all', this)">TOUT</button>
+        <button class="filter-btn" onclick="filterProducts('tshirt', this)">T-SHIRTS</button>
+        <button class="filter-btn" onclick="filterProducts('top', this)">TOPS BASIC</button>
     </div>
 
     <div class="products-grid" id="main-grid">
-        <div class="product-card tshirt">  </div>
-
-        <div class="product-card top">
+        <div class="product-card top" data-aos="fade-up">
             <div class="product-image-container">
                 <img src="img/img.topshortblack.jpeg.jpeg.png" alt="Top Basic Manches Courtes">
                 <div class="product-overlay">
@@ -64,7 +62,7 @@
             </div>
         </div>
 
-        <div class="product-card top">
+        <div class="product-card top" data-aos="fade-up">
             <div class="product-image-container">
                 <img src="img/img.toplongwhite.jpeg.jpeg.png" alt="Top Basic Manches Longues">
                 <div class="product-overlay">
@@ -76,7 +74,30 @@
                 <p>7.500 CFA</p>
             </div>
         </div>
-    </div>
+
+        <div class="product-card tshirt" data-aos="fade-up">
+            <div class="product-image-container">
+                <img src="img/img.frontshirt.jpeg.jpeg" class="product-img">
+                <div class="product-overlay">
+                    <button onclick="voirDetails('produit-white-pink')" class="overlay-link">VOIR DÉTAILS</button>
+                    <button onclick="acheterMaintenant('T-SHIRT WHITE&PINK', '8000CFA', 'img/img.frontshirt.jpeg.jpeg')" class="overlay-btn"> ACHETER MAINTENANT</button>
+                </div>
+            </div>
+            <div class="product-info"><h3>T-SHIRT WHITE&PINK</h3><p>8,000 CFA</p></div>
+        </div>
+
+        <div class="product-card tshirt" data-aos="fade-up">
+            <div class="product-image-container">
+                <img src="img/img.black&whitefrontshirt.jpeg.png" class="product-img">
+                <div class="product-overlay">
+                    <button onclick="voirDetails('produit-black-white')" class="overlay-link">VOIR DÉTAILS</button>
+                    <button onclick="acheterMaintenant('T-SHIRT BLACK&WHITE', '8000CFA', 'img/img.black&whitefrontshirt.jpeg.png')" class="overlay-btn"> ACHETER MAINTENANT </button>
+                </div>
+            </div>
+            <div class="product-info"><h3>T-SHIRT BLACK&WHITE</h3><p>8,000 CFA</p></div>
+        </div>
+
+        </div> 
 </section>
         
         <div class="products-grid">

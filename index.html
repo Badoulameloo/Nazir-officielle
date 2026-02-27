@@ -39,7 +39,7 @@
         </div>
     </header>
 
-   <section class="shop-section">
+   <section class="shop-section" id="products">
     <h2 class="section-title">NOS PRODUITS</h2>
     
     <div class="filter-menu">
@@ -49,11 +49,12 @@
     </div>
 
     <div class="products-grid" id="main-grid">
+        
         <div class="product-card top" data-aos="fade-up">
             <div class="product-image-container">
-                <img src="img/img.topshortblack.jpeg.jpeg.png" alt="Top Basic Manches Courtes">
+                <img src="img/img.topshortblack.jpeg.jpeg.png" alt="Top Manches Courtes">
                 <div class="product-overlay">
-                    <button onclick="voirDetails('top-short-details')" class="view-details">VOIR DÉTAILS</button>
+                    <button onclick="voirDetails('top-short-details')" class="overlay-link">VOIR DÉTAILS</button>
                 </div>
             </div>
             <div class="product-info">
@@ -64,9 +65,9 @@
 
         <div class="product-card top" data-aos="fade-up">
             <div class="product-image-container">
-                <img src="img/img.toplongwhite.jpeg.jpeg.png" alt="Top Basic Manches Longues">
+                <img src="img/img.toplongwhite.jpeg.jpeg.png" alt="Top Manches Longues">
                 <div class="product-overlay">
-                    <button onclick="voirDetails('top-long-details')" class="view-details">VOIR DÉTAILS</button>
+                    <button onclick="voirDetails('top-long-details')" class="overlay-link">VOIR DÉTAILS</button>
                 </div>
             </div>
             <div class="product-info">
@@ -80,13 +81,55 @@
                 <img src="img/img.frontshirt.jpeg.jpeg" class="product-img">
                 <div class="product-overlay">
                     <button onclick="voirDetails('produit-white-pink')" class="overlay-link">VOIR DÉTAILS</button>
-                    <button onclick="acheterMaintenant('T-SHIRT WHITE&PINK', '8000CFA', 'img/img.frontshirt.jpeg.jpeg')" class="overlay-btn"> ACHETER MAINTENANT</button>
                 </div>
             </div>
-            <div class="product-info"><h3>T-SHIRT WHITE&PINK</h3><p>8,000 CFA</p></div>
+            <div class="product-info">
+                <h3>T-SHIRT WHITE & PINK</h3>
+                <p>8.000 CFA</p>
+            </div>
         </div>
 
-       
+        <div class="product-card tshirt sold-out" data-aos="fade-up">
+            <div class="product-image-container">
+                <div class="sold-out-badge">RUPTURE DE STOCK</div>
+                <img src="img/img.white&greyfrontshirt2.jpeg.jpeg.png" class="product-img">
+                <div class="product-overlay">
+                    <button class="overlay-link">NON DISPONIBLE</button>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3>T-SHIRT WHITE & GREY</h3>
+                <p>8.000 CFA</p>
+            </div>
+        </div>
+
+        <div class="product-card tshirt" data-aos="fade-up">
+            <div class="product-image-container">
+                <img src="img/img.black&whitefrontshirt.jpeg.png" class="product-img">
+                <div class="product-overlay">
+                    <button onclick="voirDetails('produit-black-white')" class="overlay-link">VOIR DÉTAILS</button>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3>T-SHIRT BLACK & WHITE</h3>
+                <p>8.000 CFA</p>
+            </div>
+        </div>
+
+        <div class="product-card tshirt" data-aos="fade-up">
+            <div class="product-image-container">
+                <img src="img/img.greenfrontshirt.jpeg.jpeg.png" class="product-img">
+                <div class="product-overlay">
+                    <button onclick="voirDetails('produit-dark-green')" class="overlay-link">VOIR DÉTAILS</button>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3>T-SHIRT DARK GREEN</h3>
+                <p>8.000 CFA</p>
+            </div>
+        </div>
+
+        </div>
 </section>
         
         <div class="products-grid">
@@ -209,26 +252,23 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-     function filterProducts(category, btn) {
+   function filterProducts(category, btn) {
     const cards = document.querySelectorAll('.product-card');
     const buttons = document.querySelectorAll('.filter-btn');
 
-    // Gérer l'apparence des boutons
     buttons.forEach(b => b.classList.remove('active'));
     if(btn) btn.classList.add('active');
 
-    // Filtrer les cartes
     cards.forEach(card => {
         if (category === 'all') {
             card.style.display = 'block';
+        } else if (card.classList.contains(category)) {
+            card.style.display = 'block';
         } else {
-            if (card.classList.contains(category)) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
+            card.style.display = 'none';
         }
     });
+
 
 }
 // Initialiser le compteur au chargement

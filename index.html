@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAZIR | Old Soul, New Norm</title>
-   <title>NAZIR | Boutique Officielle - Vêtements Premium au Sénégal</title>
-<meta name="description" content="Bienvenue chez NAZIR. Découvrez notre collection exclusive de T-shirts en coton lourd et coupes boxy. Livraison rapide à Dakar et partout au Sénégal.">
-<meta name="keywords" content="Nazir, mode Sénégal, Vetements de qualité, marque de vêtement Dakar, streetwear Sénégal">
-
-<meta property="og:title" content="NAZIR | Boutique Officielle">
-<meta property="og:description" content="Le style minimaliste et premium par excellence.">
-<meta property="og:image" content="img/img.logo.jpeg.png.png"> <meta property="og:url" content="https://nazir-officiel.sn">
+    <title>NAZIR | Boutique Officielle - Vêtements Premium au Sénégal</title>
+    <meta name="description" content="Bienvenue chez NAZIR. Découvrez notre collection exclusive de T-shirts en coton lourd et coupes boxy. Livraison rapide à Dakar et partout au Sénégal.">
+    <meta name="keywords" content="Nazir, mode Sénégal, Vetements de qualité, marque de vêtement Dakar, streetwear Sénégal">
+    <meta property="og:title" content="NAZIR | Boutique Officielle">
+    <meta property="og:description" content="Le style minimaliste et premium par excellence.">
+    <meta property="og:image" content="img/img.logo.jpeg.png.png"> 
+    <meta property="og:url" content="https://nazir-officiel.com">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="icon" type="image/x-icon" href="img\favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" href="img/favicon-32x32.png">
 </head>
 <body class="dark-theme">
 
@@ -27,8 +26,8 @@
             <img src="img/img.logo.jpeg.png.png" alt="NAZIR">
         </div>
         <div class="nav-right">
-        <a href="panier.html" id="cart-count-nav">PANIER (0)</a>
-            </div>
+            <a href="panier.html" id="cart-count-nav">PANIER (0)</a>
+        </div>
     </nav>
 
     <header class="hero-full-screen">
@@ -39,167 +38,99 @@
         </div>
     </header>
 
-   <section class="shop-section" id="products">
-    <h2 class="section-title">NOS PRODUITS</h2>
-    
-    <div class="filter-menu">
-        <button class="filter-btn active" onclick="filterProducts('all', this)">TOUT</button>
-        <button class="filter-btn" onclick="filterProducts('tshirt', this)">T-SHIRTS</button>
-        <button class="filter-btn" onclick="filterProducts('top', this)">TOPS BASIC</button>
-    </div>
-
-    <div class="products-grid" id="main-grid">
+    <section class="shop-section" id="products">
+        <h2 class="section-title">NOS PRODUITS</h2>
         
-        <div class="product-card top" data-aos="fade-up">
-            <div class="product-image-container">
-                <img src="img/img.topshortblack.jpeg.jpeg.png" alt="Top Manches Courtes">
-                <div class="product-overlay">
-                    <button onclick="voirDetails('top-short-details')" class="overlay-link">VOIR DÉTAILS</button>
+        <div class="filter-menu">
+            <button class="filter-btn active" onclick="filterProducts('all', this)">TOUT</button>
+            <button class="filter-btn" onclick="filterProducts('tshirt', this)">T-SHIRTS</button>
+            <button class="filter-btn" onclick="filterProducts('top', this)">TOPS BASIC</button>
+        </div>
+
+        <div class="products-grid" id="main-grid">
+            
+            <div class="product-card top" data-aos="fade-up">
+                <div class="product-image-container">
+                    <img src="img/img.topshortblack.jpeg.jpeg.png" alt="Top Manches Courtes">
+                    <div class="product-overlay">
+                        <button onclick="voirDetails('top-short-details')" class="overlay-link">VOIR DÉTAILS</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>TOP BASIC (MANCHES COURTES)</h3>
+                    <p>6.000 CFA</p>
                 </div>
             </div>
-            <div class="product-info">
-                <h3>TOP BASIC (MANCHES COURTES)</h3>
-                <p>6.000 CFA</p>
-            </div>
-        </div>
 
-        <div class="product-card top" data-aos="fade-up">
-            <div class="product-image-container">
-                <img src="img/img.toplongwhite.jpeg.jpeg.png" alt="Top Manches Longues">
-                <div class="product-overlay">
-                    <button onclick="voirDetails('top-long-details')" class="overlay-link">VOIR DÉTAILS</button>
+            <div class="product-card top" data-aos="fade-up">
+                <div class="product-image-container">
+                    <img src="img/img.toplongwhite.jpeg.jpeg.png" alt="Top Manches Longues">
+                    <div class="product-overlay">
+                        <button onclick="voirDetails('top-long-details')" class="overlay-link">VOIR DÉTAILS</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>TOP BASIC (MANCHES LONGUES)</h3>
+                    <p>7.500 CFA</p>
                 </div>
             </div>
-            <div class="product-info">
-                <h3>TOP BASIC (MANCHES LONGUES)</h3>
-                <p>7.500 CFA</p>
-            </div>
-        </div>
 
-        <div class="product-card tshirt" data-aos="fade-up">
-            <div class="product-image-container">
-                <img src="img/img.frontshirt.jpeg.jpeg" class="product-img">
-                <div class="product-overlay">
-                    <button onclick="voirDetails('produit-white-pink')" class="overlay-link">VOIR DÉTAILS</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>T-SHIRT WHITE & PINK</h3>
-                <p>8.000 CFA</p>
-            </div>
-        </div>
-
-        <div class="product-card tshirt sold-out" data-aos="fade-up">
-            <div class="product-image-container">
-                <div class="sold-out-badge">RUPTURE DE STOCK</div>
-                <img src="img/img.white&greyfrontshirt2.jpeg.jpeg.png" class="product-img">
-                <div class="product-overlay">
-                    <button class="overlay-link">NON DISPONIBLE</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>T-SHIRT WHITE & GREY</h3>
-                <p>8.000 CFA</p>
-            </div>
-        </div>
-
-        <div class="product-card tshirt" data-aos="fade-up">
-            <div class="product-image-container">
-                <img src="img/img.black&whitefrontshirt.jpeg.png" class="product-img">
-                <div class="product-overlay">
-                    <button onclick="voirDetails('produit-black-white')" class="overlay-link">VOIR DÉTAILS</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>T-SHIRT BLACK & WHITE</h3>
-                <p>8.000 CFA</p>
-            </div>
-        </div>
-
-        <div class="product-card tshirt" data-aos="fade-up">
-            <div class="product-image-container">
-                <img src="img/img.greenfrontshirt.jpeg.jpeg.png" class="product-img">
-                <div class="product-overlay">
-                    <button onclick="voirDetails('produit-dark-green')" class="overlay-link">VOIR DÉTAILS</button>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>T-SHIRT DARK GREEN</h3>
-                <p>8.000 CFA</p>
-            </div>
-        </div>
-
-        </div>
-</section>
-        
-        <div class="products-grid">
-
-            <div class="product-card" data-aos="fade-up">
+            <div class="product-card tshirt" data-aos="fade-up">
                 <div class="product-image-container">
                     <img src="img/img.frontshirt.jpeg.jpeg" class="product-img">
-                   <div class="product-overlay">
-    <button onclick="voirDetails('produit-white-pink')" class="overlay-link">VOIR DÉTAILS</button>
-    <button onclick="acheterMaintenant('T-SHIRT WHITE&PINK', '8000CFA', 'img/img.frontshirt.jpeg.jpeg')" class="overlay-btn"> ACHETER MAINTENANT</button>
-</div>
-                </div>
-                <div class="product-info">
-                    <h3>T-SHIRT WHITE&PINK</h3>
-                    <p>8,000 CFA</p>
-                </div>
-            </div>
-
-            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="product-image-container">
-                    <img src="img/img.white&greyfrontshirt2.jpeg.jpeg.png" class="product-img">
                     <div class="product-overlay">
- 
-    <div class="product-card sold-out">
-    <div class="sold-out-badge">RUPTURE DE STOCK</div>
-    <img src="img/img.white&greyfrontshirt2.jpeg.jpeg.png" alt="...">
-    </div>
-</div>
+                        <button onclick="voirDetails('produit-white-pink')" class="overlay-link">VOIR DÉTAILS</button>
+                    </div>
                 </div>
                 <div class="product-info">
-                    <h3>T-SHIRT WHITE&GREY</h3>
-                    <p>8,000 CFA</p>
+                    <h3>T-SHIRT WHITE & PINK</h3>
+                    <p>8.000 CFA</p>
                 </div>
             </div>
 
-            <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="product-card tshirt sold-out" data-aos="fade-up">
+                <div class="product-image-container">
+                    <div class="sold-out-badge">RUPTURE DE STOCK</div>
+                    <img src="img/img.white&greyfrontshirt2.jpeg.jpeg.png" class="product-img">
+                </div>
+                <div class="product-info">
+                    <h3>T-SHIRT WHITE & GREY</h3>
+                    <p>8.000 CFA</p>
+                </div>
+            </div>
+
+            <div class="product-card tshirt" data-aos="fade-up">
                 <div class="product-image-container">
                     <img src="img/img.black&whitefrontshirt.jpeg.png" class="product-img">
                     <div class="product-overlay">
-    <button onclick="voirDetails('produit-black-white')" class="overlay-link">VOIR DÉTAILS</button>
-    <button onclick="acheterMaintenant('T-SHIRT BLACK&WHITE', '8000CFA', 'img/img.black&whitefrontshirt.jpeg.png')" class="overlay-btn"> ACHETER MAINTENANT </button>
-</div>
+                        <button onclick="voirDetails('produit-black-white')" class="overlay-link">VOIR DÉTAILS</button>
+                    </div>
                 </div>
                 <div class="product-info">
-                    <h3>T-SHIRT BLACK&WHITE</h3>
-                    <p>8,000 CFA</p>
-                </div>
-            </div>
-            
-            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="product-image-container">
-                    <img src="img/img.white&blackfrontshirt.jpeg.jpeg" class="product-img">
-                    <div class="product-overlay">
-    <button onclick="voirDetails('produit-white-black')" class="overlay-link">VOIR DÉTAILS</button>
-    <button onclick="acheterMaintenant('T-SHIRT WHITE&BLACK', '8000CFA', 'img/img.white&blackfrontshirt.jpeg.jpeg')" class="overlay-btn"> ACHETER MAINTENANT</button>
-</div>
-                </div>
-                <div class="product-info">
-                    <h3>T-SHIRT WHITE&BLACK</h3>
-                    <p>8,000 CFA</p>
+                    <h3>T-SHIRT BLACK & WHITE</h3>
+                    <p>8.000 CFA</p>
                 </div>
             </div>
 
-            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="product-card tshirt" data-aos="fade-up">
+                <div class="product-image-container">
+                    <img src="img/img.greenfrontshirt.jpeg.jpeg.png" class="product-img">
+                    <div class="product-overlay">
+                        <button onclick="voirDetails('produit-dark-green')" class="overlay-link">VOIR DÉTAILS</button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>T-SHIRT DARK GREEN</h3>
+                    <p>8.000 CFA</p>
+                </div>
+            </div>
+
+            <div class="product-card tshirt" data-aos="fade-up">
                 <div class="product-image-container">
                     <img src="img/img.skybluefrontshirt.jpeg.jpeg.jpeg" class="product-img">
                     <div class="product-overlay">
-    <button onclick="voirDetails('produit-blue-sky')" class="overlay-link">VOIR DÉTAILS</button>
-    <button onclick="acheterMaintenant('T-SHIRT BLUE SKY', '8000CFA', 'img/img.skybluefrontshirt.jpeg.jpeg.jpeg')" class="overlay-btn"> ACHETER MAINTENANT</button>
-</div>
+                        <button onclick="voirDetails('produit-blue-sky')" class="overlay-link">VOIR DÉTAILS</button>
+                    </div>
                 </div>
                 <div class="product-info">
                     <h3>T-SHIRT BLUE SKY</h3>
@@ -207,34 +138,18 @@
                 </div>
             </div>
 
-            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="product-image-container">
-                    <img src="img/img.greenfrontshirt.jpeg.jpeg.png" class="product-img">
-                    <div class="product-overlay">
-    <button onclick="voirDetails('produit-dark-green')" class="overlay-link">VOIR DÉTAILS</button>
-    <button onclick="acheterMaintenant('T-SHIRT DARK GREEN', '8000CFA', 'img/img.greenfrontshirt.jpeg.jpeg.png')" class="overlay-btn"> ACHETER MAINTENANT</button>
-</div>
-                </div>
-                <div class="product-info">
-                    <h3>T-SHIRT DARK GREEN</h3>
-                    <p>8,000 CFA</p>
-                </div>
-            </div>
-
-            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="product-card tshirt" data-aos="fade-up">
                 <div class="product-image-container">
                     <img src="img/img.pink&blackfrontshirt.jpeg.jpeg.png" class="product-img">
                     <div class="product-overlay">
-    <button onclick="voirDetails('produit-pink-black')" class="overlay-link">VOIR DÉTAILS</button>
-    <button onclick="acheterMaintenant('T-SHIRT PINK&BLACK ', '8000CFA', 'img/img.pink&blackfrontshirt.jpeg.jpeg.png')" class="overlay-btn"> ACHETER MAINTENANT</button>
-</div>
+                        <button onclick="voirDetails('produit-pink-black')" class="overlay-link">VOIR DÉTAILS</button>
+                    </div>
                 </div>
                 <div class="product-info">
-                    <h3>T-SHIRT PINK&BLACK</h3>
+                    <h3>T-SHIRT PINK & BLACK</h3>
                     <p>8,000 CFA</p>
                 </div>
             </div>
-                     
 
         </div> </section>
 
@@ -252,76 +167,40 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-   function filterProducts(category, btn) {
-    const cards = document.querySelectorAll('.product-card');
-    const buttons = document.querySelectorAll('.filter-btn');
+        function filterProducts(category, btn) {
+            const cards = document.querySelectorAll('.product-card');
+            const buttons = document.querySelectorAll('.filter-btn');
 
-    buttons.forEach(b => b.classList.remove('active'));
-    if(btn) btn.classList.add('active');
+            buttons.forEach(b => b.classList.remove('active'));
+            if(btn) btn.classList.add('active');
 
-    cards.forEach(card => {
-        if (category === 'all') {
-            card.style.display = 'block';
-        } else if (card.classList.contains(category)) {
-            card.style.display = 'block';
-        } else {
-            card.style.display = 'none';
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else if (card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
-    });
 
-
-}
-// Initialiser le compteur au chargement
-updateCartCount();
-
-function ajouterAuPanierManuel(nom, prix, image, nameTaille) {
-    const tailleCheck = document.querySelector(`input[name="${nameTaille}"]:checked`);
-    
-    // Si la taille est désactivée (disabled)
-    if(tailleCheck && tailleCheck.disabled) {
-        alert("Désolé, cette taille est en rupture de stock.");
-        return;
-    }
-
-    if(!tailleCheck) {
-        alert("Veuillez sélectionner une taille.");
-        return;
-    }
-    
-    // ... reste du code d'ajout au panier ...
-}
-
-function updateCartCount() {
-    let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
-    const countElement = document.getElementById('cart-count-nav');
-    
-    if (countElement) {
-        countElement.innerText = `PANIER (${panier.length})`;
-        
-        // Petite animation de "bump"
-        countElement.classList.add('bump');
-        setTimeout(() => {
-            countElement.classList.remove('bump');
-        }, 300);
-    }
-}
+        // Initialiser au chargement
+        updateCartCount();
         AOS.init({ duration: 1200, once: true });
 
-function voirDetails(idDuBloc) {
-    localStorage.setItem('produitID', idDuBloc);
-    window.location.href = 'detail-produit.html';
-}
+        function updateCartCount() {
+            let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+            const countElement = document.getElementById('cart-count-nav');
+            if (countElement) {
+                countElement.innerText = `PANIER (${panier.length})`;
+            }
+        }
 
-        function acheterMaintenant(nom, prix, image) {
-    localStorage.setItem('produitNom', nom);
-    localStorage.setItem('produitPrix', prix);
-    localStorage.setItem('produitImage', image);
-    
-    // TRÈS IMPORTANT : On met la taille à vide pour forcer le choix au paiement
-    localStorage.setItem('produitTaille', ""); 
-    
-    window.location.href = 'paiement.html';
-}
+        function voirDetails(idDuBloc) {
+            localStorage.setItem('produitID', idDuBloc);
+            window.location.href = 'detail-produit.html';
+        }
     </script>
 </body>
 </html>

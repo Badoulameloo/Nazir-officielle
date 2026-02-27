@@ -39,8 +39,45 @@
         </div>
     </header>
 
-    <section id="products" class="product-showcase">
-        <h2 data-aos="fade-up">NOS PRODUITS</h2>
+    <section class="shop-section">
+    <h2 class="section-title">NOS PRODUITS</h2>
+    
+    <div class="filter-menu">
+        <button class="filter-btn active" onclick="filterProducts('all')">TOUT</button>
+        <button class="filter-btn" onclick="filterProducts('tshirt')">T-SHIRTS</button>
+        <button class="filter-btn" onclick="filterProducts('top')">TOPS BASIC</button>
+    </div>
+
+    <div class="products-grid" id="main-grid">
+        <div class="product-card tshirt"> ... </div>
+
+        <div class="product-card top">
+            <div class="product-image-container">
+                <img src="img/top-short-main.jpg" alt="Top Basic Manches Courtes">
+                <div class="product-overlay">
+                    <button onclick="voirDetails('top-short-details')" class="view-details">VOIR DÉTAILS</button>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3>TOP BASIC (MANCHES COURTES)</h3>
+                <p>6.000 CFA</p>
+            </div>
+        </div>
+
+        <div class="product-card top">
+            <div class="product-image-container">
+                <img src="img/top-long-main.jpg" alt="Top Basic Manches Longues">
+                <div class="product-overlay">
+                    <button onclick="voirDetails('top-long-details')" class="view-details">VOIR DÉTAILS</button>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3>TOP BASIC (MANCHES LONGUES)</h3>
+                <p>7.500 CFA</p>
+            </div>
+        </div>
+    </div>
+</section>
         
         <div class="products-grid">
 
@@ -162,6 +199,27 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+        function filterProducts(category) {
+    const cards = document.querySelectorAll('.product-card');
+    const buttons = document.querySelectorAll('.filter-btn');
+
+    // Gérer l'apparence des boutons
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    // Filtrer les cartes
+    cards.forEach(card => {
+        if (category === 'all') {
+            card.style.display = 'block';
+        } else {
+            if (card.classList.contains(category)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        }
+    });
+}
 // Initialiser le compteur au chargement
 updateCartCount();
 

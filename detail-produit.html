@@ -282,6 +282,42 @@
                         <button onclick="allerAuPaiement('sizePinkBlack')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                         <button onclick="ajouterAuPanierManuel('T-SHIRT PINK & BLACK', '8.000 CFA', 'img/img.pink&blackfrontshirt.jpeg.jpeg.png', 'sizePinkBlack')" class="btn-panier">+ AJOUTER AU PANIER</button>
                     </div>
+
+                    <div id="top-short-details" class="product-detail-content" style="display:none;">
+    <div class="details-grid">
+        <div class="details-image">
+            <img src="img/img.topshortblack.jpeg.jpeg.png" id="main-img-top" class="detail-main-img">
+        </div>
+        
+        <div class="details-info">
+            <h1>TOP BASIC MANCHES COURTES</h1>
+            <p class="price">6.000 CFA</p>
+
+            <div class="color-selection">
+                <p>COULEUR :</p>
+                <div class="color-options">
+                    <div class="color-circle black" onclick="changeColor('img/img.topshortblack.jpeg.jpeg.png')"></div>
+                    <div class="color-circle white" onclick="changeColor('img/img.topshortwhite.jpeg.jpeg.jpeg')"></div>
+                    <div class="color-circle pink" onclick="changeColor('img/img.topshortpink.jpeg.jpeg.jpeg')"></div>
+                    <div class="color-circle blue" onclick="changeColor('img/img.topshortblue.jpeg.jpeg.jpeg')"></div>
+                    <div class="color-circle brown" onclick="changeColor('img/img.topshortbrown.jpeg.jpeg.jpeg')"></div>
+                    <div class="color-circle green" onclick="changeColor('img/img.topshortgreen.jpeg.jpeg.jpeg')"></div>
+                </div>
+            </div>
+
+            <div class="size-selection">
+                <p>TAILLE :</p>
+                <div class="size-options">
+                    <input type="radio" name="sizeTop" value="S" id="ts1"><label for="ts1">S</label>
+                    <input type="radio" name="sizeTop" value="M" id="tm1"><label for="tm1">M</label>
+                    <input type="radio" name="sizeTop" value="L" id="tl1"><label for="tl1">L</label>
+                </div>
+            </div>
+
+            <button onclick="allerAuPaiement('sizeTop')" class="add-to-cart-btn">COMMANDER MAINTENANT</button>
+        </div>
+    </div>
+</div>
                 </div>
             </div>
         </div>
@@ -336,6 +372,11 @@
         if (countElement) {
             countElement.innerText = `PANIER (${panier.length})`;
         }
+        function changeColor(imgSrc) {
+    document.getElementById('main-img-top').src = imgSrc;
+    // On met aussi à jour l'image pour la page paiement
+    localStorage.setItem('produitImage', imgSrc);
+}
     }
     </script>
 </body>

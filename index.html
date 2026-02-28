@@ -198,13 +198,10 @@
      * @param {string} idDuBloc - L'ID correspondant au div dans details.html
      */
     function voirDetails(idDuBloc) {
-        // On stocke l'ID pour que la page suivante sache quel produit afficher
-        localStorage.setItem('produitID', idDuBloc);
-        
-        // Redirection vers la page de détails
-        // Vérifie bien que ton fichier s'appelle 'details.html'
-        window.location.href = 'details-produit.html';
-    }
+    localStorage.setItem('produitID', idDuBloc);
+    // Remplace 'details.html' par le VRAI nom de ton fichier
+    window.location.href = 'detail-produit.html'; 
+}
 
     /**
      * Met à jour le compteur du panier dans la barre de navigation

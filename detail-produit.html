@@ -265,7 +265,9 @@
             localStorage.setItem('produitPrix', produitVisible.querySelector('.price').innerText);
             localStorage.setItem('produitImage', produitVisible.querySelector('.detail-main-img').src);
             window.location.href = 'paiement.html';
-        
+        } else {
+            alert("Veuillez sélectionner une taille.");
+        }
     }
 
     function updateCartCount() {

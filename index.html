@@ -179,46 +179,66 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        function filterProducts(category, btn) {
-            const cards = document.querySelectorAll('.product-card');
-            const buttons = document.querySelectorAll('.filter-btn');
-
-            buttons.forEach(b => b.classList.remove('active'));
-            if(btn) btn.classList.add('active');
-
-            cards.forEach(card => {
-                if (category === 'all') {
-                    card.style.display = 'block';
-                } else if (card.classList.contains(category)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    // 1. Initialisation au chargement de la page
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCartCount();
+        // Initialisation des animations AOS
+        if (typeof AOS !== 'undefined') {
+            AOS.init({ 
+                duration: 1200, 
+                once: true 
             });
         }
+    });
 
-        // Initialiser au chargement
-        updateCartCount();
-        AOS.init({ duration: 1200, once: true });
-
-        function updateCartCount() {
-            let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
-            const countElement = document.getElementById('cart-count-nav');
-            if (countElement) {
-                countElement.innerText = `PANIER (${panier.length})`;
-            }
-        }
-
+    /**
+     * Enregistre l'ID du produit sélectionné et redirige vers la page détails
+     * @param {string} idDuBloc - L'ID correspondant au div dans details.html
+     */
     function voirDetails(idDuBloc) {
-        // On enregistre l'ID du produit (ex: 'top-long-details')
+        // On stocke l'ID pour que la page suivante sache quel produit afficher
         localStorage.setItem('produitID', idDuBloc);
         
-        // ATTENTION : Vérifie bien si ton fichier s'appelle 
-        // 'details.html' ou 'detail-produit.html'
-        window.location.href = 'details-produit.html'; 
+        // Redirection vers la page de détails
+        // Vérifie bien que ton fichier s'appelle 'details.html'
+        window.location.href = 'details.html';
     }
-    </script>
+
+    /**
+     * Met à jour le compteur du panier dans la barre de navigation
+     */
+    function updateCartCount() {
+        let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+        const countElement = document.getElementById('cart-count-nav');
+        if (countElement) {
+            countElement.innerText = `PANIER (${panier.length})`;
+        }
+    }
+
+    /**
+     * Filtre les produits par catégorie (T-shirts ou Tops)
+     */
+    function filterProducts(category, btn) {
+        const cards = document.querySelectorAll('.product-card');
+        const buttons = document.querySelectorAll('.filter-btn');
+
+        // Gérer l'état actif des boutons de filtre
+        buttons.forEach(b => b.classList.remove('active'));
+        if(btn) btn.classList.add('active');
+
+        // Afficher/Masquer les cartes
+        cards.forEach(card => {
+            if (category === 'all') {
+                card.style.display = 'block';
+            } else if (card.classList.contains(category)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>
 </body>
 </html>

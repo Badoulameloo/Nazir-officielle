@@ -33,41 +33,37 @@
         <div id="produit-white-pink" class="product-detail-content">
             <div class="details-grid">
                 <div class="details-image">
-                    <div class="image-wrapper"><p>FRONT</p><img src="img/img.frontshirt.jpeg.jpeg" class="detail-main-img"></div>
-                    <div class="image-wrapper"><p>BACK</p><img src="img/img.backshirt.jpeg.jpeg.jpeg" class="detail-main-img"></div>
+                    <div class="image-wrapper"><p class="image-label">FRONT VIEW</p><img src="img/img.frontshirt.jpeg.jpeg" class="detail-main-img"></div>
+                    <div class="image-wrapper"><p class="image-label">BACK VIEW</p><img src="img/img.backshirt.jpeg.jpeg.jpeg" class="detail-main-img"></div>
                 </div>
                 <div class="details-info">
                     <h1>T-SHIRT WHITE & PINK</h1>
                     <p class="price">8.000 CFA</p>
                     <div class="size-selection">
+                        <p class="size-label">SÉLECTIONNER LA TAILLE</p>
                         <div class="size-options">
+                            <input type="radio" name="sizePink" value="S" id="s1" disabled><label for="s1" class="out-of-stock">S</label>
+                            <input type="radio" name="sizePink" value="M" id="m1" disabled><label for="m1" class="out-of-stock">M</label>
+                            <input type="radio" name="sizePink" value="L" id="l1" disabled><label for="l1" class="out-of-stock">L</label>
                             <input type="radio" name="sizePink" value="XL" id="xl1"><label for="xl1">XL</label>
                         </div>
                     </div>
-                    <div class="action-buttons">
-                        <button onclick="allerAuPaiement('sizePink')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                    </div>
+                    <button onclick="allerAuPaiement('sizePink')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                 </div>
             </div>
         </div>
 
-        <div id="produit-white-pink" class="product-detail-content">
+        <div id="produit-white-grey" class="product-detail-content">
             <div class="details-grid">
                 <div class="details-image">
-                    <div class="image-wrapper"><p>FRONT</p><img src="img/img.frontshirt.jpeg.jpeg" class="detail-main-img"></div>
-                    <div class="image-wrapper"><p>BACK</p><img src="img/img.backshirt.jpeg.jpeg.jpeg" class="detail-main-img"></div>
+                    <img src="img/img.white&greyfrontshirt2.jpeg.jpeg.png" class="detail-main-img gray-scale">
                 </div>
                 <div class="details-info">
-                    <h1>T-SHIRT WHITE & PINK</h1>
-                    <p class="price">8.000 CFA</p>
-                    <div class="size-selection">
-                        <div class="size-options">
-                            <input type="radio" name="sizePink" value="XL" id="xl1"><label for="xl1">XL</label>
-                        </div>
-                    </div>
-                    <div class="action-buttons">
-                        <button onclick="allerAuPaiement('sizePink')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                    </div>
+                    <h1>T-SHIRT WHITE & GREY</h1>
+                    <p class="price" style="text-decoration: line-through;">8.000 CFA</p>
+                    <h2 style="color: #ff4d4d;">RUPTURE DE STOCK</h2>
+                    <p>Ce produit n'est plus disponible pour le moment.</p>
+                    <a href="index.html" class="btn-panier" style="display: inline-block; text-align: center; margin-top: 20px;">RETOUR À LA BOUTIQUE</a>
                 </div>
             </div>
         </div>
@@ -83,19 +79,18 @@
                     <p class="price">8.000 CFA</p>
                     <div class="size-selection">
                         <div class="size-options">
-                             <input type="radio" name="sizeBlack&White" value="M" id="m3"><label for="m1">M</label>
-                            <input type="radio" name="sizeBlack&White" value="L" id="l3"><label for="l1">L</label>
-                            <input type="radio" name="sizeBlack&White" value="XL" id="xl3"><label for="xl1">XL</label>
+                            <input type="radio" name="sizeBW" value="S" id="s3" disabled><label for="s3" class="out-of-stock">S</label>
+                            <input type="radio" name="sizeBW" value="M" id="m3"><label for="m3">M</label>
+                            <input type="radio" name="sizeBW" value="L" id="l3"><label for="l3">L</label>
+                            <input type="radio" name="sizeBW" value="XL" id="xl3"><label for="xl3">XL</label>
                         </div>
                     </div>
-                    <div class="action-buttons">
-                        <button onclick="allerAuPaiement('sizeBlack&white')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                    </div>
+                    <button onclick="allerAuPaiement('sizeBW')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                 </div>
             </div>
         </div>
 
-        <div id="produit-darkgreen" class="product-detail-content">
+        <div id="produit-dark-green" class="product-detail-content">
             <div class="details-grid">
                 <div class="details-image">
                     <div class="image-wrapper"><p>FRONT</p><img src="img/img.greenfrontshirt.jpeg.jpeg.png" class="detail-main-img"></div>
@@ -106,36 +101,35 @@
                     <p class="price">8.000 CFA</p>
                     <div class="size-selection">
                         <div class="size-options">
-                            <input type="radio" name="sizeDarkGreen" value="L" id="l4"><label for="l4">L</label>
-                            <input type="radio" name="sizeDarkGreen" value="XL" id="xl4"><label for="xl4">XL</label>
+                            <input type="radio" name="sizeDG" value="S" id="s4" disabled><label for="s4" class="out-of-stock">S</label>
+                            <input type="radio" name="sizeDG" value="M" id="m4" disabled><label for="m4" class="out-of-stock">M</label>
+                            <input type="radio" name="sizeDG" value="L" id="l4"><label for="l4">L</label>
+                            <input type="radio" name="sizeDG" value="XL" id="xl4"><label for="xl4">XL</label>
                         </div>
                     </div>
-                    <div class="action-buttons">
-                        <button onclick="allerAuPaiement('sizeDarkGreen')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                    </div>
+                    <button onclick="allerAuPaiement('sizeDG')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                 </div>
             </div>
         </div>
 
-        <div id="produit-skyblue" class="product-detail-content">
+        <div id="produit-blue-sky" class="product-detail-content">
             <div class="details-grid">
                 <div class="details-image">
                     <div class="image-wrapper"><p>FRONT</p><img src="img/img.skybluefrontshirt.jpeg.jpeg.jpeg" class="detail-main-img"></div>
                     <div class="image-wrapper"><p>BACK</p><img src="img/img.skybluebackshirt.jpeg.jpeg.jpeg" class="detail-main-img"></div>
                 </div>
                 <div class="details-info">
-                    <h1>T-SHIRT SKY BLUE</h1>
+                    <h1>T-SHIRT BLUE SKY</h1>
                     <p class="price">8.000 CFA</p>
                     <div class="size-selection">
                         <div class="size-options">
-                            <input type="radio" name="sizeSkyBlue" value="M" id="m5"><label for="m5">M</label>
-                            <input type="radio" name="sizeSkyBlue" value="L" id="l5"><label for="l5">L</label>
-                            <input type="radio" name="sizeSkyBlue" value="XL" id="xl5"><label for="xl5">XL</label>
+                            <input type="radio" name="sizeBS" value="S" id="s5" disabled><label for="s5" class="out-of-stock">S</label>
+                            <input type="radio" name="sizeBS" value="M" id="m5"><label for="m5">M</label>
+                            <input type="radio" name="sizeBS" value="L" id="l5"><label for="l5">L</label>
+                            <input type="radio" name="sizeBS" value="XL" id="xl5"><label for="xl5">XL</label>
                         </div>
                     </div>
-                    <div class="action-buttons">
-                        <button onclick="allerAuPaiement('sizeSkyBlue')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                    </div>
+                    <button onclick="allerAuPaiement('sizeBS')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                 </div>
             </div>
         </div>
@@ -151,14 +145,13 @@
                     <p class="price">8.000 CFA</p>
                     <div class="size-selection">
                         <div class="size-options">
-                            <input type="radio" name="sizePinkBlack" value="M" id="m6"><label for="xl6">M</label>
-                            <input type="radio" name="sizePinkBlack" value="L" id="l6"><label for="xl6">L</label>
-                            <input type="radio" name="sizePinkBlack" value="XL" id="xl6"><label for="xl6">XL</label>
+                            <input type="radio" name="sizePB" value="S" id="s6" disabled><label for="s6" class="out-of-stock">S</label>
+                            <input type="radio" name="sizePB" value="M" id="m6"><label for="m6">M</label>
+                            <input type="radio" name="sizePB" value="L" id="l6"><label for="l6">L</label>
+                            <input type="radio" name="sizePB" value="XL" id="xl6"><label for="xl6">XL</label>
                         </div>
                     </div>
-                    <div class="action-buttons">
-                        <button onclick="allerAuPaiement('sizePink')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                    </div>
+                    <button onclick="allerAuPaiement('sizePB')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                 </div>
             </div>
         </div>
@@ -166,23 +159,26 @@
         <div id="produit-white-black" class="product-detail-content">
             <div class="details-grid">
                 <div class="details-image">
-                    <div class="image-wrapper"><p>FRONT</p><img src="img/img.frontshirt.jpeg.jpeg" class="detail-main-img"></div>
-                    <div class="image-wrapper"><p>BACK</p><img src="img/img.backshirt.jpeg.jpeg.jpeg" class="detail-main-img"></div>
+                    <div class="image-wrapper"><p>FRONT</p><img src="img/img.white&blackfrontshirt.jpeg.jpeg" class="detail-main-img"></div>
+                    <div class="image-wrapper"><p>BACK</p><img src="img/img.white&blackbackshirt.jpeg.jpeg" class="detail-main-img"></div>
                 </div>
                 <div class="details-info">
                     <h1>T-SHIRT WHITE & BLACK</h1>
                     <p class="price">8.000 CFA</p>
                     <div class="size-selection">
                         <div class="size-options">
-                            <input type="radio" name="sizewhiteBlack" value="L" id="l7"><label for="l7">L</label>
+                            <input type="radio" name="sizeWB" value="S" id="s7" disabled><label for="s7" class="out-of-stock">S</label>
+                            <input type="radio" name="sizeWB" value="M" id="m7" disabled><label for="m7" class="out-of-stock">M</label>
+                            <input type="radio" name="sizeWB" value="L" id="l7"><label for="l7">L</label>
+                            <input type="radio" name="sizeWB" value="XL" id="xl7" disabled><label for="xl7" class="out-of-stock">XL</label>
                         </div>
                     </div>
-                    <div class="action-buttons">
-                        <button onclick="allerAuPaiement('sizeWhiteBlack')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                    </div>
+                    <button onclick="allerAuPaiement('sizeWB')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                 </div>
             </div>
         </div>
+
+    </main>
 
 
 

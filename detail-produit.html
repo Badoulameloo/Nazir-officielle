@@ -308,6 +308,40 @@
                 </div>
             </div>
 
+            <div id="top-long-details" class="product-detail-content" style="display:none;">
+    <div class="details-grid">
+        <div class="details-image">
+            <img src="img/img.toplongblack.jpeg" id="main-img-top-long" class="detail-main-img">
+        </div>
+        
+        <div class="details-info">
+            <h1>TOP BASIC MANCHES LONGUES</h1>
+            <p class="price">8.000 CFA</p>
+
+            <div class="color-selection">
+                <p>COULEUR :</p>
+                <div class="color-options">
+                    <div class="color-circle black" onclick="changeColorLong('img/img.toplongblack.jpeg.jpeg.jpeg')"></div>
+                    <div class="color-circle white" onclick="changeColorLong('img/img.toplongwhite.jpeg.jpeg.png')"></div>
+                    <div class="color-circle darkpink" onclick="changeColorLong('img/img.toplongDarkPink.jpeg.jpeg.jpeg')"></div>
+                    <div class="color-circle blue" onclick="changeColorLong('img/img.toplongblue.jpeg.jpeg.jpeg')"></div>
+                </div>
+            </div>
+
+            <div class="size-selection">
+                <p>TAILLE :</p>
+                <div class="size-options">
+                    <input type="radio" name="sizeTopLong" value="S" id="tsl1"><label for="tsl1">S</label>
+                    <input type="radio" name="sizeTopLong" value="M" id="tml1"><label for="tml1">M</label>
+                    <input type="radio" name="sizeTopLong" value="L" id="tll1"><label for="tll1">L</label>
+                </div>
+            </div>
+
+            <button onclick="allerAuPaiement('sizeTopLong')" class="add-to-cart-btn">COMMANDER MAINTENANT</button>
+        </div>
+    </div>
+</div>
+
             <div class="size-selection">
                 <p>TAILLE :</p>
                 <div class="size-options">
@@ -405,6 +439,13 @@ function updateCartCount() {
     const countElement = document.getElementById('cart-count-nav');
     if (countElement) {
         countElement.innerText = `PANIER (${panier.length})`;
+    }
+}
+function changeColorLong(imgSrc) {
+    const mainImg = document.getElementById('main-img-top-long');
+    if(mainImg) {
+        mainImg.src = imgSrc;
+        localStorage.setItem('produitImage', imgSrc);
     }
 }
 </script>

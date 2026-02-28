@@ -284,12 +284,10 @@ body {
 .image-wide img {
     width: 100%;
     display: block;
-    filter: grayscale(100%); /* Noir et blanc pur */
     transition: filter 1.2s ease, transform 1.2s ease;
 }
 
 .image-wide img:hover {
-    filter: grayscale(0%); /* La couleur revient doucement au survol */
     transform: scale(1.02);
 }
 

@@ -5,29 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DÉTAILS PRODUIT | NAZIR</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="img\favicon-32x32.png">
-
+    <link rel="icon" type="image/x-icon" href="img/favicon-32x32.png">
     <style>
-        /* Petit ajout pour aligner tes boutons proprement */
-        .action-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .btn-panier {
-            background-color: transparent;
-            color: white;
-            border: 1px solid white;
-            padding: 15px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .btn-panier:hover {
-            background-color: white;
-            color: black;
-        }
+        .action-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+        .btn-panier { background-color: transparent; color: white; border: 1px solid white; padding: 15px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-panier:hover { background-color: white; color: black; }
+        /* Pour masquer les produits par défaut */
+        .product-detail-content { display: none; }
     </style>
 </head>
 <body class="dark-theme">
@@ -38,9 +22,7 @@
             <a href="heritage.html">HÉRITAGE</a>
             <a href="contact.html">CONTACT</a>
         </div>
-        <div class="nav-logo">
-            <img src="img/img.logo.jpeg.png.png" alt="NAZIR">
-        </div>
+        <div class="nav-logo"><img src="img/img.logo.jpeg.png.png" alt="NAZIR"></div>
         <div class="nav-right">
             <a href="panier.html" id="cart-count-nav">PANIER (0)</a>
         </div>
@@ -48,406 +30,122 @@
 
     <main class="details-container">
         
-        <div id="produit-white-pink" class="product-detail-content" style="display:none;">
+        <div id="produit-white-pink" class="product-detail-content">
             <div class="details-grid">
                 <div class="details-image">
-                    <div class="image-wrapper">
-                        <p class="image-label">FRONT VIEW</p>
-                        <img src="img/img.frontshirt.jpeg.jpeg" class="detail-main-img">
-                    </div>
-                    <div class="image-wrapper">
-                        <p class="image-label">BACK VIEW</p>
-                        <img src="img/img.backshirt.jpeg.jpeg.jpeg" class="detail-main-img">
-                    </div>
+                    <div class="image-wrapper"><p>FRONT</p><img src="img/img.frontshirt.jpeg.jpeg" class="detail-main-img"></div>
+                    <div class="image-wrapper"><p>BACK</p><img src="img/img.backshirt.jpeg.jpeg.jpeg" class="detail-main-img"></div>
                 </div>
                 <div class="details-info">
                     <h1>T-SHIRT WHITE & PINK</h1>
                     <p class="price">8.000 CFA</p>
-                    <div class="description"><p>Coton lourd 240g, coupe boxy.</p></div>
-                    
                     <div class="size-selection">
-                        <p class="size-label">SÉLECTIONNER LA TAILLE</p>
                         <div class="size-options">
-                            <input type="radio" name="sizePink" value="S" id="s1" disabled><label for="s1" class="out-of-stock">S</label>
-                            <input type="radio" name="sizePink" value="M" id="m1" disabled><label for="m1">M</label>
-                            <input type="radio" name="sizePink" value="L" id="l1" disabled><label for="l1">L</label>
                             <input type="radio" name="sizePink" value="XL" id="xl1"><label for="xl1">XL</label>
                         </div>
                     </div>
                     <div class="action-buttons">
                         <button onclick="allerAuPaiement('sizePink')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                        <button onclick="ajouterAuPanierManuel('T-SHIRT WHITE & PINK', '8.000 CFA', 'img/img.frontshirt.jpeg.jpeg', 'sizePink')" class="btn-panier">+ AJOUTER AU PANIER</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="produit-white-grey" class="product-detail-content" style="display:none;">
+        <div id="top-short-details" class="product-detail-content">
             <div class="details-grid">
                 <div class="details-image">
-                    <div class="image-wrapper">
-                        <p class="image-label">FRONT VIEW</p>
-                        <img src="img/img.white&greyfrontshirt2.jpeg.jpeg.png" class="detail-main-img">
-                    </div>
-                    <div class="image-wrapper">
-                        <p class="image-label">BACK VIEW</p>
-                        <img src="img/img.white&grey2backshirt.jpeg.jpeg.png" class="detail-main-img">
-                    </div>
+                    <img src="img/img.topshortblack.jpeg.jpeg.jpeg" id="main-img-top" class="detail-main-img">
                 </div>
                 <div class="details-info">
-                    <h1>T-SHIRT WHITE & GREY</h1>
-                    <p class="price">8.000 CFA</p>
-                    <div class="description"><p>Coton lourd 240g, coupe boxy.</p></div>
-                    
-                    <div class="size-selection">
-                        <p class="size-label">SÉLECTIONNER LA TAILLE</p>
-                        <div class="size-options">
-                            <input type="radio" name="sizeWhiteGrey" value="S" id="s2" disabled><label for="s2" class="out-of-stock">S</label>
-                            <input type="radio" name="sizeWhiteGrey" value="M" id="m2"><label for="m2">M</label>
-                            <input type="radio" name="sizeWhiteGrey" value="L" id="l2" checked><label for="l2">L</label>
-                            <input type="radio" name="sizeWhiteGrey" value="XL" id="xl2"><label for="xl2">XL</label>
+                    <h1>TOP BASIC MANCHES COURTES</h1>
+                    <p class="price">6.000 CFA</p>
+                    <div class="color-selection">
+                        <p>COULEUR :</p>
+                        <div class="color-options">
+                            <div class="color-circle black" onclick="changeColor('img/img.topshortblack.jpeg.jpeg.jpeg')"></div>
+                            <div class="color-circle white" onclick="changeColor('img/img.topshortwhite.jpeg.jpeg.jpeg')"></div>
                         </div>
                     </div>
-                    <div class="action-buttons">
-                        <button onclick="allerAuPaiement('sizeWhiteGrey')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                        <button onclick="ajouterAuPanierManuel('T-SHIRT WHITE & GREY', '8.000 CFA', 'img/img.white&greyfrontshirt.jpeg.jpeg.jpeg', 'sizeWhiteGrey')" class="btn-panier">+ AJOUTER AU PANIER</button>
+                    <div class="size-selection">
+                        <div class="size-options">
+                            <input type="radio" name="sizeTop" value="S" id="ts1"><label for="ts1">S</label>
+                            <input type="radio" name="sizeTop" value="M" id="tm1"><label for="tm1">M</label>
+                        </div>
                     </div>
+                    <button onclick="allerAuPaiement('sizeTop')" class="add-to-cart-btn">COMMANDER MAINTENANT</button>
                 </div>
             </div>
         </div>
 
-        <div id="produit-black-white" class="product-detail-content" style="display:none;">
+        <div id="top-long-details" class="product-detail-content">
             <div class="details-grid">
                 <div class="details-image">
-                    <div class="image-wrapper">
-                        <p class="image-label">FRONT VIEW</p>
-                        <img src="img/img.black&whitefrontshirt.jpeg.png" class="detail-main-img">
-                    </div>
-                    <div class="image-wrapper">
-                        <p class="image-label">BACK VIEW</p>
-                        <img src="img/img.black&whitebackshirt.jpeg.png" class="detail-main-img">
-                    </div>
+                    <img src="img/img.toplongblack.jpeg" id="main-img-top-long" class="detail-main-img">
                 </div>
                 <div class="details-info">
-                    <h1>T-SHIRT BLACK & WHITE</h1>
+                    <h1>TOP BASIC MANCHES LONGUES</h1>
                     <p class="price">8.000 CFA</p>
-                    <div class="description"><p>Coton lourd 240g, coupe boxy.</p></div>
-                    
-                    <div class="size-selection">
-                        <p class="size-label">SÉLECTIONNER LA TAILLE</p>
-                        <div class="size-options">
-                            <input type="radio" name="sizeBlackWhite" value="S" id="s3" disabled><label for="s3" class="out-of-stock">S</label>
-                            <input type="radio" name="sizeBlackWhite" value="M" id="m3" disabled><label for="m3">M</label>
-                            <input type="radio" name="sizeBlackWhite" value="L" id="l3" checked><label for="l3">L</label>
-                            <input type="radio" name="sizeBlackWhite" value="XL" id="xl3" disabled><label for="xl3">XL</label>
+                    <div class="color-selection">
+                        <p>COULEUR :</p>
+                        <div class="color-options">
+                            <div class="color-circle black" onclick="changeColorLong('img/img.toplongblack.jpeg.jpeg.jpeg')"></div>
+                            <div class="color-circle white" onclick="changeColorLong('img/img.toplongwhite.jpeg.jpeg.png')"></div>
                         </div>
                     </div>
-                    <div class="action-buttons">
-                        <button onclick="allerAuPaiement('sizeBlackWhite')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                        <button onclick="ajouterAuPanierManuel('T-SHIRT BLACK & White', '8.000 CFA', 'img/img.black&whitefrontshirt.jpeg.png', 'sizeBlackWhite')" class="btn-panier">+ AJOUTER AU PANIER</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="produit-white-black" class="product-detail-content" style="display:none;">
-            <div class="details-grid">
-                <div class="details-image">
-                    <div class="image-wrapper">
-                        <p class="image-label">FRONT VIEW</p>
-                        <img src="img/img.white&blackfrontshirt.jpeg.jpeg" class="detail-main-img">
-                    </div>
-                    <div class="image-wrapper">
-                        <p class="image-label">BACK VIEW</p>
-                        <img src="img/img.white&blackbackshirt.jpeg.jpeg" class="detail-main-img">
-                    </div>
-                </div>
-                <div class="details-info">
-                    <h1>T-SHIRT WHITE & BLACK</h1>
-                    <p class="price">8.000 CFA</p>
-                    <div class="description"><p>Coton lourd 240g, coupe boxy.</p></div>
-                    
                     <div class="size-selection">
-                        <p class="size-label">SÉLECTIONNER LA TAILLE</p>
+                        <p>TAILLE :</p>
                         <div class="size-options">
-                            <input type="radio" name="sizeWhiteBlack" value="S" id="s4" disabled><label for="s4" class="out-of-stock">S</label>
-                            <input type="radio" name="sizeWhiteBlack" value="M" id="m4"><label for="m4" class="out-of-stock">M</label>
-                            <input type="radio" name="sizeWhiteBlack" value="L" id="l4" checked><label for="l4" class="out-of-stock">L</label>
-                            <input type="radio" name="sizeWhiteBlack" value="XL" id="xl4"><label for="xl4" class="out-of-stock">XL</label>
+                            <input type="radio" name="sizeTopLong" value="S" id="tsl1"><label for="tsl1">S</label>
+                            <input type="radio" name="sizeTopLong" value="M" id="tml1"><label for="tml1">M</label>
                         </div>
                     </div>
-                    <div class="action-buttons">
-                        <button onclick="allerAuPaiement('sizeWhiteBlack')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                        <button onclick="ajouterAuPanierManuel('T-SHIRT WHITE & BLACK', '8.000 CFA', 'img/img.white&blackfrontshirt.jpeg.jpeg', 'sizeWhiteBlack')" class="btn-panier">+ AJOUTER AU PANIER</button>
-                    </div>
+                    <button onclick="allerAuPaiement('sizeTopLong')" class="add-to-cart-btn">COMMANDER MAINTENANT</button>
                 </div>
             </div>
         </div>
-
-         <div id="produit-blue-sky" class="product-detail-content" style="display:none;">
-            <div class="details-grid">
-                <div class="details-image">
-                    <div class="image-wrapper">
-                        <p class="image-label">FRONT VIEW</p>
-                        <img src="img/img.skybluefrontshirt.jpeg.jpeg.jpeg" class="detail-main-img">
-                    </div>
-                    <div class="image-wrapper">
-                        <p class="image-label">BACK VIEW</p>
-                        <img src="img/img.skybluebackshirt.jpeg.jpeg.jpeg" class="detail-main-img">
-                    </div>
-                </div>
-                <div class="details-info">
-                    <h1>T-SHIRT BLUE SKY</h1>
-                    <p class="price">8.000 CFA</p>
-                    <div class="description"><p>Coton lourd 240g, coupe boxy.</p></div>
-                    
-                    <div class="size-selection">
-                        <p class="size-label">SÉLECTIONNER LA TAILLE</p>
-                        <div class="size-options">
-                            <input type="radio" name="sizeBlueSky" value="S" id="s5" disabled><label for="s4" class="out-of-stock">S</label>
-                            <input type="radio" name="sizeBlueSky" value="M" id="m5"><label for="m4">M</label>
-                            <input type="radio" name="sizeBlueSky" value="L" id="l5" checked><label for="l4">L</label>
-                            <input type="radio" name="sizeBlueSky" value="XL" id="xl5"><label for="xl4">XL</label>
-                        </div>
-                    </div>
-                    <div class="action-buttons">
-                        <button onclick="allerAuPaiement('sizeWhiteBlack')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                        <button onclick="ajouterAuPanierManuel('T-SHIRT WHITE & BLACK', '8.000 CFA', 'img/img.white&blackfrontshirt.jpeg.jpeg', 'sizeWhiteBlack')" class="btn-panier">+ AJOUTER AU PANIER</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="produit-dark-green" class="product-detail-content" style="display:none;">
-            <div class="details-grid">
-                <div class="details-image">
-                    <div class="image-wrapper">
-                        <p class="image-label">FRONT VIEW</p>
-                        <img src="img/img.greenfrontshirt.jpeg.jpeg.png" class="detail-main-img">
-                    </div>
-                    <div class="image-wrapper">
-                        <p class="image-label">BACK VIEW</p>
-                        <img src="img/img.greenbackshirt.jpeg.jpeg.png" class="detail-main-img">
-                    </div>
-                </div>
-                <div class="details-info">
-                    <h1>T-SHIRT DARK GREEN</h1>
-                    <p class="price">8.000 CFA</p>
-                    <div class="description"><p>Coton lourd 240g, coupe boxy.</p></div>
-                    
-                    <div class="size-selection">
-                        <p class="size-label">SÉLECTIONNER LA TAILLE</p>
-                        <div class="size-options">
-                            <input type="radio" name="sizeDarkGreen" value="S" id="s6" disabled><label for="s4" class="out-of-stock">S</label>
-                            <input type="radio" name="sizeDarkGreen" value="M" id="m6" checked><label for="m4">M</label>
-                            <input type="radio" name="sizeDarkGreen" value="L" id="l6" checked><label for="l4">L</label>
-                            <input type="radio" name="sizeDarkGreen" value="XL" id="xl6" checked><label for="xl4">XL</label>
-                        </div>
-                    </div>
-                    <div class="action-buttons">
-                        <button onclick="allerAuPaiement('sizeDarkGreen')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                        <button onclick="ajouterAuPanierManuel('T-SHIRT DARK & GREEN', '8.000 CFA', 'img/img.greenfrontshirt.jpeg.jpeg.png', 'sizeDarkGreen')" class="btn-panier">+ AJOUTER AU PANIER</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="produit-pink-black" class="product-detail-content" style="display:none;">
-            <div class="details-grid">
-                <div class="details-image">
-                    <div class="image-wrapper">
-                        <p class="image-label">FRONT VIEW</p>
-                        <img src="img/img.pink&blackfrontshirt.jpeg.jpeg.png" class="detail-main-img">
-                    </div>
-                    <div class="image-wrapper">
-                        <p class="image-label">BACK VIEW</p>
-                        <img src="img/img.pink&blackbackshirt.jpeg.jpeg.png" class="detail-main-img">
-                    </div>
-                </div>
-                <div class="details-info">
-                    <h1>T-SHIRT PINK&BLACK</h1>
-                    <p class="price">8.000 CFA</p>
-                    <div class="description"><p>Coton lourd 240g, coupe boxy.</p></div>
-                    
-                    <div class="size-selection">
-                        <p class="size-label">SÉLECTIONNER LA TAILLE</p>
-                        <div class="size-options">
-                            <input type="radio" name="sizePinkBlack" value="S" id="s7" disabled><label for="s4" class="out-of-stock">S</label>
-                            <input type="radio" name="sizePinkBlack" value="M" id="m7" checked><label for="m4">M</label>
-                            <input type="radio" name="sizePinkBlack" value="L" id="l7" checked><label for="l4">L</label>
-                            <input type="radio" name="sizePinkBlack" value="XL" id="xl7" checked><label for="xl4">XL</label>
-                        </div>
-                    </div>
-                    <div class="action-buttons">
-                        <button onclick="allerAuPaiement('sizePinkBlack')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                        <button onclick="ajouterAuPanierManuel('T-SHIRT PINK & BLACK', '8.000 CFA', 'img/img.pink&blackfrontshirt.jpeg.jpeg.png', 'sizePinkBlack')" class="btn-panier">+ AJOUTER AU PANIER</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div id="top-short-details" class="product-detail-content" style="display:none;">
-    <div class="details-grid">
-        <div class="details-image">
-            <img src="img/img.topshortblack.jpeg.jpeg.jpeg" id="main-img-top" class="detail-main-img">
-        </div>
-        
-        <div class="details-info">
-            <h1>TOP BASIC MANCHES COURTES</h1>
-            <p class="price">6.000 CFA</p>
-
-            <div class="color-selection">
-                <p>COULEUR :</p>
-                <div class="color-options">
-                    <div class="color-circle black" onclick="changeColor('img/img.topshortblack.jpeg.jpeg.jpeg')"></div>
-                    <div class="color-circle white" onclick="changeColor('img/img.topshortwhite.jpeg.jpeg.jpeg')"></div>
-                    <div class="color-circle pink" onclick="changeColor('img/img.topshortpink.jpeg.jpeg.jpeg')"></div>
-                    <div class="color-circle blue" onclick="changeColor('img/img.topshortblue.jpeg.jpeg.jpeg')"></div>
-                    <div class="color-circle brown" onclick="changeColor('img/img.topshortbrown.jpeg.jpeg.jpeg')"></div>
-                    <div class="color-circle green" onclick="changeColor('img/img.topshortgreen.jpeg.jpeg.jpeg')"></div>
-                </div>
-            </div>
-
-            <div id="top-long-details" class="product-detail-content" style="display:none;">
-    <div class="details-grid">
-        <div class="details-image">
-            <img src="img/img.toplongblack.jpeg" id="main-img-top-long" class="detail-main-img">
-        </div>
-        
-        <div class="details-info">
-            <h1>TOP BASIC MANCHES LONGUES</h1>
-            <p class="price">8.000 CFA</p>
-
-            <div class="color-selection">
-                <p>COULEUR :</p>
-                <div class="color-options">
-                    <div class="color-circle black" onclick="changeColorLong('img/img.toplongblack.jpeg.jpeg.jpeg')"></div>
-                    <div class="color-circle white" onclick="changeColorLong('img/img.toplongwhite.jpeg.jpeg.png')"></div>
-                    <div class="color-circle darkpink" onclick="changeColorLong('img/img.toplongDarkPink.jpeg.jpeg.jpeg')"></div>
-                    <div class="color-circle blue" onclick="changeColorLong('img/img.toplongblue.jpeg.jpeg.jpeg')"></div>
-                </div>
-            </div>
-
-            <div class="size-selection">
-                <p>TAILLE :</p>
-                <div class="size-options">
-                    <input type="radio" name="sizeTopLong" value="S" id="tsl1"><label for="tsl1">S</label>
-                    <input type="radio" name="sizeTopLong" value="M" id="tml1"><label for="tml1">M</label>
-                    <input type="radio" name="sizeTopLong" value="L" id="tll1"><label for="tll1">L</label>
-                </div>
-            </div>
-
-            <button onclick="allerAuPaiement('sizeTopLong')" class="add-to-cart-btn">COMMANDER MAINTENANT</button>
-        </div>
-    </div>
-</div>
-
-            <div class="size-selection">
-                <p>TAILLE :</p>
-                <div class="size-options">
-                    <input type="radio" name="sizeTop" value="S" id="ts1"><label for="ts1">S</label>
-                    <input type="radio" name="sizeTop" value="M" id="tm1"><label for="tm1">M</label>
-                    <input type="radio" name="sizeTop" value="L" id="tl1"><label for="tl1">L</label>
-                </div>
-            </div>
-
-            <button onclick="allerAuPaiement('sizeTop')" class="add-to-cart-btn">COMMANDER MAINTENANT</button>
-        </div>
-    </div>
-</div>
 
     </main>
 
     <script>
-window.onload = function() {
-    const produitID = localStorage.getItem('produitID');
-    if(produitID) {
-        const element = document.getElementById(produitID);
-        if(element) element.style.display = 'block';
-    }
-    updateCartCount();
-};
-
-// CETTE FONCTION DOIT ÊTRE BIEN DEHORS
-function changeColor(imgSrc) {
-    // On cherche l'image principale du top
-    const mainImg = document.getElementById('main-img-top');
-    if(mainImg) {
-        mainImg.src = imgSrc;
-        // On sauvegarde l'image choisie pour la page de paiement
-        localStorage.setItem('produitImage', imgSrc);
-    }
-}
-
-function allerAuPaiement(name) {
-    // 1. On cherche d'abord quel produit est affiché à l'écran
-    const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
-    
-    if (!produitVisible) {
-        alert("Erreur : Aucun produit détecté.");
-        return;
-    }
-
-    // 2. On cherche la taille cochée UNIQUEMENT à l'intérieur de ce produit
-    const selection = produitVisible.querySelector(`input[name="${name}"]:checked`);
-    
-    if(selection) {
-        // On récupère aussi le nom et le prix du produit visible pour être sûr
-        const nomProduit = produitVisible.querySelector('h1').innerText;
-        const prixProduit = produitVisible.querySelector('.price').innerText;
-        const imageProduit = produitVisible.querySelector('.detail-main-img').src;
-
-        // On sauvegarde tout proprement
-        localStorage.setItem('produitTaille', selection.value);
-        localStorage.setItem('produitNom', nomProduit);
-        localStorage.setItem('produitPrix', prixProduit);
-        localStorage.setItem('produitImage', imageProduit);
-
-        window.location.href = 'paiement.html';
-    } else {
-        alert("Veuillez sélectionner une taille.");
-    }
-}
-function ajouterAuPanierManuel(nom, prix, image, nameTaille) {
-    const tailleCheck = document.querySelector(`input[name="${nameTaille}"]:checked`);
-    
-    if(!tailleCheck) {
-        alert("Veuillez sélectionner une taille.");
-        return;
-    }
-
-    // Si l'utilisateur a changé la couleur, on prend l'image actuelle affichée
-    const imageActuelle = document.getElementById('main-img-top') ? document.getElementById('main-img-top').src : image;
-
-    let produit = {
-        nom: nom,
-        prix: prix,
-        image: imageActuelle,
-        taille: tailleCheck.value
+    window.onload = function() {
+        const produitID = localStorage.getItem('produitID');
+        if(produitID) {
+            const element = document.getElementById(produitID);
+            if(element) {
+                element.style.display = 'block';
+            }
+        }
+        updateCartCount();
     };
 
-    let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
-    panier.push(produit);
-    localStorage.setItem('monPanier', JSON.stringify(panier));
-
-    updateCartCount();
-    alert(nom + " ajouté au panier !");
-}
-
-function updateCartCount() {
-    let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
-    const countElement = document.getElementById('cart-count-nav');
-    if (countElement) {
-        countElement.innerText = `PANIER (${panier.length})`;
+    function changeColor(imgSrc) {
+        document.getElementById('main-img-top').src = imgSrc;
     }
-}
-function changeColorLong(imgSrc) {
-    const mainImg = document.getElementById('main-img-top-long');
-    if(mainImg) {
-        mainImg.src = imgSrc;
-        localStorage.setItem('produitImage', imgSrc);
+
+    function changeColorLong(imgSrc) {
+        document.getElementById('main-img-top-long').src = imgSrc;
     }
-}
-</script>
+
+    function allerAuPaiement(name) {
+        const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
+        const selection = produitVisible.querySelector(`input[name="${name}"]:checked`);
+        
+        if(selection) {
+            localStorage.setItem('produitTaille', selection.value);
+            localStorage.setItem('produitNom', produitVisible.querySelector('h1').innerText);
+            localStorage.setItem('produitPrix', produitVisible.querySelector('.price').innerText);
+            localStorage.setItem('produitImage', produitVisible.querySelector('.detail-main-img').src);
+            window.location.href = 'paiement.html';
+        } else {
+            alert("Veuillez sélectionner une taille.");
+        }
+    }
+
+    function updateCartCount() {
+        let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+        const countElement = document.getElementById('cart-count-nav');
+        if (countElement) countElement.innerText = `PANIER (${panier.length})`;
+    }
+    </script>
 </body>
 </html>

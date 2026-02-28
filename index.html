@@ -211,11 +211,14 @@
             }
         }
 
-        function voirDetails(idDuBloc) {
-            localStorage.setItem('produitID', idDuBloc);
-            window.location.href = 'detail-produit.html';
-            onclick="localStorage.setItem('produitID', 'top-long-details'); window.location.href='details.html';"
-        }
+    function voirDetails(idDuBloc) {
+        // On enregistre l'ID du produit (ex: 'top-long-details')
+        localStorage.setItem('produitID', idDuBloc);
+        
+        // ATTENTION : Vérifie bien si ton fichier s'appelle 
+        // 'details.html' ou 'detail-produit.html'
+        window.location.href = 'details-produit.html'; 
+    }
     </script>
 </body>
 </html>

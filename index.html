@@ -179,45 +179,46 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+        function filterProducts(category, btn) {
+            const cards = document.querySelectorAll('.product-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(b => b.classList.remove('active'));
+            if(btn) btn.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else if (card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialiser au chargement
+        updateCartCount();
+        AOS.init({ duration: 1200, once: true });
+
+        function updateCartCount() {
+            let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+            const countElement = document.getElementById('cart-count-nav');
+            if (countElement) {
+                countElement.innerText = `PANIER (${panier.length})`;
+            }
+        }
+
     function voirDetails(idDuBloc) {
         // On enregistre l'ID du produit (ex: 'top-long-details')
         localStorage.setItem('produitID', idDuBloc);
         
         // ATTENTION : Vérifie bien si ton fichier s'appelle 
         // 'details.html' ou 'detail-produit.html'
-        window.location.href = 'details.html'; 
+        window.location.href = 'details-produit.html'; 
     }
-
-    // Initialiser au chargement
-    updateCartCount();
-    AOS.init({ duration: 1200, once: true });
-
-    function updateCartCount() {
-        let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
-        const countElement = document.getElementById('cart-count-nav');
-        if (countElement) {
-            countElement.innerText = `PANIER (${panier.length})`;
-        }
-    }
-
-    function filterProducts(category, btn) {
-        const cards = document.querySelectorAll('.product-card');
-        const buttons = document.querySelectorAll('.filter-btn');
-
-        buttons.forEach(b => b.classList.remove('active'));
-        if(btn) btn.classList.add('active');
-
-        cards.forEach(card => {
-            if (category === 'all') {
-                card.style.display = 'block';
-            } else if (card.classList.contains(category)) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    }
-</script>
+    </script>
 </body>
 </html>

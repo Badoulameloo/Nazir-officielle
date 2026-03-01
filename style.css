@@ -55,20 +55,14 @@ body {
     position: relative;
     height: 100vh;
     width: 100%;
+    /* Remplace 'ton-image.jpg' par le nom réel de ton fichier image */
     background-image: url('img/img.hero.jpeg.png.jpeg'); 
-    background-size: cover; /* Remplit l'écran sans déformer */
-    background-position: center 20%; /* Ajuste pour que les visages soient bien cadrés */
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    
-    /* Ces deux lignes aident à garder la netteté sur certains navigateurs */
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: auto;
-
     display: flex;
     align-items: center;
     justify-content: center;
-    filter: contrast(1.05) brightness(0.9); /* Augmente un peu le contraste pour l'aspect net */
-
 }
 
 /* Pour que le texte reste bien lisible sur l'image */

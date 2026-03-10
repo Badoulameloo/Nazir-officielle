@@ -1046,7 +1046,8 @@ input:disabled + label {
 }
 
 .sold-out img {
-    filter: grayscale(100%); /* Met l'image en noir et blanc */
+    filter: brightness(0.7); /* Garde la couleur mais rend l'image plus sombre */
+    opacity: 0.8;
 }
 
 .sold-out-badge {

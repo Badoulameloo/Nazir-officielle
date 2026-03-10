@@ -198,26 +198,29 @@ body {
         gap: 20px;
     }
 }
-/* La carte produit */
+/* La carte qui contient tout */
 .product-card {
     width: 100%;
-    max-width: 350px; /* Force la largeur max d'un produit */
-    margin: 0 auto;   /* Centre la carte si elle est seule */
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Le conteneur de l'image */
+/* Le conteneur de l'image pour qu'ils soient tous alignés */
 .product-image-container {
     width: 100%;
-    height: 450px;    /* ON FORCE LA HAUTEUR ICI */
+    aspect-ratio: 2 / 3; /* Garde une proportion rectangulaire propre */
     overflow: hidden;
     position: relative;
+    background-color: #1a1a1a;
 }
 
 /* L'image elle-même */
 .product-img {
     width: 100%;
-    height: 100% !important; /* Force la hauteur à remplir le cadre de 450px */
-    object-fit: cover !important; /* Découpe l'image proprement pour qu'elle ne soit pas écrasée */
+    height: 100%;
+    object-fit: cover; /* Remplit le cadre sans s'écraser */
+    display: block;
 }
 /* --- DESIGN PAGE HERITAGE (LOOK ÉDITORIAL) --- */
 

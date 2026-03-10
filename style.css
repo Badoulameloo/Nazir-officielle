@@ -100,125 +100,87 @@ body {
     color: #000;
 }
 
-/* PRODUITS */
-.product-showcase {
-    padding: 100px 50px;
-}
+/* --- SECTION PRODUITS UNIFIÉE (NAZIR) --- */
 
-.product-grid-home {
+/* La grille principale */
+.products-grid, .product-grid-home {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 50px;
-}
-
-.product-image-wrapper {
-    position: relative;
-    overflow: hidden;
-    height: 400px; /* Hauteur fixe */
-    width: 100%; 
-    max-width: 320px; /* Limite la largeur de chaque photo de t-shirt */
-    margin: 0 auto; /* Centre l'image dans sa colonne */
-}
-
-.product-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* L'image remplit le cadre sans s'écraser */
-    transition: transform 0.8s ease;
-}
-
-.img-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: 0.6s ease;
-}
-
-.product-item-home:hover .img-back {
-    opacity: 1;
-}
-
-.product-info-home {
-    text-align: center;
-    padding-top: 20px;
-}
-
-.product-info-home h3 {
-    font-size: 14px;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-.product-grid-home {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Les images seront plus serrées donc plus petites */
-    gap: 30px;
-}
-/* --- GRILLE DE PRODUITS DYNAMIQUE --- */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
-    gap: 30px; /* Espace entre les produits */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
     width: 90%;
     max-width: 1200px;
-    margin: 80px auto; /* Centre la grille et donne de l'espace en haut */
+    margin: 80px auto;
 }
 
-/* --- ADAPTATION MOBILE (Important) --- */
-@media (max-width: 1024px) {
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur tablette */
-    }
-}
-
-@media (max-width: 768px) {
-    /* On force l'overlay à être visible tout le temps sur mobile */
-    .product-overlay {
-        opacity: 1 !important;
-        visibility: visible !important;
-        background: rgba(0, 0, 0, 0.6); /* Un fond semi-sombre pour lire le texte */
-        position: absolute;
-        bottom: 0;
-        height: auto; /* L'overlay ne cache plus toute l'image, juste le bas */
-        padding: 10px 0;
-    }
-
-    /* On ajuste la taille des boutons pour qu'ils ne prennent pas toute la place */
-    .overlay-link, .add-to-cart-quick, .overlay-btn {
-        transform: translateY(0) !important; /* Pas d'animation de montée */
-        margin: 5px auto !important;
-        width: 90% !important;
-        font-size: 10px !important; /* Un peu plus petit pour mobile */
-    }
-}
-
-@media (max-width: 600px) {
-    .products-grid {
-        grid-template-columns: repeat(1, 1fr); /* 1 seule colonne sur téléphone */
-        gap: 20px;
-    }
-}
 /* La carte produit */
-.product-card {
+.product-card, .product-item-home {
     width: 100%;
-    max-width: 350px; /* Force la largeur max d'un produit */
-    margin: 0 auto;   /* Centre la carte si elle est seule */
+    max-width: 350px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
-.product-image-container {
+/* LE CONTENEUR : C'est ici qu'on fixe la forme */
+.product-image-container, .product-image-wrapper {
     width: 100%;
-    height: 480px; /* On augmente la hauteur pour laisser respirer l'image */
+    height: 450px; /* Hauteur fixe pour l'uniformité */
     overflow: hidden;
     position: relative;
-    background-color: #000;
+    background-color: #0a0a0a;
 }
 
-/* L'image elle-même */
-.product-img, .product-card img {
-    width: 100%;
-    height: 100% !important; 
-    object-fit: cover; /* C'est LA règle magique : elle remplit l'espace sans déformer */
+/* L'IMAGE : Elle doit remplir le conteneur proprement */
+.product-img, .product-card img, .product-image-wrapper img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Découpe l'image pour remplir sans déformer */
     display: block;
+    transition: transform 0.6s ease;
+}
+
+/* Effet au survol */
+.product-image-container:hover .product-img {
+    transform: scale(1.05);
+}
+
+/* --- ETATS SPECIAUX --- */
+
+.sold-out {
+    position: relative;
+}
+
+.sold-out img {
+    filter: brightness(0.6) !important; /* Plus de noir et blanc, juste plus sombre */
+    opacity: 0.8;
+}
+
+.sold-out-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.9);
+    color: #000;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    z-index: 10;
+}
+
+/* --- INFOS PRODUIT --- */
+.product-info-home, .product-info {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.product-info h3 {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
 }
 /* --- DESIGN PAGE HERITAGE (LOOK ÉDITORIAL) --- */
 

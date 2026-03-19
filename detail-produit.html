@@ -285,16 +285,28 @@
     </main>
 
     <script>
-    window.onload = function() {
-        const produitID = localStorage.getItem('produitID');
-        if(produitID) {
-            const element = document.getElementById(produitID);
-            if(element) {
-                element.style.display = 'block';
-            }
+   window.onload = function() {
+    // 1. Récupération de l'ID depuis le localStorage
+    const produitID = localStorage.getItem('produitID');
+    console.log("ID produit demandé :", produitID); // Pour debugger dans la console (F12)
+
+    if(produitID) {
+        const element = document.getElementById(produitID);
+        if(element) {
+            // On cache tous les autres au cas où
+            document.querySelectorAll('.product-detail-content').forEach(div => {
+                div.style.display = 'none';
+            });
+            // On affiche le bon
+            element.style.display = 'block';
+        } else {
+            console.error("L'élément avec l'ID " + produitID + " n'existe pas dans cette page.");
+            // Optionnel : redirection vers l'accueil si le produit n'existe pas
+            // window.location.href = 'index.html';
         }
-        updateCartCount();
-    };
+    }
+    updateCartCount();
+};
 
     function changeColor(imgSrc) {
         document.getElementById('main-img-top').src = imgSrc;

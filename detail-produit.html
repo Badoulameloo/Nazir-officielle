@@ -8,10 +8,11 @@
     <link rel="icon" type="image/x-icon" href="img/favicon-32x32.png">
     <style>
         .action-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
-        .btn-panier { background-color: transparent; color: white; border: 1px solid white; padding: 15px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .btn-panier { background-color: transparent; color: white; border: 1px solid white; padding: 15px; cursor: pointer; font-weight: bold; transition: 0.3s; text-decoration: none; }
         .btn-panier:hover { background-color: white; color: black; }
-        /* Pour masquer les produits par défaut */
-        .product-detail-content { display: none; }
+        /* Masqué par défaut, le JS l'affichera */
+        .product-detail-content { display: none; padding: 20px; }
+        .out-of-stock { opacity: 0.5; cursor: not-allowed; text-decoration: line-through; }
     </style>
 </head>
 <body class="dark-theme">
@@ -22,7 +23,7 @@
             <a href="heritage.html">HÉRITAGE</a>
             <a href="contact.html">CONTACT</a>
         </div>
-        <div class="nav-logo"><img src="img/img.logo.jpeg.png.png" alt="NAZIR"></div>
+        <div class="nav-logo"><img src="img/img.logo.jpeg.png.png" alt="NAZIR" style="width: 100px;"></div>
         <div class="nav-right">
             <a href="panier.html" id="cart-count-nav">PANIER (0)</a>
         </div>
@@ -41,14 +42,13 @@
                     <p class="price">8.000 CFA</p>
                     <div class="size-selection">
                         <div class="size-options">
-                            <input type="radio" name="sizeBS" value="S" id="s1" disabled><label for="s1" class="out-of-stock">S</label>
-                            <input type="radio" name="sizeBS" value="M" id="m1" disabled><label for="m1" class=out-of-stock">M</label>
-                            <input type="radio" name="sizeBS" value="L" id="l1" ><label for="l1">L</label>
-                            <input type="radio" name="sizeBS" value="XL" id="xl1"><label for="xl1">XL</label>
+                            <input type="radio" name="sizeWP" value="S" id="s1" disabled><label for="s1" class="out-of-stock">S</label>
+                            <input type="radio" name="sizeWP" value="M" id="m1" disabled><label for="m1" class="out-of-stock">M</label>
+                            <input type="radio" name="sizeWP" value="L" id="l1"><label for="l1">L</label>
+                            <input type="radio" name="sizeWP" value="XL" id="xl1"><label for="xl1">XL</label>
                         </div>
                     </div>
-                    <button onclick="allerAuPaiement('sizeBS')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                    </div>
+                    <button onclick="allerAuPaiement('sizeWP')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                 </div>
             </div>
         </div>
@@ -64,13 +64,14 @@
                     <p class="price">8.000 CFA</p>
                     <div class="size-selection">
                         <div class="size-options">
-                            <input type="radio" name="sizeBS" value="S" id="s2" disabled><label for="s2" class="out-of-stock">S</label>
-                            <input type="radio" name="sizeBS" value="M" id="m2" ><label for="m2" >M</label>
-                            <input type="radio" name="sizeBS" value="L" id="l2" ><label for="l2" >L</label>
-                            <input type="radio" name="sizeBS" value="XL" id="xl2"><label for="xl5">XL</label>
+                            <input type="radio" name="sizeWG" value="S" id="s2" disabled><label for="s2" class="out-of-stock">S</label>
+                            <input type="radio" name="sizeWG" value="M" id="m2"><label for="m2">M</label>
+                            <input type="radio" name="sizeWG" value="L" id="l2"><label for="l2">L</label>
+                            <input type="radio" name="sizeWG" value="XL" id="xl2"><label for="xl2">XL</label>
                         </div>
                     </div>
-                    <button onclick="allerAuPaiement('sizeBS')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                    <button onclick="allerAuPaiement('sizeWG')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                </div>
             </div>
         </div>
 
@@ -85,35 +86,36 @@
                     <p class="price">8.000 CFA</p>
                     <div class="size-selection">
                         <div class="size-options">
-                            <input type="radio" name="sizeBS" value="S" id="s3" disabled><label for="s3" class="out-of-stock">S</label>
-                            <input type="radio" name="sizeBS" value="M" id="m3" ><label for="m3" >M</label>
-                            <input type="radio" name="sizeBS" value="L" id="l3" ><label for="l3" >L</label>
-                            <input type="radio" name="sizeBS" value="XL" id="xl3" disabled><label for="xl3" class="out-of-stock">XL</label>
+                            <input type="radio" name="sizeBW" value="S" id="s3" disabled><label for="s3" class="out-of-stock">S</label>
+                            <input type="radio" name="sizeBW" value="M" id="m3"><label for="m3">M</label>
+                            <input type="radio" name="sizeBW" value="L" id="l3"><label for="l3">L</label>
+                            <input type="radio" name="sizeBW" value="XL" id="xl3" disabled><label for="xl3" class="out-of-stock">XL</label>
                         </div>
                     </div>
-                    <button onclick="allerAuPaiement('sizeBS')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                    </div>
+                    <button onclick="allerAuPaiement('sizeBW')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                 </div>
+            </div>
+        </div>
 
-            <div id="produit-black-white" class="product-detail-content">
+        <div id="produit-black-white-alt" class="product-detail-content">
             <div class="details-grid">
                 <div class="details-image">
                     <div class="image-wrapper"><p>FRONT</p><img src="img/imgimg.black&whitefrontshirt2.jpeg.png.png" class="detail-main-img"></div>
                     <div class="image-wrapper"><p>BACK</p><img src="img/imgimg.black&whitebackshirt2.jpeg.png.png" class="detail-main-img"></div>
                 </div>
                 <div class="details-info">
-                    <h1>T-SHIRT BLACK & WHITE</h1>
+                    <h1>T-SHIRT BLACK & WHITE V2</h1>
                     <p class="price">8.000 CFA</p>
                     <div class="size-selection">
                         <div class="size-options">
-                            <input type="radio" name="sizeBS" value="S" id="s4" disabled><label for="s4" class="out-of-stock">S</label>
-                            <input type="radio" name="sizeBS" value="M" id="m4" ><label for="m4" >M</label>
-                            <input type="radio" name="sizeBS" value="L" id="l4" ><label for="l4" >L</label>
-                            <input type="radio" name="sizeBS" value="XL" id="xl4" disabled><label for="xl4" class="out-of-stock">XL</label>
+                            <input type="radio" name="sizeBW2" value="S" id="s4" disabled><label for="s4" class="out-of-stock">S</label>
+                            <input type="radio" name="sizeBW2" value="M" id="m4"><label for="m4">M</label>
+                            <input type="radio" name="sizeBW2" value="L" id="l4"><label for="l4">L</label>
+                            <input type="radio" name="sizeBW2" value="XL" id="xl4" disabled><label for="xl4" class="out-of-stock">XL</label>
                         </div>
                     </div>
-                    <button onclick="allerAuPaiement('sizeBS')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                    </div>
+                    <button onclick="allerAuPaiement('sizeBW2')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                </div>
             </div>
         </div>
 
@@ -128,83 +130,18 @@
                     <p class="price">8.000 CFA</p>
                     <div class="size-selection">
                         <div class="size-options">
-                            <input type="radio" name="sizeBS" value="S" id="s5" disabled><label for="s5" class="out-of-stock">S</label>
-                            <input type="radio" name="sizeBS" value="M" id="m5" disabled><label for="m5" class=out-of-stock">M</label>
-                            <input type="radio" name="sizeBS" value="L" id="l5" ><label for="l5" >L</label>
-                            <input type="radio" name="sizeBS" value="XL" id="xl5" disabled><label for="xl5" class="out-of-stock">XL</label>
+                            <input type="radio" name="sizeDG" value="S" id="s5" disabled><label for="s5" class="out-of-stock">S</label>
+                            <input type="radio" name="sizeDG" value="M" id="m5" disabled><label for="m5" class="out-of-stock">M</label>
+                            <input type="radio" name="sizeDG" value="L" id="l5"><label for="l5">L</label>
+                            <input type="radio" name="sizeDG" value="XL" id="xl5" disabled><label for="xl5" class="out-of-stock">XL</label>
                         </div>
                     </div>
-                    <button onclick="allerAuPaiement('sizeBS')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                    </div>
+                    <button onclick="allerAuPaiement('sizeDG')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                 </div>
             </div>
         </div>
 
-        <div id="produit-blue-sky" class="product-detail-content">
-            <div class="details-grid">
-                <div class="details-image">
-                    <div class="image-wrapper"><p>FRONT</p><img src="img/img.skybluefrontshirt.jpeg.jpeg.jpeg" class="detail-main-img"></div>
-                    <div class="image-wrapper"><p>BACK</p><img src="img/img.skybluebackshirt.jpeg.jpeg.jpeg" class="detail-main-img"></div>
-                </div>
-                <div class="details-info">
-                    <h1>T-SHIRT BLUE SKY</h1>
-                    <p class="price">8.000 CFA</p>
-                    <div class="size-selection">
-                        <div class="size-options">
-                            <input type="radio" name="sizeBS" value="S" id="s6" disabled><label for="s6" class="out-of-stock">S</label>
-                            <input type="radio" name="sizeBS" value="M" id="m6" disabled><label for="m6" class=out-of-stock">M</label>
-                            <input type="radio" name="sizeBS" value="L" id="l6" disabled><label for="l6" class="out-of-stock">L</label>
-                            <input type="radio" name="sizeBS" value="XL" id="xl6"><label for="xl6">XL</label>
-                        </div>
-                    </div>
-                    <button onclick="allerAuPaiement('sizeBS')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="produit-pink-black" class="product-detail-content">
-            <div class="details-grid">
-                <div class="details-image">
-                    <div class="image-wrapper"><p>FRONT</p><img src="img/img.pink&blackfrontshirt.jpeg.jpeg.png" class="detail-main-img"></div>
-                    <div class="image-wrapper"><p>BACK</p><img src="img/img.pink&blackbackshirt.jpeg.jpeg.png" class="detail-main-img"></div>
-                </div>
-                <div class="details-info">
-                    <h1>T-SHIRT PINK & BLACK</h1>
-                    <p class="price">8.000 CFA</p>
-                    <div class="size-selection">
-                        <div class="size-options">
-                            <input type="radio" name="sizePB" value="S" id="s7" disabled><label for="s7" class="out-of-stock">S</label>
-                            <input type="radio" name="sizePB" value="M" id="m7" disabled><label for="m7" class="out-of-stock">M</label>
-                            <input type="radio" name="sizePB" value="L" id="l7" ><label for="l7" >L</label>
-                            <input type="radio" name="sizePB" value="XL" id="xl7" ><label for="xl7" >XL</label>
-                        </div>
-                    </div>
-                    <button onclick="allerAuPaiement('sizePB')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="produit-white-black" class="product-detail-content">
-            <div class="details-grid">
-                <div class="details-image">
-                    <div class="image-wrapper"><p>FRONT</p><img src="img/img.white&blackfrontshirt.jpeg.jpeg" class="detail-main-img"></div>
-                    <div class="image-wrapper"><p>BACK</p><img src="img/img.white&blackbackshirt.jpeg.jpeg" class="detail-main-img"></div>
-                </div>
-                <div class="details-info">
-                    <h1>T-SHIRT WHITE & BLACK</h1>
-                    <p class="price">8.000 CFA</p>
-                    <div class="size-selection">
-                        <div class="size-options">
-                            <input type="radio" name="sizePB" value="S" id="s8" disabled><label for="s8" class="out-of-stock">S</label>
-                            <input type="radio" name="sizePB" value="M" id="m8" ><label for="m8" >M</label>
-                            <input type="radio" name="sizePB" value="L" id="l8" ><label for="l8" >L</label>
-                            <input type="radio" name="sizePB" value="XL" id="xl8" ><label for="xl8" >XL</label>
-                        </div>
-                    </div>
-                    <button onclick="allerAuPaiement('sizePB')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                </div>
-                </div>
-            <div id="produit-dark-red" class="product-detail-content">
+        <div id="produit-dark-red" class="product-detail-content">
             <div class="details-grid">
                 <div class="details-image">
                     <div class="image-wrapper"><p>FRONT</p><img src="img/imgimg.darkredfrontshirt.jpeg.png.png" class="detail-main-img"></div>
@@ -222,102 +159,33 @@
 
     </main>
 
-
-
-        <div id="top-short-details" class="product-detail-content">
-            <div class="details-grid">
-                <div class="details-image">
-                    <img src="img/img.topshortblack.jpeg.jpeg.jpeg" id="main-img-top" class="detail-main-img">
-                </div>
-                <div class="details-info">
-                    <h1>TOP BASIC MANCHES COURTES</h1>
-                    <p class="price">4.500 CFA</p>
-                    <div class="color-selection">
-                        <p>COULEUR :</p>
-                        <div class="color-options">
-                            <div class="color-circle white" onclick="changeColor('img/img.topshortwhite.jpeg.jpeg.jpeg')"></div>
-                            <div class="color-circle green" onclick="changeColor('img/img.topshortgreen.jpeg.jpeg.jpeg')"></div>
-
-
-
-                        </div>
-                    </div>
-                    <div class="size-selection">
-                        <div class="size-options">
-                            <input type="radio" name="sizeTop" value="S" id="ts1"><label for="ts1">S</label>
-                            <input type="radio" name="sizeTop" value="M" id="tm1"><label for="tm1">M</label>
-                        </div>
-                    </div>
-                    <button onclick="allerAuPaiement('sizeTop')" class="add-to-cart-btn">COMMANDER MAINTENANT</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="top-long-details" class="product-detail-content">
-            <div class="details-grid">
-                <div class="details-image">
-                    <img src="img/img.toplongwhite.jpeg.jpeg.jpeg" id="main-img-top-long" class="detail-main-img">
-                </div>
-                <div class="details-info">
-                    <h1>TOP BASIC MANCHES LONGUES</h1>
-                    <p class="price">5.000 CFA</p>
-                    <div class="color-selection">
-                        <p>COULEUR :</p>
-                        <div class="color-options">
-                            
-                            <div class="color-circle blue" onclick="changeColorLong('img/img.toplongblue.jpeg.jpeg.jpeg')"></div>
-                            <div class="color-circle darkpink" onclick="changeColorLong('img/img.toplongDarkPink.jpeg.jpeg.jpeg')"></div>
-
-                        </div>
-                    </div>
-                    <div class="size-selection">
-                        <p>TAILLE :</p>
-                        <div class="size-options">
-                            <input type="radio" name="sizeTopLong" value="S" id="tsl1"><label for="tsl1">S</label>
-                            <input type="radio" name="sizeTopLong" value="M" id="tml1"><label for="tml1">M</label>
-                        </div>
-                    </div>
-                    <button onclick="allerAuPaiement('sizeTopLong')" class="add-to-cart-btn">COMMANDER MAINTENANT</button>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
     <script>
-   window.onload = function() {
-    // 1. Récupération de l'ID depuis le localStorage
-    const produitID = localStorage.getItem('produitID');
-    console.log("ID produit demandé :", produitID); // Pour debugger dans la console (F12)
+    window.onload = function() {
+        const produitID = localStorage.getItem('produitID');
+        const allProducts = document.querySelectorAll('.product-detail-content');
+        
+        // Cacher tout par défaut
+        allProducts.forEach(p => p.style.display = 'none');
 
-    if(produitID) {
-        const element = document.getElementById(produitID);
-        if(element) {
-            // On cache tous les autres au cas où
-            document.querySelectorAll('.product-detail-content').forEach(div => {
-                div.style.display = 'none';
-            });
-            // On affiche le bon
-            element.style.display = 'block';
+        if(produitID) {
+            const target = document.getElementById(produitID);
+            if(target) {
+                target.style.display = 'block';
+            } else {
+                // Fallback : Si l'ID n'est pas trouvé, on affiche le premier
+                if(allProducts[0]) allProducts[0].style.display = 'block';
+            }
         } else {
-            console.error("L'élément avec l'ID " + produitID + " n'existe pas dans cette page.");
-            // Optionnel : redirection vers l'accueil si le produit n'existe pas
-            // window.location.href = 'index.html';
+            // Si pas d'ID en mémoire, afficher le premier
+            if(allProducts[0]) allProducts[0].style.display = 'block';
         }
-    }
-    updateCartCount();
-};
-
-    function changeColor(imgSrc) {
-        document.getElementById('main-img-top').src = imgSrc;
-    }
-
-    function changeColorLong(imgSrc) {
-        document.getElementById('main-img-top-long').src = imgSrc;
-    }
+        updateCartCount();
+    };
 
     function allerAuPaiement(name) {
         const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
+        if(!produitVisible) return;
+
         const selection = produitVisible.querySelector(`input[name="${name}"]:checked`);
         
         if(selection) {

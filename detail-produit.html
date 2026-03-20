@@ -137,48 +137,56 @@
     </main>
 
     <script>
-    window.onload = function() {
-        const produitID = localStorage.getItem('produitID');
-        const allProducts = document.querySelectorAll('.product-detail-content');
-        
-        allProducts.forEach(p => p.style.display = 'none');
+   window.onload = function() {
+    // 1. On récupère l'ID envoyé par l'index
+    const produitID = localStorage.getItem('produitID');
+    const allProducts = document.querySelectorAll('.product-detail-content');
+    
+    console.log("ID reçu depuis l'index :", produitID);
 
-        if(produitID) {
-            const target = document.getElementById(produitID);
-            if(target) {
-                target.style.display = 'block';
-            } else {
-                if(allProducts[0]) allProducts[0].style.display = 'block';
-            }
+    // 2. On cache tout par sécurité
+    allProducts.forEach(p => p.style.display = 'none');
+
+    if (produitID) {
+        const target = document.getElementById(produitID);
+        if (target) {
+            // Si on trouve le produit, on l'affiche
+            target.style.display = 'block';
         } else {
+            // SI CA NE S'AFFICHE PAS : C'est que l'ID n'existe pas dans cette page
+            alert("Erreur : Le produit '" + produitID + "' n'existe pas dans le code HTML de cette page.");
+            // On affiche le premier par défaut pour ne pas laisser la page vide
             if(allProducts[0]) allProducts[0].style.display = 'block';
         }
-        updateCartCount();
-    };
-
-    function allerAuPaiement(name) {
-        // On récupère le bloc actuellement affiché
-        const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
-        if(!produitVisible) return;
-
-        const selection = produitVisible.querySelector(`input[name="${name}"]:checked`);
-        
-        if(selection) {
-            localStorage.setItem('produitTaille', selection.value);
-            localStorage.setItem('produitNom', produitVisible.querySelector('h1').innerText);
-            localStorage.setItem('produitPrix', produitVisible.querySelector('.price').innerText);
-            localStorage.setItem('produitImage', produitVisible.querySelector('.detail-main-img').src);
-            window.location.href = 'paiement.html';
-        } else {
-            alert("Veuillez sélectionner une taille.");
-        }
+    } else {
+        // Si on arrive sur la page sans cliquer sur un bouton
+        if(allProducts[0]) allProducts[0].style.display = 'block';
     }
+    updateCartCount();
+};
 
-    function updateCartCount() {
-        let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
-        const countElement = document.getElementById('cart-count-nav');
-        if (countElement) countElement.innerText = `PANIER (${panier.length})`;
+function allerAuPaiement(name) {
+    const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
+    if(!produitVisible) return;
+
+    const selection = produitVisible.querySelector(`input[name="${name}"]:checked`);
+    
+    if(selection) {
+        localStorage.setItem('produitTaille', selection.value);
+        localStorage.setItem('produitNom', produitVisible.querySelector('h1').innerText);
+        localStorage.setItem('produitPrix', produitVisible.querySelector('.price').innerText);
+        localStorage.setItem('produitImage', produitVisible.querySelector('.detail-main-img').src);
+        window.location.href = 'paiement.html';
+    } else {
+        alert("Veuillez sélectionner une taille.");
     }
+}
+
+function updateCartCount() {
+    let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+    const countElement = document.getElementById('cart-count-nav');
+    if (countElement) countElement.innerText = `PANIER (${panier.length})`;
+}
     </script>
 </body>
 </html>

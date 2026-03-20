@@ -235,22 +235,33 @@
     });
 
     // FONCTION PAIEMENT
-    function allerAuPaiement(name) {
-        const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
-        if(!produitVisible) return;
+   function procederAuPaiement() {
+    // 1. On trouve quel t-shirt est affiché à l'écran
+    const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
+    if(!produitVisible) return;
 
-        const selection = produitVisible.querySelector(`input[name="${name}"]:checked`);
-        
-        if(selection) {
-            localStorage.setItem('produitTaille', selection.value);
-            localStorage.setItem('produitNom', produitVisible.querySelector('h1').innerText);
-            localStorage.setItem('produitPrix', produitVisible.querySelector('.price').innerText);
-            // On prend l'image du FRONT (la première)
-            localStorage.setItem('produitImage', produitVisible.querySelector('.detail-main-img').src);
-            window.location.href = 'paiement.html';
-        } else {
-            alert("Veuillez sélectionner une taille.");
-        }
+    // 2. On récupère la taille sélectionnée
+    const tailleSelectionnee = produitVisible.querySelector('input[type="radio"]:checked');
+    
+    if(!tailleSelectionnee) {
+        alert("Veuillez sélectionner une taille avant de continuer.");
+        return;
+    }
+
+    // 3. On crée l'objet du produit actuel
+    const achatImmediat = {
+        nom: produitVisible.querySelector('h1').innerText,
+        taille: tailleSelectionnee.value,
+        prix: "8.000",
+        image: produitVisible.querySelector('.detail-main-img').src
+    };
+
+    // 4. On stocke cet achat spécifique pour la page de paiement
+    localStorage.setItem('achat_rapide', JSON.stringify(achatImmediat));
+
+    // 5. Direction la page de paiement
+    window.location.href = 'paiement.html';
+}
     }
 
     function updateCartCount() {

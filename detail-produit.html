@@ -8,10 +8,17 @@
     <link rel="icon" type="image/x-icon" href="img/favicon-32x32.png">
     <style>
         .action-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
-        .btn-panier { background-color: transparent; color: white; border: 1px solid white; padding: 15px; cursor: pointer; font-weight: bold; transition: 0.3s; text-decoration: none; }
+        .btn-panier { background-color: transparent; color: white; border: 1px solid white; padding: 15px; cursor: pointer; font-weight: bold; transition: 0.3s; text-decoration: none; text-align: center; }
         .btn-panier:hover { background-color: white; color: black; }
-        .product-detail-content { display: block; padding: 20px; }
+        
+        /* Cacher tous les blocs par défaut */
+        .product-detail-content { display: none; padding: 20px; }
         .out-of-stock { opacity: 0.5; cursor: not-allowed; text-decoration: line-through; }
+        
+        /* Style pour s'assurer que les images de détails s'affichent bien */
+        .detail-main-img { width: 100%; max-width: 500px; height: auto; display: block; margin-bottom: 10px; }
+        .image-wrapper { margin-bottom: 30px; }
+        .image-wrapper p { font-size: 0.8rem; letter-spacing: 2px; color: #888; margin-bottom: 5px; }
     </style>
 </head>
 <body class="dark-theme">
@@ -63,7 +70,6 @@
                     <p class="price">8.000 CFA</p>
                     <div class="size-selection">
                         <div class="size-options">
-                            <input type="radio" name="sizeWG" value="S" id="s2" disabled><label for="s2" class="out-of-stock">S</label>
                             <input type="radio" name="sizeWG" value="M" id="m2"><label for="m2">M</label>
                             <input type="radio" name="sizeWG" value="L" id="l2"><label for="l2">L</label>
                             <input type="radio" name="sizeWG" value="XL" id="xl2"><label for="xl2">XL</label>
@@ -87,6 +93,7 @@
                         <div class="size-options">
                             <input type="radio" name="sizeBS" value="M" id="mBS"><label for="mBS">M</label>
                             <input type="radio" name="sizeBS" value="L" id="lBS"><label for="lBS">L</label>
+                            <input type="radio" name="sizeBS" value="XL" id="xlBS"><label for="xlBS">XL</label>
                         </div>
                     </div>
                     <button onclick="allerAuPaiement('sizeBS')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
@@ -105,8 +112,8 @@
                     <p class="price">8.000 CFA</p>
                     <div class="size-selection">
                         <div class="size-options">
+                            <input type="radio" name="sizePB" value="M" id="mPB"><label for="mPB">M</label>
                             <input type="radio" name="sizePB" value="L" id="lPB"><label for="lPB">L</label>
-                            <input type="radio" name="sizePB" value="XL" id="xlPB"><label for="xlPB">XL</label>
                         </div>
                     </div>
                     <button onclick="allerAuPaiement('sizePB')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
@@ -134,59 +141,76 @@
             </div>
         </div>
 
+        <div id="produit-dark-green" class="product-detail-content">
+            <div class="details-grid">
+                <div class="details-image">
+                    <div class="image-wrapper"><p>FRONT</p><img src="img/img.greenfrontshirt.jpeg.jpeg.png" class="detail-main-img"></div>
+                    <div class="image-wrapper"><p>BACK</p><img src="img/img.greenbackshirt.jpeg.jpeg.png" class="detail-main-img"></div>
+                </div>
+                <div class="details-info">
+                    <h1>T-SHIRT DARK GREEN</h1>
+                    <p class="price">8.000 CFA</p>
+                    <div class="size-selection">
+                        <div class="size-options">
+                            <input type="radio" name="sizeDG" value="L" id="lDG"><label for="lDG">L</label>
+                            <input type="radio" name="sizeDG" value="XL" id="xlDG"><label for="xlDG">XL</label>
+                        </div>
+                    </div>
+                    <button onclick="allerAuPaiement('sizeDG')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <script>
-   window.onload = function() {
-    // 1. On récupère l'ID envoyé par l'index
-    const produitID = localStorage.getItem('produitID');
-    const allProducts = document.querySelectorAll('.product-detail-content');
-    
-    console.log("ID reçu depuis l'index :", produitID);
+    // SCRIPT DE GESTION DE L'AFFICHAGE
+    document.addEventListener('DOMContentLoaded', function() {
+        const produitID = localStorage.getItem('produitID');
+        const allProducts = document.querySelectorAll('.product-detail-content');
+        
+        // On cache tout au début
+        allProducts.forEach(p => p.style.display = 'none');
 
-    // 2. On cache tout par sécurité
-    allProducts.forEach(p => p.style.display = 'none');
-
-    if (produitID) {
-        const target = document.getElementById(produitID);
-        if (target) {
-            // Si on trouve le produit, on l'affiche
-            target.style.display = 'block';
+        if (produitID) {
+            const target = document.getElementById(produitID);
+            if (target) {
+                target.style.display = 'block';
+            } else {
+                // Fallback si l'ID envoyé par l'index est inconnu
+                if(allProducts[0]) allProducts[0].style.display = 'block';
+            }
         } else {
-            // SI CA NE S'AFFICHE PAS : C'est que l'ID n'existe pas dans cette page
-            alert("Erreur : Le produit '" + produitID + "' n'existe pas dans le code HTML de cette page.");
-            // On affiche le premier par défaut pour ne pas laisser la page vide
+            // Si on arrive sur la page sans ID (accès direct)
             if(allProducts[0]) allProducts[0].style.display = 'block';
         }
-    } else {
-        // Si on arrive sur la page sans cliquer sur un bouton
-        if(allProducts[0]) allProducts[0].style.display = 'block';
+        updateCartCount();
+    });
+
+    // FONCTION PAIEMENT
+    function allerAuPaiement(name) {
+        const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
+        if(!produitVisible) return;
+
+        const selection = produitVisible.querySelector(`input[name="${name}"]:checked`);
+        
+        if(selection) {
+            localStorage.setItem('produitTaille', selection.value);
+            localStorage.setItem('produitNom', produitVisible.querySelector('h1').innerText);
+            localStorage.setItem('produitPrix', produitVisible.querySelector('.price').innerText);
+            // On prend l'image du FRONT (la première)
+            localStorage.setItem('produitImage', produitVisible.querySelector('.detail-main-img').src);
+            window.location.href = 'paiement.html';
+        } else {
+            alert("Veuillez sélectionner une taille.");
+        }
     }
-    updateCartCount();
-};
 
-function allerAuPaiement(name) {
-    const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
-    if(!produitVisible) return;
-
-    const selection = produitVisible.querySelector(`input[name="${name}"]:checked`);
-    
-    if(selection) {
-        localStorage.setItem('produitTaille', selection.value);
-        localStorage.setItem('produitNom', produitVisible.querySelector('h1').innerText);
-        localStorage.setItem('produitPrix', produitVisible.querySelector('.price').innerText);
-        localStorage.setItem('produitImage', produitVisible.querySelector('.detail-main-img').src);
-        window.location.href = 'paiement.html';
-    } else {
-        alert("Veuillez sélectionner une taille.");
+    function updateCartCount() {
+        let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+        const countElement = document.getElementById('cart-count-nav');
+        if (countElement) countElement.innerText = `PANIER (${panier.length})`;
     }
-}
-
-function updateCartCount() {
-    let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
-    const countElement = document.getElementById('cart-count-nav');
-    if (countElement) countElement.innerText = `PANIER (${panier.length})`;
-}
     </script>
 </body>
 </html>

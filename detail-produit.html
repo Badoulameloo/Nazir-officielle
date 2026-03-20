@@ -8,14 +8,22 @@
     <link rel="icon" type="image/x-icon" href="img/favicon-32x32.png">
     <style>
         .action-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
-        .btn-panier { background-color: transparent; color: white; border: 1px solid white; padding: 15px; cursor: pointer; font-weight: bold; transition: 0.3s; text-decoration: none; text-align: center; }
-        .btn-panier:hover { background-color: white; color: black; }
         
-        /* Cacher tous les blocs par défaut */
+        /* Bouton Paiement (Noir/Plein) */
+        .add-to-cart-btn { 
+            width: 100%; padding: 18px; background: white; color: black; 
+            border: none; font-weight: bold; cursor: pointer; letter-spacing: 2px;
+        }
+
+        /* Bouton Panier (Transparent/Contour) */
+        .secondary-cart-btn { 
+            width: 100%; padding: 15px; background: transparent; color: white; 
+            border: 1px solid white; cursor: pointer; font-weight: bold; transition: 0.3s; 
+        }
+        .secondary-cart-btn:hover { background-color: white; color: black; }
+        
         .product-detail-content { display: none; padding: 20px; }
         .out-of-stock { opacity: 0.5; cursor: not-allowed; text-decoration: line-through; }
-        
-        /* Style pour s'assurer que les images de détails s'affichent bien */
         .detail-main-img { width: 100%; max-width: 500px; height: auto; display: block; margin-bottom: 10px; }
         .image-wrapper { margin-bottom: 30px; }
         .image-wrapper p { font-size: 0.8rem; letter-spacing: 2px; color: #888; margin-bottom: 5px; }
@@ -27,7 +35,6 @@
         <div class="nav-left">
             <a href="index.html">HOME</a>
             <a href="heritage.html">HÉRITAGE</a>
-            <a href="contact.html">CONTACT</a>
         </div>
         <div class="nav-logo"><img src="img/img.logo.jpeg.png.png" alt="NAZIR" style="width: 100px;"></div>
         <div class="nav-right">
@@ -54,9 +61,10 @@
                             <input type="radio" name="sizeWP" value="XL" id="xl1" disabled><label for="xl1" class="out-of-stock">XL</label>
                         </div>
                     </div>
-                    <button onclick="allerAuPaiement('sizeWP')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                     <div class="action-buttons"> 
                         <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
+                        <button onclick="procederAuPaiement()" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -77,9 +85,10 @@
                             <input type="radio" name="sizeWG" value="XL" id="xl2" disabled><label for="xl2" class="out-of-stock">XL</label>
                         </div>
                     </div>
-                    <button onclick="allerAuPaiement('sizeWG')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                     <div class="action-buttons">
-                    <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
+                        <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
+                        <button onclick="procederAuPaiement()" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -100,32 +109,10 @@
                             <input type="radio" name="sizeBS" value="XL" id="xlBS" disabled><label for="xlBS" class="out-of-stock">XL</label>
                         </div>
                     </div>
-                    <button onclick="allerAuPaiement('sizeBS')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                     <div class="action-buttons">
-                    <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="produit-pink-black" class="product-detail-content">
-            <div class="details-grid">
-                <div class="details-image">
-                    <div class="image-wrapper"><p>FRONT</p><img src="img/img.pink&blackfrontshirt.jpeg.jpeg.png" class="detail-main-img"></div>
-                    <div class="image-wrapper"><p>BACK</p><img src="img/img.pink&blackbackshirt.jpeg.jpeg.png" class="detail-main-img"></div>
-                </div>
-                <div class="details-info">
-                    <h1>T-SHIRT PINK & BLACK</h1>
-                    <p class="price">8.000 CFA</p>
-                    <div class="size-selection">
-                        <div class="size-options">
-                            <input type="radio" name="sizePB" value="M" id="mPB" disabled><label for="mPB" class="out-of-stock">M</label>
-                            <input type="radio" name="sizePB" value="L" id="lPB"><label for="lPB">L</label>
-                            <input type="radio" name="sizePB" value="XL" id="xlPB"><label for="xlPB">M</label>
-                        </div>
+                        <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
+                        <button onclick="procederAuPaiement()" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                     </div>
-                    <button onclick="allerAuPaiement('sizePB')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                    <div class="action-buttons">
-                    <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
                 </div>
             </div>
         </div>
@@ -141,41 +128,18 @@
                     <p class="price">8.000 CFA</p>
                     <div class="size-selection">
                         <div class="size-options">
-                            <input type="radio" name="sizeBW" value="M" id="m3"><label for="m3">M</label>
-                            <input type="radio" name="sizeBW" value="L" id="l3"><label for="l3">L</label>
-                            <input type="radio" name="sizeBW" value="XL" id="xl3"><label for="xl3">L</label>
+                            <input type="radio" name="sizeBW1" value="M" id="mbw1"><label for="mbw1">M</label>
+                            <input type="radio" name="sizeBW1" value="L" id="lbw1"><label for="lbw1">L</label>
+                            <input type="radio" name="sizeBW1" value="XL" id="xlbw1"><label for="xlbw1">XL</label>
                         </div>
                     </div>
-                    <button onclick="allerAuPaiement('sizeBW')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                     <div class="action-buttons">
-                    <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
+                        <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
+                        <button onclick="procederAuPaiement()" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                    </div>
                 </div>
             </div>
         </div>
-
-         <div id="produit-black-white" class="product-detail-content">
-            <div class="details-grid">
-                <div class="details-image">
-                    <div class="image-wrapper"><p>FRONT</p><img src="img/imgimg.black&whitefrontshirt2.jpeg.png.png" class="detail-main-img"></div>
-                    <div class="image-wrapper"><p>BACK</p><img src="img/imgimg.black&whitebackshirt2.jpeg.png.png" class="detail-main-img"></div>
-                </div>
-                <div class="details-info">
-                    <h1>T-SHIRT BLACK & WHITE</h1>
-                    <p class="price">8.000 CFA</p>
-                    <div class="size-selection">
-                        <div class="size-options">
-                            <input type="radio" name="sizeBW" value="M" id="m3"><label for="m3">M</label>
-                            <input type="radio" name="sizeBW" value="L" id="l3"><label for="l3">L</label>
-                            <input type="radio" name="sizeBW" value="XL" id="xl3" disabled><label for="xl3" class="out-of-stock">L</label>
-                        </div>
-                    </div>
-                    <button onclick="allerAuPaiement('sizeBW')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
-                    <div class="action-buttons">
-                    <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
-                </div>
-            </div>
-        </div>
-
 
         <div id="produit-dark-green" class="product-detail-content">
             <div class="details-grid">
@@ -188,131 +152,97 @@
                     <p class="price">8.000 CFA</p>
                     <div class="size-selection">
                         <div class="size-options">
-                            <input type="radio" name="sizeDG" value="M" id="mDG" disabled><label for="mDG" class="out-of-stock">XL</label>
                             <input type="radio" name="sizeDG" value="L" id="lDG"><label for="lDG">L</label>
                             <input type="radio" name="sizeDG" value="XL" id="xlDG"><label for="xlDG">XL</label>
                         </div>
                     </div>
-                    <button onclick="allerAuPaiement('sizeDG')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
                     <div class="action-buttons">
-                    <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
+                        <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
+                        <button onclick="procederAuPaiement()" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                    </div>
                 </div>
-
-                <div id="produit-dark-red" class="product-detail-content">
-    <div class="details-grid">
-        <div class="details-image">
-            <div class="image-wrapper"><p>FRONT</p><img src="img/imgimg.darkredfrontshirt.jpeg.png.png" class="detail-main-img"></div>
-            <div class="image-wrapper"><p>BACK</p><img src="img/imgimg.darkredbackshirt.jpeg.png.png" class="detail-main-img"></div>
-        </div>
-        <div class="details-info">
-            <h1 style="color: #ff4d4d;">T-SHIRT DARK RED</h1>
-            <p class="price" style="text-decoration: line-through; opacity: 0.5;">8.000 CFA</p>
-            
-            <div style="background: rgba(255, 77, 77, 0.1); border: 1px solid #ff4d4d; padding: 20px; margin: 20px 0; border-radius: 5px;">
-                <h2 style="color: #ff4d4d; margin-top: 0;">RUPTURE DE STOCK</h2>
-                <p>Ce modèle a été victime de son succès. Suivez-nous sur Instagram pour ne pas rater le prochain réapprovisionnement.</p>
-            </div>
-
-            <div class="action-buttons">
-                <a href="index.html" class="btn-panier">RETOUR À LA BOUTIQUE</a>
             </div>
         </div>
-    </div>
-</div>
+
+        <div id="produit-dark-red" class="product-detail-content">
+            <div class="details-grid">
+                <div class="details-image">
+                    <div class="image-wrapper"><p>FRONT</p><img src="img/imgimg.darkredfrontshirt.jpeg.png.png" class="detail-main-img"></div>
+                    <div class="image-wrapper"><p>BACK</p><img src="img/imgimg.darkredbackshirt.jpeg.png.png" class="detail-main-img"></div>
+                </div>
+                <div class="details-info">
+                    <h1 style="color: #ff4d4d;">T-SHIRT DARK RED</h1>
+                    <p class="price" style="text-decoration: line-through; opacity: 0.5;">8.000 CFA</p>
+                    <div style="background: rgba(255, 77, 77, 0.1); border: 1px solid #ff4d4d; padding: 20px; margin: 20px 0;">
+                        <h2 style="color: #ff4d4d; margin-top: 0;">RUPTURE DE STOCK</h2>
+                        <p>Suivez-nous sur Instagram pour le restock.</p>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="index.html" class="secondary-cart-btn" style="text-decoration: none; text-align: center;">RETOUR À LA BOUTIQUE</a>
+                    </div>
+                </div>
             </div>
         </div>
 
     </main>
 
     <script>
-    // SCRIPT DE GESTION DE L'AFFICHAGE
     document.addEventListener('DOMContentLoaded', function() {
         const produitID = localStorage.getItem('produitID');
         const allProducts = document.querySelectorAll('.product-detail-content');
         
-        // On cache tout au début
         allProducts.forEach(p => p.style.display = 'none');
 
-        if (produitID) {
-            const target = document.getElementById(produitID);
-            if (target) {
-                target.style.display = 'block';
-            } else {
-                // Fallback si l'ID envoyé par l'index est inconnu
-                if(allProducts[0]) allProducts[0].style.display = 'block';
-            }
+        if (produitID && document.getElementById(produitID)) {
+            document.getElementById(produitID).style.display = 'block';
         } else {
-            // Si on arrive sur la page sans ID (accès direct)
             if(allProducts[0]) allProducts[0].style.display = 'block';
         }
         updateCartCount();
     });
 
-    // FONCTION PAIEMENT
-   function ajouterAuPanier() {
-    const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
-    const tailleSelectionnee = produitVisible.querySelector('input[type="radio"]:checked');
+    function ajouterAuPanier() {
+        const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
+        const tailleSelectionnee = produitVisible.querySelector('input[type="radio"]:checked');
 
-    if (!tailleSelectionnee) {
-        alert("Sélectionnez une taille avant d'ajouter au panier.");
-        return;
+        if (!tailleSelectionnee) {
+            alert("Sélectionnez une taille avant d'ajouter au panier.");
+            return;
+        }
+
+        const nouvelArticle = {
+            nom: produitVisible.querySelector('h1').innerText,
+            taille: tailleSelectionnee.value,
+            prix: "8.000",
+            image: produitVisible.querySelector('.detail-main-img').src
+        };
+
+        let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+        panier.push(nouvelArticle);
+        localStorage.setItem('monPanier', JSON.stringify(panier));
+        
+        updateCartCount();
+        alert(nouvelArticle.nom + " ajouté au panier !");
     }
 
-    const nouvelArticle = {
-        nom: produitVisible.querySelector('h1').innerText,
-        taille: tailleSelectionnee.value,
-        prix: "8.000",
-        image: produitVisible.querySelector('.detail-main-img').src
-    };
+    function procederAuPaiement() {
+        const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
+        const tailleSelectionnee = produitVisible.querySelector('input[type="radio"]:checked');
 
-    // On récupère le panier existant
-    let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
-    panier.push(nouvelArticle);
-    
-    // On sauvegarde
-    localStorage.setItem('monPanier', JSON.stringify(panier));
-    
-    // On met à jour le chiffre dans la navbar
-    updateCartCount();
-    alert(nouvelArticle.nom + " (Taille " + nouvelArticle.taille + ") ajouté au panier !");
-}
+        if (!tailleSelectionnee) {
+            alert("Sélectionnez une taille avant de payer.");
+            return;
+        }
 
-// FONCTION 2 : ACHAT DIRECT (VERS LA CAISSE)
-function procederAuPaiement() {
-    const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
-    const tailleSelectionnee = produitVisible.querySelector('input[type="radio"]:checked');
+        const achatRapide = {
+            nom: produitVisible.querySelector('h1').innerText,
+            taille: tailleSelectionnee.value,
+            prix: "8.000",
+            image: produitVisible.querySelector('.detail-main-img').src
+        };
 
-    if (!tailleSelectionnee) {
-        alert("Sélectionnez une taille avant de payer.");
-        return;
-    }
-
-    const achatRapide = {
-        nom: produitVisible.querySelector('h1').innerText,
-        taille: tailleSelectionnee.value,
-        prix: "8.000",
-        image: produitVisible.querySelector('.detail-main-img').src
-    };
-
-    // On stocke l'achat direct et on part à la caisse
-    localStorage.setItem('achat_rapide', JSON.stringify(achatRapide));
-    window.location.href = 'paiement.html';
-}
-
-    // 3. On crée l'objet du produit actuel
-    const achatImmediat = {
-        nom: produitVisible.querySelector('h1').innerText,
-        taille: tailleSelectionnee.value,
-        prix: "8.000",
-        image: produitVisible.querySelector('.detail-main-img').src
-    };
-
-    // 4. On stocke cet achat spécifique pour la page de paiement
-    localStorage.setItem('achat_rapide', JSON.stringify(achatImmediat));
-
-    // 5. Direction la page de paiement
-    window.location.href = 'paiement.html';
-}
+        localStorage.setItem('achat_rapide', JSON.stringify(achatRapide));
+        window.location.href = 'paiement.html';
     }
 
     function updateCartCount() {

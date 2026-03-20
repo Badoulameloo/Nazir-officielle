@@ -55,6 +55,8 @@
                         </div>
                     </div>
                     <button onclick="allerAuPaiement('sizeWP')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                    <div class="action-buttons"> 
+                        <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
                 </div>
             </div>
         </div>
@@ -76,6 +78,8 @@
                         </div>
                     </div>
                     <button onclick="allerAuPaiement('sizeWG')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                    <div class="action-buttons">
+                    <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
                 </div>
             </div>
         </div>
@@ -97,6 +101,8 @@
                         </div>
                     </div>
                     <button onclick="allerAuPaiement('sizeBS')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                    <div class="action-buttons">
+                    <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
                 </div>
             </div>
         </div>
@@ -118,6 +124,8 @@
                         </div>
                     </div>
                     <button onclick="allerAuPaiement('sizePB')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                    <div class="action-buttons">
+                    <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
                 </div>
             </div>
         </div>
@@ -139,6 +147,8 @@
                         </div>
                     </div>
                     <button onclick="allerAuPaiement('sizeBW')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                    <div class="action-buttons">
+                    <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
                 </div>
             </div>
         </div>
@@ -160,6 +170,8 @@
                         </div>
                     </div>
                     <button onclick="allerAuPaiement('sizeBW')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                    <div class="action-buttons">
+                    <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
                 </div>
             </div>
         </div>
@@ -182,6 +194,8 @@
                         </div>
                     </div>
                     <button onclick="allerAuPaiement('sizeDG')" class="add-to-cart-btn">PROCÉDER AU PAIEMENT</button>
+                    <div class="action-buttons">
+                    <button class="secondary-cart-btn" onclick="ajouterAuPanier()">AJOUTER AU PANIER</button>
                 </div>
 
                 <div id="produit-dark-red" class="product-detail-content">
@@ -235,18 +249,55 @@
     });
 
     // FONCTION PAIEMENT
-   function procederAuPaiement() {
-    // 1. On trouve quel t-shirt est affiché à l'écran
+   function ajouterAuPanier() {
     const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
-    if(!produitVisible) return;
-
-    // 2. On récupère la taille sélectionnée
     const tailleSelectionnee = produitVisible.querySelector('input[type="radio"]:checked');
-    
-    if(!tailleSelectionnee) {
-        alert("Veuillez sélectionner une taille avant de continuer.");
+
+    if (!tailleSelectionnee) {
+        alert("Sélectionnez une taille avant d'ajouter au panier.");
         return;
     }
+
+    const nouvelArticle = {
+        nom: produitVisible.querySelector('h1').innerText,
+        taille: tailleSelectionnee.value,
+        prix: "8.000",
+        image: produitVisible.querySelector('.detail-main-img').src
+    };
+
+    // On récupère le panier existant
+    let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+    panier.push(nouvelArticle);
+    
+    // On sauvegarde
+    localStorage.setItem('monPanier', JSON.stringify(panier));
+    
+    // On met à jour le chiffre dans la navbar
+    updateCartCount();
+    alert(nouvelArticle.nom + " (Taille " + nouvelArticle.taille + ") ajouté au panier !");
+}
+
+// FONCTION 2 : ACHAT DIRECT (VERS LA CAISSE)
+function procederAuPaiement() {
+    const produitVisible = document.querySelector('.product-detail-content[style*="display: block"]');
+    const tailleSelectionnee = produitVisible.querySelector('input[type="radio"]:checked');
+
+    if (!tailleSelectionnee) {
+        alert("Sélectionnez une taille avant de payer.");
+        return;
+    }
+
+    const achatRapide = {
+        nom: produitVisible.querySelector('h1').innerText,
+        taille: tailleSelectionnee.value,
+        prix: "8.000",
+        image: produitVisible.querySelector('.detail-main-img').src
+    };
+
+    // On stocke l'achat direct et on part à la caisse
+    localStorage.setItem('achat_rapide', JSON.stringify(achatRapide));
+    window.location.href = 'paiement.html';
+}
 
     // 3. On crée l'objet du produit actuel
     const achatImmediat = {

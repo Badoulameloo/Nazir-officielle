@@ -3,266 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NAZIR | Boutique Officielle - Vêtements Premium au Sénégal</title>
-    <meta name="description" content="Bienvenue chez NAZIR. Découvrez notre collection exclusive de T-shirts en coton lourd et coupes boxy. Livraison rapide à Dakar et partout au Sénégal.">
-    <meta name="keywords" content="Nazir, mode Sénégal, Vetements de qualité, marque de vêtement Dakar, streetwear Sénégal">
-    <meta property="og:title" content="NAZIR | Boutique Officielle">
-    <meta property="og:description" content="Le style minimaliste et premium par excellence.">
-    <meta property="og:image" content="img/img.logo.jpeg.png.png"> 
-    <meta property="og:url" content="https://nazir-officiel.com">
+    <title>NAZIR | CLOTHING BRAND</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="icon" type="image/x-icon" href="img/favicon-32x32.png">
 </head>
 <body class="dark-theme">
 
     <nav class="navbar">
         <div class="nav-left">
-            <a href="index.html" class="active">HOME</a>
+            <a href="index.html">HOME</a>
             <a href="heritage.html">HÉRITAGE</a>
             <a href="contact.html">CONTACT</a>
         </div>
         <div class="nav-logo">
-            <img src="img/img.logo.jpeg.png.png" alt="NAZIR">
+            <img src="img/img.logo.jpeg.png.png" alt="NAZIR" style="width: 100px;">
         </div>
         <div class="nav-right">
             <a href="panier.html" id="cart-count-nav">PANIER (0)</a>
         </div>
     </nav>
 
-    <header class="hero-full-screen">
-        <div class="hero-image-overlay"></div>
-        <div class="hero-content">
-            <h1 data-aos="fade-up">OLD SOUL, NEW NORM.</h1>
-            <a href="#products" class="btn-discover" data-aos="fade-up" data-aos-delay="200">EXPLORE</a>
-        </div>
+    <header class="hero">
+        <h1>NAZIR</h1>
+        <p>STREETWEAR & LUXURY FROM SENEGAL</p>
     </header>
 
-    <section class="shop-section" id="products">
-        <h2 class="section-title">NOS PRODUITS</h2>
-        
-        <div class="filter-menu">
-            <button class="filter-btn active" onclick="filterProducts('all', this)">TOUT</button>
-            <button class="filter-btn" onclick="filterProducts('tshirt', this)">T-SHIRTS</button>
-            <button class="filter-btn" onclick="filterProducts('top', this)">TOPS BASIC</button>
-        </div>
-
-       <div class="products-grid" id="main-grid">
-    
-    <div class="product-card top" data-aos="fade-up">
-        <div class="product-image-container">
-            <img src="img/img.topshortwhite.jpeg.jpeg.jpeg" alt="Top Manches Courtes">
-            <div class="product-overlay">
-                <button onclick="voirDetails('top-short-details')" class="overlay-link">VOIR DÉTAILS</button>
-            </div>
-        </div>
-        <div class="product-info">
-            <h3>TOP BASIC (MANCHES COURTES)</h3>
-            <p>4.500 CFA</p>
-        </div>
-    </div>
-
-    <div class="product-card top" data-aos="fade-up">
-        <div class="product-image-container">
-            <img src="img/img.toplongblue.jpeg.jpeg.jpeg" alt="Top Manches Longues">
-            <div class="product-overlay">
-                <button onclick="voirDetails('top-long-details')" class="overlay-link">VOIR DÉTAILS</button>
-            </div>
-        </div>
-        <div class="product-info">
-            <h3>TOP BASIC (MANCHES LONGUES)</h3>
-            <p>5.000 CFA</p>
-        </div>
-    </div>
-
-    <div class="product-card tshirt" data-aos="fade-up">
-        <div class="product-image-container">
-            <img src="img/img.frontshirt.jpeg.jpeg" class="product-img">
-            <div class="product-overlay">
-                <button onclick="voirDetails('produit-white-pink')" class="overlay-link">VOIR DÉTAILS</button>
-            </div>
-        </div>
-        <div class="product-info">
+    <main class="shop-container">
+        <div class="product-card">
+            <img src="img/img.frontshirt.jpeg.jpeg" alt="T-Shirt White & Pink">
             <h3>T-SHIRT WHITE & PINK</h3>
             <p>8.000 CFA</p>
+            <button onclick="voirDetails('produit-white-pink')">VOIR DÉTAILS</button>
         </div>
-    </div>
 
-    <div class="product-card tshirt" data-aos="fade-up">
-        <div class="product-image-container">
-            <img src="img/img.white&greyfrontshirt2.jpeg.jpeg.png" class="product-img">
-            <div class="product-overlay">
-                <button onclick="voirDetails('produit-white-grey')" class="overlay-link">VOIR DÉTAILS</button>
-            </div>
-        </div>
-        <div class="product-info">
+        <div class="product-card">
+            <img src="img/img.white&greyfrontshirt2.jpeg.jpeg.png" alt="T-Shirt White & Grey">
             <h3>T-SHIRT WHITE & GREY</h3>
             <p>8.000 CFA</p>
+            <button onclick="voirDetails('produit-white-grey')">VOIR DÉTAILS</button>
         </div>
-    </div>
 
-    <div class="product-card tshirt" data-aos="fade-up">
-        <div class="product-image-container">
-            <img src="img/img.black&whitefrontshirt.jpeg.png" class="product-img">
-            <div class="product-overlay">
-                <button onclick="voirDetails('produit-black-white')" class="overlay-link">VOIR DÉTAILS</button>
-            </div>
-        </div>
-        <div class="product-info">
-            <h3>T-SHIRT BLACK & WHITE</h3>
-            <p>8.000 CFA</p>
-        </div>
-    </div>
-
-    <div class="product-card tshirt" data-aos="fade-up">
-        <div class="product-image-container">
-            <img src="img/imgimg.black&whitefrontshirt2.jpeg.png.png" class="product-img">
-            <div class="product-overlay">
-                <button onclick="voirDetails('produit-black-white-alt')" class="overlay-link">VOIR DÉTAILS</button>
-            </div>
-        </div>
-        <div class="product-info">
-            <h3>T-SHIRT BLACK & WHITE V2</h3>
-            <p>8.000 CFA</p>
-        </div>
-    </div>
-
-    <div class="product-card tshirt" data-aos="fade-up">
-        <div class="product-image-container">
-            <img src="img/img.greenfrontshirt.jpeg.jpeg.png" class="product-img">
-            <div class="product-overlay">
-                <button onclick="voirDetails('produit-dark-green')" class="overlay-link">VOIR DÉTAILS</button>
-            </div>
-        </div>
-        <div class="product-info">
-            <h3>T-SHIRT DARK GREEN</h3>
-            <p>8.000 CFA</p>
-        </div>
-    </div>
-
-    <div class="product-card tshirt" data-aos="fade-up">
-        <div class="product-image-container">
-            <img src="img/img.skybluefrontshirt.jpeg.jpeg.jpeg" class="product-img">
-            <div class="product-overlay">
-                <button onclick="voirDetails('produit-blue-sky')" class="overlay-link">VOIR DÉTAILS</button>
-            </div>
-        </div>
-        <div class="product-info">
+        <div class="product-card">
+            <img src="img/img.skybluefrontshirt.jpeg.jpeg.jpeg" alt="T-Shirt Blue Sky">
             <h3>T-SHIRT BLUE SKY</h3>
             <p>8.000 CFA</p>
+            <button onclick="voirDetails('produit-blue-sky')">VOIR DÉTAILS</button>
         </div>
-    </div>
 
-    <div class="product-card tshirt" data-aos="fade-up">
-        <div class="product-image-container">
-            <img src="img/img.pink&blackfrontshirt.jpeg.jpeg.png" class="product-img">
-            <div class="product-overlay">
-                <button onclick="voirDetails('produit-pink-black')" class="overlay-link">VOIR DÉTAILS</button>
-            </div>
-        </div>
-        <div class="product-info">
+        <div class="product-card">
+            <img src="img/img.pink&blackfrontshirt.jpeg.jpeg.png" alt="T-Shirt Pink & Black">
             <h3>T-SHIRT PINK & BLACK</h3>
             <p>8.000 CFA</p>
+            <button onclick="voirDetails('produit-pink-black')">VOIR DÉTAILS</button>
         </div>
-    </div>
 
-    <div class="product-card tshirt" data-aos="fade-up">
-        <div class="product-image-container">
-            <img src="img/img.white&blackfrontshirt.jpeg.jpeg" class="product-img">
-            <div class="product-overlay">
-                <button onclick="voirDetails('produit-white-black')" class="overlay-link">VOIR DÉTAILS</button>
-            </div>
-        </div>
-        <div class="product-info">
-            <h3>T-SHIRT WHITE & BLACK</h3>
+        <div class="product-card">
+            <img src="img/img.black&whitefrontshirt.jpeg.png" alt="T-Shirt Black & White">
+            <h3>T-SHIRT BLACK & WHITE</h3>
             <p>8.000 CFA</p>
+            <button onclick="voirDetails('produit-black-white')">VOIR DÉTAILS</button>
         </div>
-    </div>
 
-    <div class="product-card tshirt" data-aos="fade-up">
-        <div class="product-image-container">
-            <img src="img/imgimg.darkredfrontshirt.jpeg.png.png" class="product-img">
-            <div class="product-overlay">
-                <button onclick="voirDetails('produit-dark-red')" class="overlay-link">VOIR DÉTAILS</button>
-            </div>
-        </div>
-        <div class="product-info">
-            <h3>T-SHIRT DARK RED</h3>
+        <div class="product-card">
+            <img src="img/img.greenfrontshirt.jpeg.jpeg.png" alt="T-Shirt Dark Green">
+            <h3>T-SHIRT DARK GREEN</h3>
             <p>8.000 CFA</p>
+            <button onclick="voirDetails('produit-dark-green')">VOIR DÉTAILS</button>
         </div>
-    </div>
+    </main>
 
-</div>
-
-        </div> </section>
-
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-                <img src="img/img.logo.jpeg.png.png" alt="NAZIR">
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 NAZIR COLLECTION. TOUS DROITS RÉSERVÉS.</p>
-            <p>OLD SOUL, NEW NORM.</p>
-        </div>
+    <footer class="footer">
+        <p>&copy; 2026 NAZIR OFFICIAL - DAKAR, SENEGAL</p>
     </footer>
 
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
-    // 1. Initialisation au chargement de la page
-    document.addEventListener('DOMContentLoaded', function() {
-        updateCartCount();
-        // Initialisation des animations AOS
-        if (typeof AOS !== 'undefined') {
-            AOS.init({ 
-                duration: 1200, 
-                once: true 
-            });
+    <script>
+        // FONCTION CRUCIALE : Envoie l'ID à la page détail
+        function voirDetails(idDuProduit) {
+            console.log("Envoi du produit : " + idDuProduit);
+            // On enregistre l'ID choisi dans la mémoire du navigateur
+            localStorage.setItem('produitID', idDuProduit);
+            // On redirige vers la page détail
+            window.location.href = 'detail-produit.html';
         }
-    });
 
-    /**
-     * Enregistre l'ID du produit sélectionné et redirige vers la page détails
-     * @param {string} idDuBloc - L'ID correspondant au div dans details.html
-     */
-    function voirDetails(idDuBloc) {
-    localStorage.setItem('produitID', idDuBloc);
-    // On utilise 'detail.html' car c'est le nom de ton fichier de détails
-    window.location.href = 'detail.html'; 
-}
+        // MISE À JOUR DU PANIER
+        function updateCartCount() {
+            let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+            const countElement = document.getElementById('cart-count-nav');
+            if (countElement) countElement.innerText = "PANIER (" + panier.length + ")";
+        }
 
-    /**
-     * Met à jour le compteur du panier dans la barre de navigation
-     */
-    function voirDetails(idDuBloc) {
-    localStorage.setItem('produitID', idDuBloc);
-    // On garde bien le "o" ici
-    window.location.href = 'detail-produit.html'; 
-}
+        // Lancer la mise à jour au chargement
+        window.onload = updateCartCount;
+    </script>
 
-    /**
-     * Filtre les produits par catégorie (T-shirts ou Tops)
-     */
-    function filterProducts(category, btn) {
-        const cards = document.querySelectorAll('.product-card');
-        const buttons = document.querySelectorAll('.filter-btn');
-
-        // Gérer l'état actif des boutons de filtre
-        buttons.forEach(b => b.classList.remove('active'));
-        if(btn) btn.classList.add('active');
-
-        // Afficher/Masquer les cartes
-        cards.forEach(card => {
-            if (category === 'all') {
-                card.style.display = 'block';
-            } else if (card.classList.contains(category)) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    }
-</script>
 </body>
 </html>

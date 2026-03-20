@@ -86,6 +86,17 @@
             <span id="recap-total">0 CFA</span>
         </div>
 
+        <div class="checkout-summary">
+    <h2>RÉCAPITULATIF</h2>
+    <div id="liste-achat">
+        </div>
+    <hr style="border: 0.5px solid #222; margin: 20px 0;">
+    <div class="summary-total-line">
+        <span>TOTAL</span>
+        <span id="total-final">0 CFA</span>
+    </div>
+</div>
+
         <button onclick="envoyerCommande()" class="btn-valider">COMMANDER VIA WHATSAPP</button>
     </main>
 
@@ -125,6 +136,30 @@
                 alert("Veuillez remplir toutes les informations de livraison.");
                 return;
             }
+
+            function chargerRecapitulatif() {
+        const listeContainer = document.getElementById('liste-achat');
+        const totalContainer = document.getElementById('total-final');
+        
+        // On vérifie d'abord s'il y a un achat immédiat
+        const achatRapide = JSON.parse(localStorage.getItem('achat_rapide'));
+        
+        if(achatRapide) {
+            listeContainer.innerHTML = `
+                <div class="summary-item">
+                    <img src="${achatRapide.image}" width="60">
+                    <div>
+                        <p>${achatRapide.nom}</p>
+                        <p style="color:#888;">TAILLE: ${achatRapide.taille}</p>
+                        <p>${achatRapide.prix} CFA</p>
+                    </div>
+                </div>
+            `;
+            totalContainer.innerText = achatRapide.prix + " CFA";
+        } 
+    }
+
+    window.onload = chargerRecapitulatif;
 
             // 2. Gestion de la taille
             let tailleFinale = localStorage.getItem('produitTaille');

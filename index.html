@@ -175,6 +175,8 @@
             const countElement = document.getElementById('cart-count-nav');
             if (countElement) countElement.innerText = "PANIER (" + panier.length + ")";
         }
+        let visites = parseInt(localStorage.getItem('total_visites') || 0);
+localStorage.setItem('total_visites', visites + 1);
         
         window.onload = updateCartCount;
     </script>

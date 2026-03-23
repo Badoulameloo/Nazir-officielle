@@ -3,55 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAIEMENT | NAZIR</title>
+    <title>VALIDER MA COMMANDE | NAZIR</title>
     <link rel="stylesheet" href="style.css">
     <style>
         .checkout-container { max-width: 600px; margin: auto; padding: 40px 20px; }
-        .form-group { margin-bottom: 20px; }
-        input, select { width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid #333; color: white; margin-top: 5px; }
-        .summary-box { background: #1a1a1a; padding: 20px; border: 1px solid #333; margin-bottom: 30px; }
-        .pay-now-btn { width: 100%; background: #2ecc71; color: white; padding: 20px; border: none; font-weight: bold; cursor: pointer; font-size: 1.1rem; }
+        .summary-box { background: #1a1a1a; padding: 20px; border: 1px solid #333; margin-bottom: 25px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-size: 0.9rem; color: #888; }
+        input { width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: white; border-radius: 4px; box-sizing: border-box; }
+        
+        /* Boutons de paiement */
+        .payment-options { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 20px; }
+        .pay-btn { 
+            padding: 15px 5px; border: 1px solid #333; background: #111; color: white; 
+            cursor: pointer; font-weight: bold; font-size: 0.8rem; transition: 0.3s;
+            display: flex; flex-direction: column; align-items: center; gap: 5px;
+        }
+        .pay-btn:hover { border-color: white; background: #222; }
+        .pay-btn.active { border-color: #2ecc71; background: rgba(46, 204, 113, 0.1); color: #2ecc71; }
+        
+        .whatsapp-submit { 
+            width: 100%; background: #25D366; color: white; padding: 20px; 
+            border: none; font-weight: bold; margin-top: 30px; cursor: pointer; 
+            font-size: 1rem; border-radius: 5px;
+        }
     </style>
 </head>
 <body class="dark-theme">
     <div class="checkout-container">
-        <h1>COMMANDE</h1>
+        <h1 style="letter-spacing: 5px;">FINALISER</h1>
         
         <div class="summary-box">
-            <h3>RÉSUMÉ</h3>
+            <h3 style="margin-top:0;">MA COMMANDE</h3>
             <div id="order-summary"></div>
-            <hr style="border: 0.5px solid #333; margin: 15px 0;">
-            <p id="order-total" style="font-weight: bold; font-size: 1.2rem;"></p>
+            <hr style="border:0; border-top:1px solid #333; margin:15px 0;">
+            <p id="order-total" style="font-size: 1.2rem; font-weight: bold; margin:0;"></p>
         </div>
 
-        <form id="payment-form">
-            <div class="form-group">
-                <label>Nom Complet</label>
-                <input type="text" placeholder="Alioune..." required>
-            </div>
-            <div class="form-group">
-                <label>Numéro de Téléphone</label>
-                <input type="tel" placeholder="77..." required>
-            </div>
-            <div class="form-group">
-                <label>Quartier de livraison (Dakar)</label>
-                <input type="text" placeholder="Ex: Plateau, Almadies..." required>
-            </div>
-            <div class="form-group">
-                <label>Mode de Paiement</label>
-                <select id="method">
-                    <option value="wave">Wave</option>
-                    <option value="om">Orange Money</option>
-                    <option value="cash">Paiement à la livraison</option>
-                </select>
-            </div>
-            <button type="submit" class="pay-now-btn">CONFIRMER LA COMMANDE</button>
-        </form>
+        <div class="form-group">
+            <label>NOM COMPLET</label>
+            <input type="text" id="client-name" placeholder="Votre nom..." required>
+        </div>
+        <div class="form-group">
+            <label>QUARTIER / VILLE</label>
+            <input type="text" id="client-address" placeholder="Ex: Almadies, Dakar..." required>
+        </div>
+
+        <label style="margin-top:20px;">CHOISISSEZ VOTRE MODE DE PAIEMENT</label>
+        <div class="payment-options">
+            <button class="pay-btn" onclick="selectPayment('WAVE', this)">
+                <span>🌊</span> WAVE
+            </button>
+            <button class="pay-btn" onclick="selectPayment('ORANGE MONEY', this)">
+                <span>🍊</span> O. MONEY
+            </button>
+            <button class="pay-btn" onclick="selectPayment('CASH À LA LIVRAISON', this)">
+                <span>📦</span> CASH ON DELEVERY 
+            </button>
+        </div>
+
+        <button class="whatsapp-submit" onclick="envoyerWhatsApp()">COMMANDER VIA WHATSAPP</button>
     </div>
 
     <script>
+        let modeChoisi = "";
+
         window.onload = function() {
-            // On vérifie s'il y a un achat rapide ou le panier complet
             let achatRapide = JSON.parse(localStorage.getItem('achat_rapide'));
             let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
             let articles = achatRapide ? [achatRapide] : panier;
@@ -60,21 +77,60 @@
             const totalP = document.getElementById('order-total');
             let total = 0;
 
+            if (articles.length === 0) {
+                window.location.href = 'index.html';
+                return;
+            }
+
             articles.forEach(item => {
-                summaryDiv.innerHTML += `<p>${item.nom} (${item.taille}) - ${item.prix} CFA</p>`;
+                summaryDiv.innerHTML += `<p style="margin:5px 0;">• ${item.nom} (${item.taille}) - ${item.prix} CFA</p>`;
                 total += parseInt(item.prix.replace('.', '').replace(' ', ''));
             });
 
             totalP.innerText = "TOTAL : " + total.toLocaleString() + " CFA";
         };
 
-        document.getElementById('payment-form').onsubmit = function(e) {
-            e.preventDefault();
-            alert("Merci pour votre commande ! Nous allons vous contacter par téléphone pour confirmer la livraison.");
+        function selectPayment(mode, element) {
+            modeChoisi = mode;
+            document.querySelectorAll('.pay-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function envoyerWhatsApp() {
+            const nom = document.getElementById('client-name').value;
+            const adresse = document.getElementById('client-address').value;
+            
+            if (!nom || !adresse || !modeChoisi) {
+                alert("Veuillez remplir votre nom, adresse et choisir un mode de paiement.");
+                return;
+            }
+
+            let achatRapide = JSON.parse(localStorage.getItem('achat_rapide'));
+            let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
+            let articles = achatRapide ? [achatRapide] : panier;
+            
+            let message = `Bonjour NAZIR, je souhaite passer une commande :\n\n`;
+            message += `👤 *Client :* ${nom}\n`;
+            message += `📍 *Adresse :* ${adresse}\n`;
+            message += `💳 *Paiement :* ${modeChoisi}\n\n`;
+            message += `🛒 *Articles :*\n`;
+
+            let total = 0;
+            articles.forEach(item => {
+                message += `- ${item.nom} (Taille: ${item.taille}) - ${item.prix} CFA\n`;
+                total += parseInt(item.prix.replace('.', '').replace(' ', ''));
+            });
+
+            message += `\n💰 *TOTAL : ${total.toLocaleString()} CFA*`;
+
+            // REMPLACE LE NUMÉRO CI-DESSOUS PAR TON VRAI NUMÉRO (Format international sans le +)
+            const monNumero = "221776547004"; 
+            const url = `https://wa.me/${monNumero}?text=${encodeURIComponent(message)}`;
+            
             localStorage.removeItem('monPanier');
             localStorage.removeItem('achat_rapide');
-            window.location.href = "index.html";
-        };
+            window.open(url, '_blank');
+        }
     </script>
 </body>
 </html>

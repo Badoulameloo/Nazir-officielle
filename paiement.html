@@ -136,6 +136,22 @@
             localStorage.removeItem('achat_rapide');
             window.open(url, '_blank');
         }
+
+        // Enregistre la commande dans les stats
+let nbCommandes = parseInt(localStorage.getItem('total_commandes') || 0);
+localStorage.setItem('total_commandes', nbCommandes + 1);
+
+let revenu = parseInt(localStorage.getItem('total_revenu') || 0);
+localStorage.setItem('total_revenu', revenu + total);
+
+// Ajoute un log
+let logs = JSON.parse(localStorage.getItem('admin_logs')) || [];
+logs.push({
+    date: new Date().toLocaleString(),
+    action: "COMMANDE",
+    details: `${nom} - ${total} CFA (${modeChoisi})`
+});
+localStorage.setItem('admin_logs', JSON.stringify(logs));
     </script>
 </body>
 </html>

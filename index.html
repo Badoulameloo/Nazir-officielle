@@ -61,15 +61,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             padding-bottom: 15px;
         }
         .hero {
-            background: url('img/img.hero.jpeg.png.jpeg') no-repeat center; /* Image de fond Hero */
-            background-size: contain;
-            height: 60vh;
+            background: url('img/img.hero.jpeg.png.jpeg') no-repeat center center; /* Image centrée */
+            background-size: cover; /* --- C'EST CETTE LIGNE QUI CHANGE TOUT --- */
+            height: 80vh; /* J'ai un peu augmenté la hauteur pour plus d'impact (80% de l'écran) */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background-color: #000;
+            background-color: #000; /* Fond noir pendant le chargement */
+            position: relative; /* Pour l'overlay si besoin */
         }
     </style>
 </head>
@@ -95,8 +96,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 
 <header class="hero">
-    <h1 style="background: rgba(0,0,0,0.5); padding: 10px 30px;">NAZIR</h1>
-    <p style="background: rgba(0,0,0,0.5); padding: 5px 20px;">STREETWEAR & LUXURY FROM SENEGAL</p>
+    <h1 style="background: rgba(0,0,0,0.5); padding: 10px 30px;"></h1>
+    <p style="background: rgba(0,0,0,0.5); padding: 5px 20px;"></p>
 </header>
 
     <h2 class="section-title">Nouvelle Collection</h2>

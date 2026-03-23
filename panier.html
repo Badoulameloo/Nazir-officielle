@@ -3,78 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MON PANIER | NAZIR</title>
+    <title>VOTRE PANIER | NAZIR</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .cart-container { padding: 40px 20px; max-width: 800px; margin: auto; }
+        .cart-item { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #333; padding: 15px 0; }
+        .cart-item img { width: 80px; height: auto; margin-right: 20px; }
+        .item-info { flex-grow: 1; }
+        .remove-btn { color: #ff4d4d; cursor: pointer; background: none; border: none; font-size: 0.8rem; letter-spacing: 1px; }
+        .total-section { text-align: right; margin-top: 30px; font-size: 1.2rem; }
+        .checkout-btn { width: 100%; background: white; color: black; padding: 20px; border: none; font-weight: bold; margin-top: 20px; cursor: pointer; text-decoration: none; display: block; text-align: center; }
+        .empty-cart { text-align: center; color: #888; padding: 50px 0; }
+    </style>
 </head>
 <body class="dark-theme">
-
     <nav class="navbar">
-        <div class="nav-left"><a href="index.html">HOME</a></div>
-        <div class="nav-logo"><img src="img/img.logo.jpeg.png.png" alt="NAZIR"></div>
-        <div class="nav-right"><a href="panier.html" class="active">PANIER</a></div>
+        <a href="index.html" style="color: white; text-decoration: none; letter-spacing: 2px;">← RETOUR</a>
+        <div class="nav-logo"><img src="img/img.logo.jpeg.png.png" alt="NAZIR" style="width: 80px;"></div>
+        <div></div>
     </nav>
 
     <main class="cart-container">
         <h1>VOTRE PANIER</h1>
-        
-        <div id="panier-vide" style="display:none; text-align:center; margin-top:50px;">
-            <p>Votre panier est actuellement vide.</p>
-            <a href="index.html" class="btn-discover">RETOUR À LA BOUTIQUE</a>
-        </div>
-
-        <div id="panier-rempli">
-            <div id="liste-panier">
-                </div>
-
-            <div class="cart-summary">
-                <div class="summary-line">
-                    <span>TOTAL</span>
-                    <span id="total-prix">0 CFA</span>
-                </div>
-                <button onclick="procederAuPaiementGlobal()" class="checkout-btn">COMMANDER TOUT LE PANIER</button>
-                <button onclick="viderPanier()" class="clear-cart-btn">VIDER LE PANIER</button>
-            </div>
-        </div>
+        <div id="panier-liste"></div>
+        <div id="total-area" class="total-section"></div>
+        <a href="paiement.html" id="pay-btn" class="checkout-btn" style="display: none;">VALIDER LA COMMANDE</a>
     </main>
 
     <script>
         function afficherPanier() {
             let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
-            const liste = document.getElementById('liste-panier');
-            const vide = document.getElementById('panier-vide');
-            const rempli = document.getElementById('panier-rempli');
-
+            const liste = document.getElementById('panier-liste');
+            const totalArea = document.getElementById('total-area');
+            const payBtn = document.getElementById('pay-btn');
+            
             if (panier.length === 0) {
-                vide.style.display = 'block';
-                rempli.style.display = 'none';
+                liste.innerHTML = '<p class="empty-cart">Votre panier est vide.</p>';
+                totalArea.innerHTML = '';
+                payBtn.style.display = 'none';
                 return;
             }
 
-            vide.style.display = 'none';
-            rempli.style.display = 'block';
             liste.innerHTML = '';
-
             let total = 0;
-
-            panier.forEach((produit, index) => {
-                // On nettoie le prix pour le calcul (enlève "CFA" et les points)
-                let prixNumerique = parseInt(produit.prix.replace(/[^0-9]/g, ''));
-                total += prixNumerique;
-
+            panier.forEach((item, index) => {
+                let prixNum = parseInt(item.prix.replace('.', '').replace(' ', ''));
+                total += prixNum;
                 liste.innerHTML += `
                     <div class="cart-item">
-                        <img src="${produit.image}" alt="${produit.nom}">
+                        <img src="${item.image}">
                         <div class="item-info">
-                            <h3>${produit.nom}</h3>
-                            <p>Taille : ${produit.taille}</p>
-                            <p class="item-price">${produit.prix}</p>
+                            <h3>${item.nom}</h3>
+                            <p>Taille : ${item.taille}</p>
+                            <p>${item.prix} CFA</p>
                         </div>
-                        <button onclick="supprimerArticle(${index})" class="remove-btn">×</button>
+                        <button class="remove-btn" onclick="supprimerArticle(${index})">SUPPRIMER</button>
                     </div>
                 `;
             });
-
-            document.getElementById('total-prix').innerText = total.toLocaleString() + " CFA";
+            totalArea.innerHTML = `TOTAL : <strong>${total.toLocaleString()} CFA</strong>`;
+            payBtn.style.display = 'block';
         }
 
         function supprimerArticle(index) {
@@ -82,20 +70,6 @@
             panier.splice(index, 1);
             localStorage.setItem('monPanier', JSON.stringify(panier));
             afficherPanier();
-        }
-
-        function viderPanier() {
-            if(confirm("Voulez-vous vraiment vider votre panier ?")) {
-                localStorage.removeItem('monPanier');
-                afficherPanier();
-            }
-        }
-
-        function procederAuPaiementGlobal() {
-            // On peut envoyer le total au paiement
-            const total = document.getElementById('total-prix').innerText;
-            localStorage.setItem('prixTotalFinal', total);
-            window.location.href = 'paiement.html';
         }
 
         window.onload = afficherPanier;

@@ -443,3 +443,54 @@ main { flex: 1; } /* Force le footer à rester en bas */
 
 /* Correction Footer */
 .main-footer { margin-top: 150px; width: 100%; }
+
+/* --- NAVBAR OPTIMISÉE MOBILE --- */
+.navbar {
+    display: flex;
+    flex-direction: column; /* On empile sur mobile par défaut */
+    align-items: center;
+    padding: 15px 5%;
+    background: #000;
+    border-bottom: 1px solid #111;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    gap: 15px;
+}
+
+.nav-logo img {
+    height: 40px; /* Logo un peu plus petit pour gagner de la place */
+    width: auto;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.nav-left a, .nav-right a {
+    font-size: 0.7rem; /* Texte plus fin pour l'élégance */
+    letter-spacing: 2px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+/* --- VERSION ORDINATEUR (TABLETTE & PC) --- */
+@media (min-width: 768px) {
+    .navbar {
+        flex-direction: row; /* On remet en ligne sur grand écran */
+        justify-content: space-between;
+        height: 80px;
+    }
+    
+    .nav-logo img {
+        height: 50px;
+    }
+    
+    .nav-left, .nav-right {
+        width: auto;
+    }
+}

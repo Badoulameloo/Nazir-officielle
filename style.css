@@ -365,3 +365,42 @@ main { flex: 1; } /* Force le footer à rester en bas */
         gap: 40px;
     }
 }
+
+/* --- PAGE HERITAGE FIX --- */
+.heritage-body { background: #000; color: white; }
+
+.heritage-wrapper {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 5%;
+}
+
+.heritage-header { text-align: center; margin-bottom: 80px; }
+.brand-sub { font-size: 0.7rem; letter-spacing: 5px; color: #666; }
+.heritage-header h1 { font-size: 3rem; letter-spacing: 15px; margin: 20px 0; font-weight: 900; }
+.elegant-line { width: 50px; height: 1px; background: white; margin: 0 auto; }
+
+.heritage-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    align-items: center;
+}
+
+.heritage-text-section { max-width: 700px; text-align: center; }
+.heritage-text-section h2 { letter-spacing: 8px; margin-bottom: 30px; font-size: 1.5rem; }
+.heritage-text-section p { color: #888; line-height: 2; font-size: 1.1rem; margin-bottom: 20px; }
+
+.heritage-image-section img {
+    width: 100%;
+    max-width: 900px;
+    filter: grayscale(100%) contrast(1.1);
+    transition: 0.5s ease;
+    border: 1px solid #111;
+}
+.heritage-image-section img:hover { filter: grayscale(0%); }
+
+.dropcap { font-size: 1.3rem; color: white !important; }
+
+/* Correction Footer */
+.main-footer { margin-top: 150px; width: 100%; }

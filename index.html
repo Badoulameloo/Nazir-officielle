@@ -1,299 +1,269 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-N8J66RCS');</script>
-<!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NAZIR | Boutique Officielle</title>
     <link rel="stylesheet" href="style.css">
-    
-    <script>
-        // MODE MAINTENANCE : Change 'false' par 'true' pour bloquer l'accès au site
-        const modeMaintenance = true; 
-
-        if (modeMaintenance && !localStorage.getItem('admin_access')) {
-            window.location.href = "maintenance.html";
-        }
-    </script>
-
-    <style>
-        .products-grid { 
-            display: grid !important; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 20px; 
-            padding: 40px 20px; 
-        }
-        .product-card { 
-            background: #1a1a1a; 
-            padding: 15px; 
-            text-align: center; 
-            border: 1px solid #333;
-            transition: 0.3s;
-        }
-        .product-card:hover { border-color: white; }
-        .product-card img { width: 100%; height: auto; margin-bottom: 15px; cursor: pointer; }
-        .product-card h3 { font-size: 0.9rem; margin: 10px 0; color: white; letter-spacing: 1px; }
-        .product-card p { color: #888; margin-bottom: 15px; font-weight: bold; }
-        .btn-details { 
-            background: white; 
-            color: black; 
-            border: none; 
-            padding: 12px 20px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            width: 100%;
-            letter-spacing: 1px;
-        }
-        .section-title {
-            text-align: center;
-            color: white;
-            letter-spacing: 5px;
-            margin-top: 50px;
-            text-transform: uppercase;
-            border-bottom: 1px solid #333;
-            padding-bottom: 15px;
-        }
-        .hero {
-            background: url('img/img.hero.jpeg.png.jpeg') no-repeat center center; /* Image centrée */
-            background-size: cover; /* --- C'EST CETTE LIGNE QUI CHANGE TOUT --- */
-            height: 80vh; /* J'ai un peu augmenté la hauteur pour plus d'impact (80% de l'écran) */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background-color: #000; /* Fond noir pendant le chargement */
-            position: relative; /* Pour l'overlay si besoin */
-        }
-    </style>
 </head>
-<body>
+<body class="dark-theme">
 
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8J66RCS"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-<nav class="navbar">
-    <div class="nav-left">
-        <a href="index.html">HOME</a>
-        <a href="heritage.html">HÉRITAGE</a>
-        <a href="contact.html">CONTACT</a>
-    </div>
-    <div class="nav-logo">
-        <img src="img/img.logo.jpeg.png.png" alt="NAZIR">
-    </div>
-    <div class="nav-right">
-        <a href="panier.html">PANIER</a>
-    </div>
-</nav>
-
-<header class="hero">
-    <h1 style="background: rgba(0,0,0,0.5); padding: 10px 30px;">OLD SOUL, NEW NORM.</h1>
-</header>
-
-    <h2 class="section-title">Notre Collection</h2>
-    <section class="products-grid">
-        <div class="product-card">
-            <img src="img/img.frontshirt.jpeg.jpeg" onclick="voirDetails('produit-white-pink')">
-            <h3>T-SHIRT WHITE & PINK</h3>
-            <p>8.000 CFA</p>
-            <button class="btn-details" onclick="voirDetails('produit-white-pink')">VOIR DÉTAILS</button>
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html">HOME</a>
+            <a href="heritage.html">HÉRITAGE</a>
         </div>
-
-        <div class="product-card">
-            <img src="img/img.white&greyfrontshirt2.jpeg.jpeg.png" onclick="voirDetails('produit-white-grey')">
-            <h3>T-SHIRT WHITE & GREY</h3>
-            <p>8.000 CFA</p>
-            <button class="btn-details" onclick="voirDetails('produit-white-grey')">VOIR DÉTAILS</button>
+        <div class="nav-logo">
+            <img src="img/img.logo.jpeg.png.png" alt="NAZIR" style="width: 80px;">
         </div>
-
-        <div class="product-card">
-            <img src="img/img.skybluefrontshirt.jpeg.jpeg.jpeg" onclick="voirDetails('produit-blue-sky')">
-            <h3>T-SHIRT BLUE SKY</h3>
-            <p>8.000 CFA</p>
-            <button class="btn-details" onclick="voirDetails('produit-blue-sky')">VOIR DÉTAILS</button>
+        <div class="nav-right">
+            <a href="panier.html" id="cart-count-nav">PANIER (0)</a>
         </div>
+    </nav>
 
-        <div class="product-card">
-            <img src="img/img.pink&blackfrontshirt.jpeg.jpeg.png" onclick="voirDetails('produit-pink-black')">
-            <h3>T-SHIRT PINK & BLACK</h3>
-            <p>8.000 CFA</p>
-            <button class="btn-details" onclick="voirDetails('produit-pink-black')">VOIR DÉTAILS</button>
-        </div>
-
-        <div class="product-card">
-            <img src="img/img.black&whitefrontshirt.jpeg.png" onclick="voirDetails('produit-black-white-1')">
-            <h3>T-SHIRT BLACK & WHITE (V1)</h3>
-            <p>8.000 CFA</p>
-            <button class="btn-details" onclick="voirDetails('produit-black-white-1')">VOIR DÉTAILS</button>
-        </div>
-
-        <div class="product-card">
-            <img src="img/imgimg.black&whitefrontshirt2.jpeg.png.png" onclick="voirDetails('produit-black-white-2')">
-            <h3>T-SHIRT BLACK & WHITE (V2)</h3>
-            <p>8.000 CFA</p>
-            <button class="btn-details" onclick="voirDetails('produit-black-white-2')">VOIR DÉTAILS</button>
-        </div>
-
-        <div class="product-card">
-            <img src="img/img.white&blackfrontshirt.jpeg.jpeg" onclick="voirDetails('produit-white-black')">
-            <h3>T-SHIRT WHITE & BLACK</h3>
-            <p>8.000 CFA</p>
-            <button class="btn-details" onclick="voirDetails('produit-white-black')">VOIR DÉTAILS</button>
-        </div>
-
-        <div class="product-card">
-            <img src="img/img.greenfrontshirt.jpeg.jpeg.png" onclick="voirDetails('produit-dark-green')">
-            <h3>T-SHIRT DARK GREEN</h3>
-            <p>8.000 CFA</p>
-            <button class="btn-details" onclick="voirDetails('produit-dark-green')">VOIR DÉTAILS</button>
-        </div>
-
-        <div class="product-card out-of-stock-card">
-    <div class="oos-badge">ÉPUISÉ</div>
-    <img src="img/imgimg.darkredfrontshirt.jpeg.png.png" style="opacity: 0.4;">
-    <h3>T-SHIRT DARK RED</h3>
-    <p style="text-decoration: line-through; color: #444;">8.000 CFA</p>
-    <button class="btn-details" disabled style="background: #111; color: #444; cursor: not-allowed;">BIENTÔT DE RETOUR</button>
-</div>
-    </section>
-
-    <h2 class="section-title">Les Basics</h2>
-    <section class="products-grid">
-        <div class="product-card">
-            <img src="img/img.topshortgreen.jpeg.jpeg.jpeg" alt="Top Basic Courte">
-            <h3>TOP BASIC VERT (MANCHES COURTES)</h3>
-            <p>4.500 CFA</p>
-            <button class="btn-details" onclick="voirDetails('basic-courte')">VOIR DÉTAILS</button>
-        </div>
-
-        <section class="products-grid">
-        <div class="product-card">
-            <img src="img/img.topshortblack.jpeg.jpeg.jpeg" alt="Top Basic Courte">
-            <h3>TOP BASIC NOIR (MANCHES COURTES)</h3>
-            <p>4.500 CFA</p>
-            <button class="btn-details" onclick="voirDetails('basic-courte')">VOIR DÉTAILS</button>
-        </div>
+    <main class="shop-container">
+        
+        <h2 class="section-title">Collection T-Shirts</h2>
+        <div class="products-grid">
             
-        <section class="products-grid">
-        <div class="product-card">
-            <img src="img/img.topshortpink.jpeg.jpeg.jpeg" alt="Top Basic Courte">
-            <h3>TOP BASIC ROSE (MANCHES COURTES)</h3>
-            <p>4.500 CFA</p>
-            <button class="btn-details" onclick="voirDetails('basic-courte')">VOIR DÉTAILS</button>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="img/img.frontshirt.jpeg.jpeg" onclick="voirDetails('produit-white-pink')">
+                </div>
+                <div class="product-info">
+                    <h3>T-SHIRT WHITE & PINK</h3>
+                    <p class="price">8.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('produit-white-pink')">VOIR DÉTAILS</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="img/img.skybluefrontshirt.jpeg.jpeg.jpeg" onclick="voirDetails('produit-blue-sky')">
+                </div>
+                <div class="product-info">
+                    <h3>T-SHIRT BLUE SKY</h3>
+                    <p class="price">8.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('produit-blue-sky')">VOIR DÉTAILS</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="img/img.greenfrontshirt.jpeg.jpeg.png" onclick="voirDetails('produit-dark-green')">
+                </div>
+                <div class="product-info">
+                    <h3>T-SHIRT DARK GREEN</h3>
+                    <p class="price">8.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('produit-dark-green')">VOIR DÉTAILS</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="img/img.white&blackfrontshirt.jpeg.jpeg" onclick="voirDetails('produit-white-black')">
+                </div>
+                <div class="product-info">
+                    <h3>T-SHIRT WHITE & BLACK</h3>
+                    <p class="price">8.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('produit-white-black')">VOIR DÉTAILS</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="img/img.black&whitefrontshirt.jpeg.png" onclick="voirDetails('produit-black-white-1')">
+                </div>
+                <div class="product-info">
+                    <h3>T-SHIRT BLACK & WHITE (V1)</h3>
+                    <p class="price">8.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('produit-black-white-1')">VOIR DÉTAILS</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="img/imgimg.black&whitefrontshirt2.jpeg.png.png" onclick="voirDetails('produit-black-white-2')">
+                </div>
+                <div class="product-info">
+                    <h3>T-SHIRT BLACK & WHITE (V2)</h3>
+                    <p class="price">8.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('produit-black-white-2')">VOIR DÉTAILS</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="img/img.white&greyfrontshirt2.jpeg.jpeg.png" onclick="voirDetails('produit-white-grey')">
+                </div>
+                <div class="product-info">
+                    <h3>T-SHIRT WHITE & GREY</h3>
+                    <p class="price">8.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('produit-white-grey')">VOIR DÉTAILS</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="img/img.pink&blackfrontshirt.jpeg.jpeg.png" onclick="voirDetails('produit-pink-black')">
+                </div>
+                <div class="product-info">
+                    <h3>T-SHIRT PINK & BLACK</h3>
+                    <p class="price">8.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('produit-pink-black')">VOIR DÉTAILS</button>
+                </div>
+            </div>
+
+            <div class="product-card out-of-stock-card">
+                <div class="oos-badge">ÉPUISÉ</div>
+                <div class="product-image-container">
+                    <img src="img/imgimg.darkredfrontshirt.jpeg.png.png" onclick="voirDetails('produit-dark-red')">
+                </div>
+                <div class="product-info">
+                    <h3>T-SHIRT DARK RED</h3>
+                    <p class="price" style="text-decoration: line-through; opacity: 0.5;">8.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('produit-dark-red')">VOIR DÉTAILS</button>
+                </div>
+            </div>
+
         </div>
 
-        <section class="products-grid">
-        <div class="product-card">
-            <img src="img/img.topshortblue.jpeg.jpeg.jpeg" alt="Top Basic Courte">
-            <h3>TOP BASIC BLEU CLAIR (MANCHES COURTES)</h3>
-            <p>4.500 CFA</p>
-            <button class="btn-details" onclick="voirDetails('basic-courte')">VOIR DÉTAILS</button>
+        <h2 class="section-title" id="basics">Les Basics</h2>
+        <div class="products-grid">
+            
+            <div class="product-card out-of-stock-card">
+        <div class="oos-badge">ÉPUISÉ</div>
+        <div class="product-image-container">
+            <img src="img/img.topshortgreen.jpeg.jpeg.jpeg" onclick="voirDetails('basic-vert-courte')">
         </div>
+        <div class="product-info">
+            <h3>TOP VERT (COURT)</h3>
+            <p class="price" style="text-decoration: line-through; opacity: 0.5;">5.000 CFA</p>
+            <button class="btn-details" onclick="voirDetails('basic-vert-courte')">VOIR DÉTAILS</button>
+        </div>
+    </div>
 
-        <section class="products-grid">
-        <div class="product-card">
-            <img src="img/img.topshortbrown.jpeg.jpeg.jpeg" alt="Top Basic Courte">
-            <h3>TOP BASIC MARRON (MANCHES COURTES)</h3>
-            <p>4.500 CFA</p>
-            <button class="btn-details" onclick="voirDetails('basic-courte')">VOIR DÉTAILS</button>
-        </div>
+            <div class="product-card out-of-stock-card">
+                <div class="oos-badge">ÉPUISÉ</div>
+                <div class="product-image-container">
+                    <img src="img/img.topshortblack.jpeg.jpeg.jpeg" onclick="voirDetails('basic-noir-courte')">
+                </div>
+                <div class="product-info">
+                    <h3>TOP NOIR (COURT)</h3>
+                    <p class="price" style="text-decoration: line-through; opacity: 0.5;">5.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('basic-noir-courte')">VOIR DÉTAILS</button>
+                </div>
+            </div>
 
-        <section class="products-grid">
-        <div class="product-card">
-            <img src="img/img.topshortwhite.jpeg.jpeg.jpeg" alt="Top Basic Courte">
-            <h3>TOP BASIC BLANC (MANCHES COURTES)</h3>
-            <p>4.500 CFA</p>
-            <button class="btn-details" onclick="voirDetails('basic-courte')">VOIR DÉTAILS</button>
-        </div>
+            <div class="product-card out-of-stock-card">
+                <div class="oos-badge">ÉPUISÉ</div>
+                <div class="product-image-container">
+                    <img src="img/img.topshortpink.jpeg.jpeg.jpeg" onclick="voirDetails('basic-rose-courte')">
+                </div>
+                <div class="product-info">
+                    <h3>TOP ROSE (COURT)</h3>
+                    <p class="price" style="text-decoration: line-through; opacity: 0.5;">5.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('basic-rose-courte')">VOIR DÉTAILS</button>
+                </div>
+            </div>
 
-        <section class="products-grid">
-        <div class="product-card">
-            <img src="img/img.toplongwhite.jpeg.jpeg.jpeg" alt="Top Basic Longue">
-            <h3>TOP BASIC BLANC (MANCHES LONGUES)</h3>
-            <p>5.000 CFA</p>
-            <button class="btn-details" onclick="voirDetails('basic-longue')">VOIR DÉTAILS</button>
-        </div>
+            <div class="product-card out-of-stock-card">
+                <div class="oos-badge">ÉPUISÉ</div>
+                <div class="product-image-container">
+                    <img src="img/img.topshortblue.jpeg.jpeg.jpeg" onclick="voirDetails('basic-bleu-courte')">
+                </div>
+                <div class="product-info">
+                    <h3>TOP BLEU (COURT)</h3>
+                    <p class="price" style="text-decoration: line-through; opacity: 0.5;">5.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('basic-bleu-courte')">VOIR DÉTAILS</button>
+                </div>
+            </div>
 
-        <section class="products-grid">
-        <div class="product-card">
-            <img src="img/img.toplongblack.jpeg.jpeg.jpeg" alt="Top Basic Longue">
-            <h3>TOP BASIC NOIR (MANCHES LONGUES)</h3>
-            <p>5.000 CFA</p>
-            <button class="btn-details" onclick="voirDetails('basic-longue')">VOIR DÉTAILS</button>
-        </div>
+            <div class="product-card out-of-stock-card">
+                <div class="oos-badge">ÉPUISÉ</div>
+                <div class="product-image-container">
+                    <img src="img/img.topshortbrown.jpeg.jpeg.jpeg" onclick="voirDetails('basic-marron-courte')">
+                </div>
+                <div class="product-info">
+                    <h3>TOP MARRON (COURT)</h3>
+                    <p class="price" style="text-decoration: line-through; opacity: 0.5;">5.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('basic-marron-courte')">VOIR DÉTAILS</button>
+                </div>
+            </div>
 
-        <section class="products-grid">
-        <div class="product-card">
-            <img src="img/img.toplongblue.jpeg.jpeg.jpeg" alt="Top Basic Longue">
-            <h3>TOP BASIC BLEU CLAIR (MANCHES LONGUES)</h3>
-            <p>5.000 CFA</p>
-            <button class="btn-details" onclick="voirDetails('basic-longue')">VOIR DÉTAILS</button>
-        </div>
+            <div class="product-card out-of-stock-card">
+                <div class="oos-badge">ÉPUISÉ</div>
+                <div class="product-image-container">
+                    <img src="img/img.topshortwhite.jpeg.jpeg.jpeg" onclick="voirDetails('basic-blanc-courte')">
+                </div>
+                <div class="product-info">
+                    <h3>TOP BLANC (COURT)</h3>
+                    <p class="price" style="text-decoration: line-through; opacity: 0.5;">5.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('basic-blanc-courte')">VOIR DÉTAILS</button>
+                </div>
+            </div>
 
-        <section class="products-grid">
-        <div class="product-card">
-            <img src="img/img.toplongDarkPink.jpeg.jpeg.jpeg" alt="Top Basic Longue">
-            <h3>TOP BASIC ROSE FONCÉ (MANCHES LONGUES)</h3>
-            <p>5.000 CFA</p>
-            <button class="btn-details" onclick="voirDetails('basic-longue')">VOIR DÉTAILS</button>
+            <div class="product-card out-of-stock-card">
+                <div class="oos-badge">ÉPUISÉ</div>
+                <div class="product-image-container">
+                    <img src="img/img.toplongwhite.jpeg.jpeg.jpeg" onclick="voirDetails('basic-blanc-longue')">
+                </div>
+                <div class="product-info">
+                    <h3>TOP BLANC (LONG)</h3>
+                    <p class="price" style="text-decoration: line-through; opacity: 0.5;">7.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('basic-blanc-longue')">VOIR DÉTAILS</button>
+                </div>
+            </div>
+
+            <div class="product-card out-of-stock-card">
+                <div class="oos-badge">ÉPUISÉ</div>
+                <div class="product-image-container">
+                    <img src="img/img.toplongblack.jpeg.jpeg.jpeg" onclick="voirDetails('basic-noir-longue')">
+                </div>
+                <div class="product-info">
+                    <h3>TOP NOIR (LONG)</h3>
+                    <p class="price" style="text-decoration: line-through; opacity: 0.5;">7.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('basic-noir-longue')">VOIR DÉTAILS</button>
+                </div>
+            </div>
+
+            <div class="product-card out-of-stock-card">
+                <div class="oos-badge">ÉPUISÉ</div>
+                <div class="product-image-container">
+                    <img src="img/img.toplongblue.jpeg.jpeg.jpeg" onclick="voirDetails('basic-bleu-longue')">
+                </div>
+                <div class="product-info">
+                    <h3>TOP BLEU (LONG)</h3>
+                    <p class="price" style="text-decoration: line-through; opacity: 0.5;">7.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('basic-bleu-longue')">VOIR DÉTAILS</button>
+                </div>
+            </div>
+
+            <div class="product-card out-of-stock-card">
+                <div class="oos-badge">ÉPUISÉ</div>
+                <div class="product-image-container">
+                    <img src="img/img.toplongDarkPink.jpeg.jpeg.jpeg" onclick="voirDetails('basic-rose-fonce-longue')">
+                </div>
+                <div class="product-info">
+                    <h3>TOP ROSE FONCÉ (LONG)</h3>
+                    <p class="price" style="text-decoration: line-through; opacity: 0.5;">7.000 CFA</p>
+                    <button class="btn-details" onclick="voirDetails('basic-rose-fonce-longue')">VOIR DÉTAILS</button>
+                </div>
+            </div>
+
         </div>
-    </section>
-        </div>
-    </section>
+    </main>
 
     <script>
-        function voirDetails(idDuProduit) {
-            localStorage.setItem('produitID', idDuProduit);
+        function voirDetails(id) {
+            localStorage.setItem('produitID', id);
             window.location.href = 'detail-produit.html';
         }
 
-        function updateCartCount() {
+        window.onload = function() {
             let panier = JSON.parse(localStorage.getItem('monPanier')) || [];
-            const countElement = document.getElementById('cart-count-nav');
-            if (countElement) countElement.innerText = "PANIER (" + panier.length + ")";
-        }
-        let visites = parseInt(localStorage.getItem('total_visites') || 0);
-localStorage.setItem('total_visites', visites + 1);
-        
-        window.onload = updateCartCount;
+            document.getElementById('cart-count-nav').innerText = `PANIER (${panier.length})`;
+        };
     </script>
-    <footer class="main-footer">
-    <div class="footer-content">
-        <div class="footer-logo">
-            <img src="img/img.logo.jpeg.png.png" alt="NAZIR">
-        </div>
-        
-        <div class="footer-links">
-            <div class="footer-column">
-                <h3>SHOP</h3>
-                <a href="index.html">Collection</a>
-                <a href="index.html#basics">Les Basics</a>
-            </div>
-            <div class="footer-column">
-                <h3>MAISON</h3>
-                <a href="heritage.html">L'Héritage</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="footer-column">
-                <h3>RESEAUX</h3>
-                <a href="https://www.instagram.com/nazir_nazircollection?igsh=MWQxZ2Qyc2wxdzZydQ==">Instagram</a>
-                <a href="https://www.tiktok.com/@nazircollection6?_r=1&_t=ZS-94w5XCvzaZW">Tiktok</a>
-            </div>
-        </div>
-    </div>
-    
-    <div class="footer-bottom">
-        <p>&copy; 2026 NAZIR OFFICIEL. MADE IN DAKAR.</p>
-    </div>
-</footer>
 </body>
 </html>

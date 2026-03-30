@@ -83,46 +83,51 @@ body {
     padding-bottom: 20px;
 }
 
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    padding: 0 5%;
-    margin-bottom: 80px;
-}
+.products-grid { 
+            display: grid !important; 
+            /* Sur PC : Toujours 4 colonnes de taille égale */
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 25px; 
+            padding: 40px 5%; 
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-.product-card {
-    background: #0a0a0a;
-    border: 1px solid #111;
-    padding: 20px;
-    text-align: center;
-    transition: 0.4s ease;
-}
+        .product-card { 
+            background: #0a0a0a; 
+            padding: 15px; 
+            text-align: center; 
+            border: 1px solid #1a1a1a;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%; /* Garde toutes les cartes à la même hauteur */
+        }
 
-.product-card:hover {
-    border-color: #444;
-    transform: translateY(-5px);
-}
+        /* --- RESPONSIVE : ADAPTATION MOBILE & TABLETTE --- */
+        @media (max-width: 1024px) {
+            .products-grid { grid-template-columns: repeat(3, 1fr); } /* 3 colonnes sur tablette */
+        }
 
-.product-card img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-    cursor: pointer;
-}
+        @media (max-width: 768px) {
+            .products-grid { 
+                grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur mobile (standard Dakar) */
+                gap: 15px;
+                padding: 20px 10px;
+            }
+            .product-card { padding: 10px; }
+            .product-card h3 { font-size: 0.75rem; letter-spacing: 0px; }
+        }
 
-.product-card h3 {
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-
-.product-card p {
-    color: #888;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
+.product-card img { 
+            width: 100%; 
+            aspect-ratio: 1 / 1; /* Force un format carré parfait */
+            object-fit: cover; /* Coupe l'image proprement si elle n'est pas carrée */
+            margin-bottom: 15px; 
+            cursor: pointer; 
+            background: #111;
+        }
 .btn-details {
     width: 100%;
     padding: 15px;

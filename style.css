@@ -534,3 +534,35 @@ body.dark-theme {
     font-family: serif; /* Style luxueux */
     line-height: 0.8;
 }
+/* --- SECTION IMAGE HÉRITAGE --- */
+.heritage-image-section {
+    width: 100%;
+    max-width: 500px; /* Largeur max sur PC */
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 4px; /* Optionnel : un léger arrondi pour le style */
+}
+
+.heritage-image-section img {
+    width: 100%;
+    height: auto; /* Laisse l'image garder ses proportions */
+    display: block;
+    object-fit: cover;
+}
+
+/* --- CORRECTIF MOBILE SPÉCIFIQUE --- */
+@media (max-width: 768px) {
+    .heritage-image-section {
+        max-width: 90%; /* On laisse un peu de marge sur les côtés */
+        max-height: 400px; /* LIMITE LA HAUTEUR sur mobile pour ne pas tout envahir */
+    }
+    
+    .heritage-image-section img {
+        height: 400px; /* On force une hauteur raisonnable */
+        object-fit: cover; /* L'image est recadrée proprement au lieu d'être écrasée */
+    }
+
+    .heritage-grid {
+        gap: 30px; /* On réduit l'espace entre texte et image sur mobile */
+    }
+}

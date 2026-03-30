@@ -457,3 +457,80 @@ body.dark-theme {
     opacity: 0.7;
     padding-left: 10px;
 }
+/* --- STRUCTURE HÉRITAGE --- */
+.heritage-wrapper {
+    padding: 120px 5% 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.heritage-grid {
+    display: flex;
+    flex-direction: column; /* Par défaut : tout l'un sous l'autre (Mobile) */
+    gap: 60px;
+    align-items: center;
+}
+
+.heritage-text-section {
+    width: 100%;
+    max-width: 600px;
+    text-align: center; /* Centré sur mobile pour plus d'élégance */
+}
+
+.heritage-text-section h2 {
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.heritage-text-section p {
+    line-height: 1.8;
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+/* Image Heritage */
+.heritage-image-section {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 4 / 5; /* Format portrait élégant */
+    overflow: hidden;
+}
+
+.heritage-image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%); /* Touche artistique */
+}
+
+/* --- VERSION ORDINATEUR (PC) --- */
+@media (min-width: 1024px) {
+    .heritage-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Deux colonnes sur PC */
+        gap: 100px;
+        align-items: center;
+    }
+
+    .heritage-text-section {
+        text-align: left; /* Aligné à gauche sur PC */
+    }
+
+    /* On fait en sorte que l'image soit au milieu ou à droite selon le bloc */
+    .heritage-image-section {
+        grid-column: 2;
+        grid-row: 1 / 3; /* L'image prend de la hauteur sur PC */
+    }
+}
+
+/* Effet Dropcap (La première lettre) */
+.dropcap::first-letter {
+    font-size: 4rem;
+    float: left;
+    margin-right: 15px;
+    color: #fff;
+    font-family: serif; /* Style luxueux */
+    line-height: 0.8;
+}
